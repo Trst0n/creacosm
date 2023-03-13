@@ -16,9 +16,9 @@ class SondageType extends AbstractType
             ->add('introduction')
             ->add('visibilite')
             ->add('datecreation')
-            ->add('theme')
-            ->add('utilisateurs')
-            ->add('createur')
+//            ->add('theme.theme')
+//            ->add('utilisateurs.nom')
+//            ->add('createur.nom')
         ;
     }
 

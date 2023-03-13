@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau sondage{% endblock %}
+
+{% block body %}
+    <script>
+        let int = 1;
+
+        function myFunction() {
+            int ++
+            document.getElementById("demo").innerHTML += "<form action=\"submit\"> <label> Intitulé: <br> <input type=\"text\" name=\"intitule\"> </label> <br><br> <label for=\"type-select\">Choisissez un type:</label><br> <select name=\"type\" id=\"type-select\" onchange=\"choixtypebis(this.value)\" > <option value=\"\">--Choisissez une option--</option> <option value=\"multiple\">Question à choix multiple</option> <option value=\"ouverte\">Question ouverte</option> <option value=\"oui_non\">Question oui/non</option></select> <br><br> <label> Choix: <br> <p id=\"typequestion" + int +"\"></p><br> </label> <br><br> </form>";
+        }
+        function choixtypebis(val) {
+            let choix;
+            switch (val){
+                case "multiple":
+                    choix = "Réponse 1 :<input type=\"text\" name=\"reponse1\"><br>Réponse 2 :<input type=\"text\" name=\"reponse2\"><br>Réponse 3 :<input type=\"text\" name=\"reponse3\"><br>Réponse 4 :<input type=\"text\" name=\"reponse4\"><br>"
+                    break
+                case "ouverte":
+                    choix = "Question ouverte: Aucun affichage disponible"
+                    break
+                case "oui_non":
+                    choix = "<label>Oui <input type=\"radio\" name=\"visibilite\" value=\"oui\" checked> </label> <label>Non <input type=\"radio\" name=\"visibilite\" value=\"non\"> </label>"
+                    break
+                default:
+                    choix =""
+                    break
+            }
+            let id = "typequestion" + int
+            document.getElementById(id).innerHTML = choix
+        }
+    </script>
+
+    <h1>Create new Sondage</h1>
+
+    <form action="">
+        <label >Visibilité</label>
+        <br>
+        <label>public
+            <input type="radio" name="visibilite" value="public" checked>
+        </label>
+        <label>privé
+            <input type="radio" name="visibilite" value="dewey">
+        </label>
+        <br><br>
+        <label> Nom:
+            <br>
+            <input type="text" name="nom">
+        </label>
+        <br>
+        <br>
+        <label> Introduction:
+            <br>
+            <input type="text" name="introduction" style="height:140px">
+        </label>
+    </form>
+    <br>
+    {{ include('sondage/createquestion.html.twig') }}
+    <br>
+    <p id="demo"></p>
+    <button type="submit" onclick="myFunction()"> + Ajouter une question </button><br><br>
+
+    <button type="submit"> Créer </button>
+
+    <a href="{{ path('app_sondage_index') }}">back to list</a>
+{% endblock %}

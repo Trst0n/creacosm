@@ -65,10 +65,42 @@ class __TwigTemplate_d402b493fbf0345f1cc863af05897ca9 extends Template
         // line 15
         echo "    </head>
     <body>
-        ";
+        <a href=\"";
         // line 17
-        $this->displayBlock('body', $context, $blocks);
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_accueil");
+        echo "\">Accueil</a>
+        <a href=\"";
         // line 18
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_sondage_index");
+        echo "\">Sondages</a>
+
+        ";
+        // line 20
+        if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 20, $this->source); })()), "user", [], "any", false, false, false, 20)) {
+            // line 21
+            echo "            <a href=\"";
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_moncompte");
+            echo "\">Mon compte</a>
+            <a href=\"";
+            // line 22
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
+            echo "\">Déconnexion</a>
+        ";
+        } else {
+            // line 24
+            echo "            <a href=\"";
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
+            echo "\">Connexion</a>
+            <a href=\"";
+            // line 25
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
+            echo "\">Inscription</a>
+        ";
+        }
+        // line 27
+        echo "        ";
+        $this->displayBlock('body', $context, $blocks);
+        // line 30
         echo "    </body>
 </html>
 ";
@@ -145,7 +177,7 @@ class __TwigTemplate_d402b493fbf0345f1cc863af05897ca9 extends Template
 
     }
 
-    // line 17
+    // line 27
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -155,6 +187,9 @@ class __TwigTemplate_d402b493fbf0345f1cc863af05897ca9 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
+        // line 28
+        echo "
+        ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -168,9 +203,14 @@ class __TwigTemplate_d402b493fbf0345f1cc863af05897ca9 extends Template
         return "base.html.twig";
     }
 
+    public function isTraitable()
+    {
+        return false;
+    }
+
     public function getDebugInfo()
     {
-        return array (  149 => 17,  136 => 13,  126 => 12,  113 => 9,  103 => 8,  84 => 5,  72 => 18,  70 => 17,  66 => 15,  64 => 12,  61 => 11,  58 => 8,  53 => 5,  47 => 1,);
+        return array (  191 => 28,  181 => 27,  168 => 13,  158 => 12,  145 => 9,  135 => 8,  116 => 5,  104 => 30,  101 => 27,  96 => 25,  91 => 24,  86 => 22,  81 => 21,  79 => 20,  74 => 18,  70 => 17,  66 => 15,  64 => 12,  61 => 11,  58 => 8,  53 => 5,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -191,7 +231,19 @@ class __TwigTemplate_d402b493fbf0345f1cc863af05897ca9 extends Template
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <a href=\"{{ path('app_accueil') }}\">Accueil</a>
+        <a href=\"{{ path('app_sondage_index') }}\">Sondages</a>
+
+        {% if app.user %}
+            <a href=\"{{ path('app_moncompte') }}\">Mon compte</a>
+            <a href=\"{{ path('app_logout') }}\">Déconnexion</a>
+        {% else %}
+            <a href=\"{{ path('app_login') }}\">Connexion</a>
+            <a href=\"{{ path('app_register') }}\">Inscription</a>
+        {% endif %}
+        {% block body %}
+
+        {% endblock %}
     </body>
 </html>
 ", "base.html.twig", "/var/www/html/creacosm/templates/base.html.twig");

@@ -8,7 +8,6 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Nom</th>
                 <th>Introduction</th>
                 <th>Visibilite</th>
@@ -19,11 +18,10 @@
         <tbody>
         {% for sondage in sondages %}
             <tr>
-                <td>{{ sondage.id }}</td>
                 <td>{{ sondage.nom }}</td>
                 <td>{{ sondage.introduction }}</td>
-                <td>{{ sondage.visibilite ? 'Yes' : 'No' }}</td>
-                <td>{{ sondage.datecreation ? sondage.datecreation|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ sondage.visibilite ? 'Public' : 'Privé' }}</td>
+                <td>{{ sondage.datecreation ? sondage.datecreation|date('Y-m-d') : '' }}</td>
                 <td>
                     <a href="{{ path('app_sondage_show', {'id': sondage.id}) }}">show</a>
                     <a href="{{ path('app_sondage_edit', {'id': sondage.id}) }}">edit</a>

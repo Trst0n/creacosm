@@ -34,7 +34,7 @@ class SondageController extends AbstractController
             return $this->redirectToRoute('app_sondage_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('sondage/new.html.twig', [
+        return $this->renderForm('sondage/create.html.twig', [
             'sondage' => $sondage,
             'form' => $form,
         ]);
