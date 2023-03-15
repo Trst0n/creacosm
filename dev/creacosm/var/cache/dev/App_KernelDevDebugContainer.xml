@@ -6623,6 +6623,15 @@
         <argument key="sondageRepository" type="service_closure" id="App\Repository\SondageRepository"/>
       </argument>
     </service>
+    <service id=".service_locator.K1rw_oc" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="questionRepository" type="service_closure" id="App\Repository\QuestionRepository"/>
+        <argument key="sondageRepository" type="service_closure" id="App\Repository\SondageRepository"/>
+        <argument key="themeRepository" type="service_closure" id="App\Repository\ThemeRepository"/>
+        <argument key="typeRepository" type="service_closure" id="App\Repository\TypeRepository"/>
+      </argument>
+    </service>
     <service id=".service_locator.iJVNhnm" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -6636,11 +6645,12 @@
         <argument key="sondageRepository" type="service_closure" id="App\Repository\SondageRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.rluyqmc" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.09rR9gv" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\RegistrationController::register" type="service_closure" id=".service_locator.Z9QmIxH"/>
         <argument key="App\Controller\SecurityController::login" type="service_closure" id=".service_locator.rSTd.nA"/>
+        <argument key="App\Controller\SondageController::create" type="service_closure" id=".service_locator.K1rw_oc"/>
         <argument key="App\Controller\SondageController::delete" type="service_closure" id=".service_locator.I2DnaFa"/>
         <argument key="App\Controller\SondageController::edit" type="service_closure" id=".service_locator.I2DnaFa"/>
         <argument key="App\Controller\SondageController::index" type="service_closure" id=".service_locator.Roqezgm"/>
@@ -6652,6 +6662,7 @@
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="App\Controller\RegistrationController:register" type="service_closure" id=".service_locator.Z9QmIxH"/>
         <argument key="App\Controller\SecurityController:login" type="service_closure" id=".service_locator.rSTd.nA"/>
+        <argument key="App\Controller\SondageController:create" type="service_closure" id=".service_locator.K1rw_oc"/>
         <argument key="App\Controller\SondageController:delete" type="service_closure" id=".service_locator.I2DnaFa"/>
         <argument key="App\Controller\SondageController:edit" type="service_closure" id=".service_locator.I2DnaFa"/>
         <argument key="App\Controller\SondageController:index" type="service_closure" id=".service_locator.Roqezgm"/>
@@ -7508,12 +7519,12 @@
     <service id="debug.argument_resolver.request.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\RequestValueResolver"/>
     <service id="debug.argument_resolver.session.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\SessionValueResolver"/>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.rluyqmc"/>
+      <argument type="service" id=".service_locator.09rR9gv"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.rluyqmc"/>
+      <argument type="service" id=".service_locator.09rR9gv"/>
     </service>
     <service id="debug.traced.messenger.bus.default.inner" class="Symfony\Component\Messenger\MessageBus">
       <argument type="iterator">
@@ -8482,7 +8493,7 @@
     <service id="sensio_framework_extra.security.expression_language" alias="sensio_framework_extra.security.expression_language.default"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.7nzbL4K" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.rluyqmc"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.09rR9gv"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -8504,7 +8515,8 @@
     <service id=".service_locator.h8Jkkd2" alias="messenger.retry_strategy_locator"/>
     <service id=".service_locator.o.uf2zi" alias=".service_locator.7nzbL4K"/>
     <service id=".service_locator.bJkwozd" alias=".service_locator.Z9QmIxH"/>
-    <service id=".service_locator.ImAziks" alias=".service_locator.rluyqmc"/>
+    <service id=".service_locator.F1tSKq0" alias=".service_locator.K1rw_oc"/>
+    <service id=".service_locator.Yr_OJfC" alias=".service_locator.09rR9gv"/>
     <service id=".service_locator.9XMoc9I" alias=".service_locator.kzegaci"/>
     <service id=".service_locator.utzdv89" alias=".service_locator.iIL1VkR"/>
     <service id=".service_locator.XW18Svm" alias=".service_locator.TcKhdzh"/>
@@ -8558,6 +8570,7 @@
     <service id=".service_locator.9f8bEDz" alias=".service_locator.Z9QmIxH"/>
     <service id=".service_locator.7NIAq8D" alias=".service_locator.rSTd.nA"/>
     <service id=".service_locator.Hc.SspF" alias=".service_locator.Roqezgm"/>
+    <service id=".service_locator.n2.OuCE" alias=".service_locator.K1rw_oc"/>
     <service id=".service_locator.W_rPBfe" alias=".service_locator.iJVNhnm"/>
     <service id=".service_locator.YTbQmhQ" alias=".service_locator.I2DnaFa"/>
     <service id=".service_locator.Kyflpr1" alias=".service_locator.CshazM0"/>

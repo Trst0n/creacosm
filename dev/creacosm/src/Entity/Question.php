@@ -28,6 +28,9 @@ class Question
     #[ORM\JoinColumn(nullable: false)]
     private ?Type $type = null;
 
+    #[ORM\ManyToOne(inversedBy: 'questions')]
+    private ?Sondage $sondage = null;
+
     public function __construct()
     {
         $this->reponses = new ArrayCollection();
@@ -100,6 +103,18 @@ class Question
     public function setType(?Type $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getSondage(): ?Sondage
+    {
+        return $this->sondage;
+    }
+
+    public function setSondage(?Sondage $sondage): self
+    {
+        $this->sondage = $sondage;
 
         return $this;
     }

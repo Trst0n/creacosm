@@ -101,24 +101,21 @@ class __TwigTemplate_27fd11a1ac82e9c49d45582e5baa721c extends Template
                     break
             }
             document.getElementById(\"typequestion1\").innerHTML = choix
-
-
         }
     </script>
 
 
     <p style=\"font-style: italic ; font-size: 18px\">Create new Question</p>
-    <form action=\"\">
         <label> Intitulé:
             <br>
-            <input type=\"text\" name=\"intitule\">
+            <input type=\"text\" name=\"intitule1\">
         </label>
 
         <br><br>
 
         <label for=\"type-select\">Choisissez un type:</label><br>
 
-        <select name=\"type\" id=\"type-select\" onchange=\"choixtype(this.value,this.id)\">
+        <select name=\"type1\" id=\"type-select\" onchange=\"choixtype(value)\">
             <option value=\"\">--Choisissez une option--</option>
             <option value=\"multiple\">Question à choix multiple</option>
             <option value=\"ouverte\">Question ouverte</option>
@@ -132,7 +129,6 @@ class __TwigTemplate_27fd11a1ac82e9c49d45582e5baa721c extends Template
             <p id =\"typequestion1\"> Choisissez une option si dessus</p>
 
         </label>
-    </form>
 
 ";
         
@@ -176,24 +172,21 @@ class __TwigTemplate_27fd11a1ac82e9c49d45582e5baa721c extends Template
                     break
             }
             document.getElementById(\"typequestion1\").innerHTML = choix
-
-
         }
     </script>
 
 
     <p style=\"font-style: italic ; font-size: 18px\">Create new Question</p>
-    <form action=\"\">
         <label> Intitulé:
             <br>
-            <input type=\"text\" name=\"intitule\">
+            <input type=\"text\" name=\"intitule1\">
         </label>
 
         <br><br>
 
         <label for=\"type-select\">Choisissez un type:</label><br>
 
-        <select name=\"type\" id=\"type-select\" onchange=\"choixtype(this.value,this.id)\">
+        <select name=\"type1\" id=\"type-select\" onchange=\"choixtype(value)\">
             <option value=\"\">--Choisissez une option--</option>
             <option value=\"multiple\">Question à choix multiple</option>
             <option value=\"ouverte\">Question ouverte</option>
@@ -207,7 +200,6 @@ class __TwigTemplate_27fd11a1ac82e9c49d45582e5baa721c extends Template
             <p id =\"typequestion1\"> Choisissez une option si dessus</p>
 
         </label>
-    </form>
 
 {% endblock %}
 ", "sondage/createquestion.html.twig", "/var/www/html/creacosm/templates/sondage/createquestion.html.twig");

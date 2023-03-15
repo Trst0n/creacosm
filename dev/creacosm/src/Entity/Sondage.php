@@ -40,10 +40,14 @@ class Sondage
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $datecreation = null;
 
+    #[ORM\OneToMany(mappedBy: 'sondage', targetEntity: Question::class)]
+    private Collection $questions;
+
     public function __construct()
     {
         $this->utilisateurs = new ArrayCollection();
         $this->statistique = new ArrayCollection();
+        $this->questions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -173,6 +177,36 @@ class Sondage
     public function setDatecreation(\DateTimeInterface $datecreation): self
     {
         $this->datecreation = $datecreation;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Question>
+     */
+    public function getQuestions(): Collection
+    {
+        return $this->questions;
+    }
+
+    public function addQuestion(Question $question): self
+    {
+        if (!$this->questions->contains($question)) {
+            $this->questions->add($question);
+            $question->setSondage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeQuestion(Question $question): self
+    {
+        if ($this->questions->removeElement($question)) {
+            // set the owning side to null (unless already changed)
+            if ($question->getSondage() === $this) {
+                $question->setSondage(null);
+            }
+        }
 
         return $this;
     }

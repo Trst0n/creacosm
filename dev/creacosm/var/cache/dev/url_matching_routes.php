@@ -22,6 +22,7 @@ return [
         '/logout' => [[['_route' => 'app_logout', '_controller' => 'App\\Controller\\SecurityController::logout'], null, null, null, false, false, null]],
         '/sondage' => [[['_route' => 'app_sondage_index', '_controller' => 'App\\Controller\\SondageController::index'], null, ['GET' => 0], null, true, false, null]],
         '/sondage/new' => [[['_route' => 'app_sondage_new', '_controller' => 'App\\Controller\\SondageController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/sondage/create' => [[['_route' => 'app_sondage_create', '_controller' => 'App\\Controller\\SondageController::create'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'

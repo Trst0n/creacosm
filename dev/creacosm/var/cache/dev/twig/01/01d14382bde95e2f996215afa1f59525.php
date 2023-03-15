@@ -90,7 +90,8 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
 
         function myFunction() {
             int ++
-            document.getElementById(\"demo\").innerHTML += \"<form action=\\\"submit\\\"> <label> Intitulé: <br> <input type=\\\"text\\\" name=\\\"intitule\\\"> </label> <br><br> <label for=\\\"type-select\\\">Choisissez un type:</label><br> <select name=\\\"type\\\" id=\\\"type-select\\\" onchange=\\\"choixtypebis(this.value)\\\" > <option value=\\\"\\\">--Choisissez une option--</option> <option value=\\\"multiple\\\">Question à choix multiple</option> <option value=\\\"ouverte\\\">Question ouverte</option> <option value=\\\"oui_non\\\">Question oui/non</option></select> <br><br> <label> Choix: <br> <p id=\\\"typequestion\" + int +\"\\\"></p><br> </label> <br><br> </form>\";
+            document.getElementById(\"cpt\").innerHTML = \"<input name=\\\"nbquestion\\\" id=\\\"nbquestion\\\" type=\\\"hidden\\\" value =\" + int +\">\";
+            document.getElementById(\"demo\"+int).innerHTML += \"<label> Intitulé: <br> <input type=\\\"text\\\" name=\\\"intitule\"+ int+\"\\\"> </label> <br><br> <label for=\\\"type-select\\\">Choisissez un type:</label><br> <select name=\\\"type\"+ int+\"\\\" id=\\\"type-select\\\" onchange=\\\"choixtypebis(value)\\\" > <option value=\\\"\\\">--Choisissez une option--</option> <option value=\\\"multiple\\\">Question à choix multiple</option> <option value=\\\"ouverte\\\">Question ouverte</option> <option value=\\\"oui_non\\\">Question oui/non</option></select> <br><br> <label> Choix: <br> <p id=\\\"typequestion\" + int +\"\\\"></p><p id=\\\"demo\" + (int+1) + \"\\\"><br> </label> <br><br>\";
         }
         function choixtypebis(val) {
             let choix;
@@ -111,45 +112,47 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
             let id = \"typequestion\" + int
             document.getElementById(id).innerHTML = choix
         }
+
     </script>
 
     <h1>Create new Sondage</h1>
-
-    <form action=\"\">
+    <form action=\"./create\" method=\"POST\">
+        <p id =\"cpt\">       <input name=\"nbquestion\" id=\"nbquestion\" type=\"hidden\" value =\"1\">
+        </p>
         <label >Visibilité</label>
         <br>
         <label>public
             <input type=\"radio\" name=\"visibilite\" value=\"public\" checked>
         </label>
         <label>privé
-            <input type=\"radio\" name=\"visibilite\" value=\"dewey\">
+            <input type=\"radio\" name=\"visibilite\" value=\"prive\" required>
         </label>
         <br><br>
         <label> Nom:
             <br>
-            <input type=\"text\" name=\"nom\">
+            <input type=\"text\" name=\"nom\" required>
         </label>
         <br>
         <br>
         <label> Introduction:
             <br>
-            <input type=\"text\" name=\"introduction\" style=\"height:140px\">
+            <input type=\"text\" name=\"introduction\" style=\"height:140px\" required>
         </label>
-    </form>
-    <br>
-    ";
-        // line 58
+        <br>
+        ";
+        // line 60
         echo twig_include($this->env, $context, "sondage/createquestion.html.twig");
         echo "
-    <br>
-    <p id=\"demo\"></p>
-    <button type=\"submit\" onclick=\"myFunction()\"> + Ajouter une question </button><br><br>
+        <br>
+        <p id=\"demo2\"></p>
+        <button type=\"button\" onclick=\"myFunction()\"> + Ajouter une question </button><br><br>
 
-    <button type=\"submit\"> Créer </button>
+        <button type=\"submit\"> Créer </button>
+    </form>
 
 
     <a href=\"";
-        // line 66
+        // line 69
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_sondage_index");
         echo "\">back to list</a>
 ";
@@ -173,7 +176,7 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
 
     public function getDebugInfo()
     {
-        return array (  153 => 66,  142 => 58,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  156 => 69,  144 => 60,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -188,7 +191,8 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
 
         function myFunction() {
             int ++
-            document.getElementById(\"demo\").innerHTML += \"<form action=\\\"submit\\\"> <label> Intitulé: <br> <input type=\\\"text\\\" name=\\\"intitule\\\"> </label> <br><br> <label for=\\\"type-select\\\">Choisissez un type:</label><br> <select name=\\\"type\\\" id=\\\"type-select\\\" onchange=\\\"choixtypebis(this.value)\\\" > <option value=\\\"\\\">--Choisissez une option--</option> <option value=\\\"multiple\\\">Question à choix multiple</option> <option value=\\\"ouverte\\\">Question ouverte</option> <option value=\\\"oui_non\\\">Question oui/non</option></select> <br><br> <label> Choix: <br> <p id=\\\"typequestion\" + int +\"\\\"></p><br> </label> <br><br> </form>\";
+            document.getElementById(\"cpt\").innerHTML = \"<input name=\\\"nbquestion\\\" id=\\\"nbquestion\\\" type=\\\"hidden\\\" value =\" + int +\">\";
+            document.getElementById(\"demo\"+int).innerHTML += \"<label> Intitulé: <br> <input type=\\\"text\\\" name=\\\"intitule\"+ int+\"\\\"> </label> <br><br> <label for=\\\"type-select\\\">Choisissez un type:</label><br> <select name=\\\"type\"+ int+\"\\\" id=\\\"type-select\\\" onchange=\\\"choixtypebis(value)\\\" > <option value=\\\"\\\">--Choisissez une option--</option> <option value=\\\"multiple\\\">Question à choix multiple</option> <option value=\\\"ouverte\\\">Question ouverte</option> <option value=\\\"oui_non\\\">Question oui/non</option></select> <br><br> <label> Choix: <br> <p id=\\\"typequestion\" + int +\"\\\"></p><p id=\\\"demo\" + (int+1) + \"\\\"><br> </label> <br><br>\";
         }
         function choixtypebis(val) {
             let choix;
@@ -209,42 +213,43 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
             let id = \"typequestion\" + int
             document.getElementById(id).innerHTML = choix
         }
+
     </script>
 
     <h1>Create new Sondage</h1>
-
-    <form action=\"\">
+    <form action=\"./create\" method=\"POST\">
+        <p id =\"cpt\">       <input name=\"nbquestion\" id=\"nbquestion\" type=\"hidden\" value =\"1\">
+        </p>
         <label >Visibilité</label>
         <br>
         <label>public
             <input type=\"radio\" name=\"visibilite\" value=\"public\" checked>
         </label>
         <label>privé
-            <input type=\"radio\" name=\"visibilite\" value=\"dewey\">
+            <input type=\"radio\" name=\"visibilite\" value=\"prive\" required>
         </label>
         <br><br>
         <label> Nom:
             <br>
-            <input type=\"text\" name=\"nom\">
+            <input type=\"text\" name=\"nom\" required>
         </label>
         <br>
         <br>
         <label> Introduction:
             <br>
-            <input type=\"text\" name=\"introduction\" style=\"height:140px\">
+            <input type=\"text\" name=\"introduction\" style=\"height:140px\" required>
         </label>
-    </form>
-    <br>
-    {{ include('sondage/createquestion.html.twig') }}
-    <br>
-    <p id=\"demo\"></p>
-    <button type=\"submit\" onclick=\"myFunction()\"> + Ajouter une question </button><br><br>
+        <br>
+        {{ include('sondage/createquestion.html.twig') }}
+        <br>
+        <p id=\"demo2\"></p>
+        <button type=\"button\" onclick=\"myFunction()\"> + Ajouter une question </button><br><br>
 
-    <button type=\"submit\"> Créer </button>
+        <button type=\"submit\"> Créer </button>
+    </form>
 
 
     <a href=\"{{ path('app_sondage_index') }}\">back to list</a>
-{% endblock %}
-", "sondage/create.html.twig", "/var/www/html/creacosm/templates/sondage/create.html.twig");
+{% endblock %}", "sondage/create.html.twig", "/var/www/html/creacosm/templates/sondage/create.html.twig");
     }
 }

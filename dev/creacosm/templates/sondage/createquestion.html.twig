@@ -24,17 +24,16 @@
 
 
     <p style="font-style: italic ; font-size: 18px">Create new Question</p>
-    <form action="">
         <label> Intitulé:
             <br>
-            <input type="text" name="intitule">
+            <input type="text" name="intitule1">
         </label>
 
         <br><br>
 
         <label for="type-select">Choisissez un type:</label><br>
 
-        <select name="type" id="type-select" onchange="choixtype(this.value)">
+        <select name="type1" id="type-select" onchange="choixtype(value)">
             <option value="">--Choisissez une option--</option>
             <option value="multiple">Question à choix multiple</option>
             <option value="ouverte">Question ouverte</option>
@@ -48,6 +47,5 @@
             <p id ="typequestion1"> Choisissez une option si dessus</p>
 
         </label>
-    </form>
 
 {% endblock %}
