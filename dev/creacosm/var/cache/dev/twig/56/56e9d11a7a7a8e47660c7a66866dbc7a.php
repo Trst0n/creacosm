@@ -105,7 +105,7 @@ class __TwigTemplate_27fd11a1ac82e9c49d45582e5baa721c extends Template
 
         function newreponse(nbquest, nbrep) {
             nbquestion++
-            document.getElementById(nbquest + \"-\" + nbrep).innerHTML = \"Réponse \" + nbquestion + \":<input type=\\\"text\\\" name=\\\"reponse\" + nbquestion + \"\\\"><br><p id=\\\"\" + nbquest + \"-\" + (nbrep + 1) + \"\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(\" + nbquest + \",\" + (nbrep + 1) + \")\\\"> + Ajouter une reponse </button></p>\"
+            document.getElementById(nbquest + \"-\" + nbrep).innerHTML = \"Réponse \" + nbquestion + \":<input type=\\\"text\\\" name=\\\"reponse\" + nbquestion + \"\\\"><br><p id=\\\"\" + nbquest + \"-\" + (nbrep + 1) + \"\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(\" + nbquest + \",\" + (nbrep + 1) + \")\\\"> + Ajouter une reponse </button><button type=\\\"button\\\" onclick=\\\"removereponse(\" + nbquest + \",\" + (nbrep) + \")\\\"> - Supprimer une reponse </button></p>\"
         }
 
     </script>
@@ -121,7 +121,7 @@ class __TwigTemplate_27fd11a1ac82e9c49d45582e5baa721c extends Template
 
         <label for=\"type-select\">Choisissez un type:</label><br>
 
-        <select name=\"type1\" id=\"type-select\" onchange=\"choixtype(value)\">
+        <select name=\"type1\" id=\"type-select\" autocomplete=\"off\" onchange=\"choixtype(value)\">
             <option value=\"\">--Choisissez une option--</option>
             <option value=\"multiple\">Question à choix multiple</option>
             <option value=\"ouverte\">Question ouverte</option>
@@ -182,7 +182,7 @@ class __TwigTemplate_27fd11a1ac82e9c49d45582e5baa721c extends Template
 
         function newreponse(nbquest, nbrep) {
             nbquestion++
-            document.getElementById(nbquest + \"-\" + nbrep).innerHTML = \"Réponse \" + nbquestion + \":<input type=\\\"text\\\" name=\\\"reponse\" + nbquestion + \"\\\"><br><p id=\\\"\" + nbquest + \"-\" + (nbrep + 1) + \"\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(\" + nbquest + \",\" + (nbrep + 1) + \")\\\"> + Ajouter une reponse </button></p>\"
+            document.getElementById(nbquest + \"-\" + nbrep).innerHTML = \"Réponse \" + nbquestion + \":<input type=\\\"text\\\" name=\\\"reponse\" + nbquestion + \"\\\"><br><p id=\\\"\" + nbquest + \"-\" + (nbrep + 1) + \"\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(\" + nbquest + \",\" + (nbrep + 1) + \")\\\"> + Ajouter une reponse </button><button type=\\\"button\\\" onclick=\\\"removereponse(\" + nbquest + \",\" + (nbrep) + \")\\\"> - Supprimer une reponse </button></p>\"
         }
 
     </script>
@@ -198,7 +198,7 @@ class __TwigTemplate_27fd11a1ac82e9c49d45582e5baa721c extends Template
 
         <label for=\"type-select\">Choisissez un type:</label><br>
 
-        <select name=\"type1\" id=\"type-select\" onchange=\"choixtype(value)\">
+        <select name=\"type1\" id=\"type-select\" autocomplete=\"off\" onchange=\"choixtype(value)\">
             <option value=\"\">--Choisissez une option--</option>
             <option value=\"multiple\">Question à choix multiple</option>
             <option value=\"ouverte\">Question ouverte</option>
