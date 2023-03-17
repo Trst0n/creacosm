@@ -87,17 +87,19 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
         // line 6
         echo "    <script>
         let int = 1;
+        let nbquestion = 1;
 
         function myFunction() {
             int ++
             document.getElementById(\"cpt\").innerHTML = \"<input name=\\\"nbquestion\\\" id=\\\"nbquestion\\\" type=\\\"hidden\\\" value =\" + int +\">\";
-            document.getElementById(\"demo\"+int).innerHTML += \"<label> Intitulé: <br> <input type=\\\"text\\\" name=\\\"intitule\"+ int+\"\\\"> </label> <br><br> <label for=\\\"type-select\\\">Choisissez un type:</label><br> <select name=\\\"type\"+ int+\"\\\" id=\\\"type-select\\\" onchange=\\\"choixtypebis(value)\\\" > <option value=\\\"\\\">--Choisissez une option--</option> <option value=\\\"multiple\\\">Question à choix multiple</option> <option value=\\\"ouverte\\\">Question ouverte</option> <option value=\\\"oui_non\\\">Question oui/non</option></select> <br><br> <label> Choix: <br> <p id=\\\"typequestion\" + int +\"\\\"></p><p id=\\\"demo\" + (int+1) + \"\\\"><br> </label> <br><br>\";
+            document.getElementById(\"demo\"+int).innerHTML += \"<label> Intitulé: <br> <input type=\\\"text\\\" name=\\\"intitule\"+ int+\"\\\"> </label> <br><br> <label for=\\\"type-select\\\">Choisissez un type:</label><br> <select name=\\\"type\"+ int+\"\\\" id=\\\"type-select\\\" onchange=\\\"choixtypebis(value,int)\\\" > <option value=\\\"\\\">--Choisissez une option--</option> <option value=\\\"multiple\\\">Question à choix multiple</option> <option value=\\\"ouverte\\\">Question ouverte</option> <option value=\\\"oui_non\\\">Question oui/non</option></select> <br><br> <label> Choix: <br> <p id=\\\"typequestion\" + int +\"\\\"></p><p id=\\\"demo\" + (int+1) + \"\\\"><br> </label> <br><br>\";
         }
-        function choixtypebis(val) {
+        function choixtypebis(val,id) {
             let choix;
             switch (val){
                 case \"multiple\":
-                    choix = \"Réponse 1 :<input type=\\\"text\\\" name=\\\"reponse1\\\"><br>Réponse 2 :<input type=\\\"text\\\" name=\\\"reponse2\\\"><br>Réponse 3 :<input type=\\\"text\\\" name=\\\"reponse3\\\"><br>Réponse 4 :<input type=\\\"text\\\" name=\\\"reponse4\\\"><br>\"
+                    nbquestion =1
+                    choix = \"Réponse 1 :<input type=\\\"text\\\" name=\\\"reponse\"+int+ \"-\"+nbquestion+\"\\\"><br><p id =\\\"\" + int + \"-\" + (nbquestion+1) +\"\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(\"+ int + \",\" + (nbquestion + 1)+ \")\\\"> + Ajouter une reponse </button></p><br>\"
                     break
                 case \"ouverte\":
                     choix = \"Question ouverte: Aucun affichage disponible\"
@@ -109,14 +111,24 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
                     choix =\"\"
                     break
             }
-            let id = \"typequestion\" + int
-            document.getElementById(id).innerHTML = choix
+           let idbis = \"typequestion\" + id
+            document.getElementById(idbis).innerHTML = choix
         }
+        function newreponse(nbquest, nbrep){
+            nbquestion ++
+            document.getElementById(nbquest + \"-\" + nbrep).innerHTML = \"Réponse \"+nbquestion+\":<input type=\\\"text\\\" name=\\\"reponse\"+nbquestion+\"\\\"><br><p id=\\\"\"+ nbquest + \"-\" + (nbrep+1) + \"\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(\"+ nbquest +\",\" + (nbrep+1) +\")\\\"> + Ajouter une reponse </button><button type=\\\"button\\\" onclick=\\\"removereponse(\"+ nbquest +\",\" + (nbrep+1) +\")\\\"></button></p>\"
+        }
+
+        function removereponse(quest,rep){
+            nbquestion --
+            document.getElementById(quest + \"-\" + rep).delete();
+        }
+
 
     </script>
 
     <h1>Create new Sondage</h1>
-    <form action=\"./create\" method=\"POST\">
+    <form action=\"./create\" id =\"form\" method=\"POST\" >
         <p id =\"cpt\">       <input name=\"nbquestion\" id=\"nbquestion\" type=\"hidden\" value =\"1\">
         </p>
         <label >Visibilité</label>
@@ -130,17 +142,17 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
         <br><br>
         <label> Nom:
             <br>
-            <input type=\"text\" name=\"nom\" required>
+            <input type=\"text\" autocomplete=\"off\" name=\"nom\" required>
         </label>
         <br>
         <br>
         <label> Introduction:
             <br>
-            <input type=\"text\" name=\"introduction\" style=\"height:140px\" required>
+            <input type=\"text\" autocomplete=\"off\" name=\"introduction\" style=\"height:140px\" required>
         </label>
         <br>
         ";
-        // line 60
+        // line 72
         echo twig_include($this->env, $context, "sondage/createquestion.html.twig");
         echo "
         <br>
@@ -152,7 +164,7 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
 
 
     <a href=\"";
-        // line 69
+        // line 81
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_sondage_index");
         echo "\">back to list</a>
 ";
@@ -176,7 +188,7 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
 
     public function getDebugInfo()
     {
-        return array (  156 => 69,  144 => 60,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  168 => 81,  156 => 72,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -188,17 +200,19 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
 {% block body %}
     <script>
         let int = 1;
+        let nbquestion = 1;
 
         function myFunction() {
             int ++
             document.getElementById(\"cpt\").innerHTML = \"<input name=\\\"nbquestion\\\" id=\\\"nbquestion\\\" type=\\\"hidden\\\" value =\" + int +\">\";
-            document.getElementById(\"demo\"+int).innerHTML += \"<label> Intitulé: <br> <input type=\\\"text\\\" name=\\\"intitule\"+ int+\"\\\"> </label> <br><br> <label for=\\\"type-select\\\">Choisissez un type:</label><br> <select name=\\\"type\"+ int+\"\\\" id=\\\"type-select\\\" onchange=\\\"choixtypebis(value)\\\" > <option value=\\\"\\\">--Choisissez une option--</option> <option value=\\\"multiple\\\">Question à choix multiple</option> <option value=\\\"ouverte\\\">Question ouverte</option> <option value=\\\"oui_non\\\">Question oui/non</option></select> <br><br> <label> Choix: <br> <p id=\\\"typequestion\" + int +\"\\\"></p><p id=\\\"demo\" + (int+1) + \"\\\"><br> </label> <br><br>\";
+            document.getElementById(\"demo\"+int).innerHTML += \"<label> Intitulé: <br> <input type=\\\"text\\\" name=\\\"intitule\"+ int+\"\\\"> </label> <br><br> <label for=\\\"type-select\\\">Choisissez un type:</label><br> <select name=\\\"type\"+ int+\"\\\" id=\\\"type-select\\\" onchange=\\\"choixtypebis(value,int)\\\" > <option value=\\\"\\\">--Choisissez une option--</option> <option value=\\\"multiple\\\">Question à choix multiple</option> <option value=\\\"ouverte\\\">Question ouverte</option> <option value=\\\"oui_non\\\">Question oui/non</option></select> <br><br> <label> Choix: <br> <p id=\\\"typequestion\" + int +\"\\\"></p><p id=\\\"demo\" + (int+1) + \"\\\"><br> </label> <br><br>\";
         }
-        function choixtypebis(val) {
+        function choixtypebis(val,id) {
             let choix;
             switch (val){
                 case \"multiple\":
-                    choix = \"Réponse 1 :<input type=\\\"text\\\" name=\\\"reponse1\\\"><br>Réponse 2 :<input type=\\\"text\\\" name=\\\"reponse2\\\"><br>Réponse 3 :<input type=\\\"text\\\" name=\\\"reponse3\\\"><br>Réponse 4 :<input type=\\\"text\\\" name=\\\"reponse4\\\"><br>\"
+                    nbquestion =1
+                    choix = \"Réponse 1 :<input type=\\\"text\\\" name=\\\"reponse\"+int+ \"-\"+nbquestion+\"\\\"><br><p id =\\\"\" + int + \"-\" + (nbquestion+1) +\"\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(\"+ int + \",\" + (nbquestion + 1)+ \")\\\"> + Ajouter une reponse </button></p><br>\"
                     break
                 case \"ouverte\":
                     choix = \"Question ouverte: Aucun affichage disponible\"
@@ -210,14 +224,24 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
                     choix =\"\"
                     break
             }
-            let id = \"typequestion\" + int
-            document.getElementById(id).innerHTML = choix
+           let idbis = \"typequestion\" + id
+            document.getElementById(idbis).innerHTML = choix
         }
+        function newreponse(nbquest, nbrep){
+            nbquestion ++
+            document.getElementById(nbquest + \"-\" + nbrep).innerHTML = \"Réponse \"+nbquestion+\":<input type=\\\"text\\\" name=\\\"reponse\"+nbquestion+\"\\\"><br><p id=\\\"\"+ nbquest + \"-\" + (nbrep+1) + \"\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(\"+ nbquest +\",\" + (nbrep+1) +\")\\\"> + Ajouter une reponse </button><button type=\\\"button\\\" onclick=\\\"removereponse(\"+ nbquest +\",\" + (nbrep+1) +\")\\\"></button></p>\"
+        }
+
+        function removereponse(quest,rep){
+            nbquestion --
+            document.getElementById(quest + \"-\" + rep).delete();
+        }
+
 
     </script>
 
     <h1>Create new Sondage</h1>
-    <form action=\"./create\" method=\"POST\">
+    <form action=\"./create\" id =\"form\" method=\"POST\" >
         <p id =\"cpt\">       <input name=\"nbquestion\" id=\"nbquestion\" type=\"hidden\" value =\"1\">
         </p>
         <label >Visibilité</label>
@@ -231,13 +255,13 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
         <br><br>
         <label> Nom:
             <br>
-            <input type=\"text\" name=\"nom\" required>
+            <input type=\"text\" autocomplete=\"off\" name=\"nom\" required>
         </label>
         <br>
         <br>
         <label> Introduction:
             <br>
-            <input type=\"text\" name=\"introduction\" style=\"height:140px\" required>
+            <input type=\"text\" autocomplete=\"off\" name=\"introduction\" style=\"height:140px\" required>
         </label>
         <br>
         {{ include('sondage/createquestion.html.twig') }}

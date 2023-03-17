@@ -64,7 +64,7 @@ class __TwigTemplate_d402b493fbf0345f1cc863af05897ca9 extends Template
         $this->displayBlock('javascripts', $context, $blocks);
         // line 15
         echo "    </head>
-    <body>
+    <body >
         <a href=\"";
         // line 17
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_accueil");
@@ -230,7 +230,7 @@ class __TwigTemplate_d402b493fbf0345f1cc863af05897ca9 extends Template
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body>
+    <body >
         <a href=\"{{ path('app_accueil') }}\">Accueil</a>
         <a href=\"{{ path('app_sondage_index') }}\">Sondages</a>
 

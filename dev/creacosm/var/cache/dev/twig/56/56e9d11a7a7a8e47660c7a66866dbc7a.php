@@ -88,7 +88,7 @@ class __TwigTemplate_27fd11a1ac82e9c49d45582e5baa721c extends Template
             let choix;
             switch (val){
                 case \"multiple\":
-                    choix = \"Réponse 1 :<input type=\\\"text\\\" name=\\\"reponse1\\\"><br>Réponse 2 :<input type=\\\"text\\\" name=\\\"reponse2\\\"><br>Réponse 3 :<input type=\\\"text\\\" name=\\\"reponse3\\\"><br>Réponse 4 :<input type=\\\"text\\\" name=\\\"reponse4\\\"><br>\"
+                    choix = \" Réponse 1 :<input type=\\\"text\\\" name=\\\"reponse1\\\"><br><p id =\\\"1-1\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(1,1)\\\"> + Ajouter une reponse </button></p><br>\"
                     break
                 case \"ouverte\":
                     choix = \"Question ouverte: Aucun affichage disponible\"
@@ -102,13 +102,19 @@ class __TwigTemplate_27fd11a1ac82e9c49d45582e5baa721c extends Template
             }
             document.getElementById(\"typequestion1\").innerHTML = choix
         }
+
+        function newreponse(nbquest, nbrep) {
+            nbquestion++
+            document.getElementById(nbquest + \"-\" + nbrep).innerHTML = \"Réponse \" + nbquestion + \":<input type=\\\"text\\\" name=\\\"reponse\" + nbquestion + \"\\\"><br><p id=\\\"\" + nbquest + \"-\" + (nbrep + 1) + \"\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(\" + nbquest + \",\" + (nbrep + 1) + \")\\\"> + Ajouter une reponse </button></p>\"
+        }
+
     </script>
 
 
     <p style=\"font-style: italic ; font-size: 18px\">Create new Question</p>
         <label> Intitulé:
             <br>
-            <input type=\"text\" name=\"intitule1\">
+            <input type=\"text\" name=\"intitule1\" autocomplete=\"off\">
         </label>
 
         <br><br>
@@ -126,7 +132,7 @@ class __TwigTemplate_27fd11a1ac82e9c49d45582e5baa721c extends Template
 
         <label> Choix de reponse:
             <br>
-            <p id =\"typequestion1\"> Choisissez une option si dessus</p>
+            <p id =\"typequestion1\"> Choisissez une option ci dessus</p>
 
         </label>
 
@@ -159,7 +165,7 @@ class __TwigTemplate_27fd11a1ac82e9c49d45582e5baa721c extends Template
             let choix;
             switch (val){
                 case \"multiple\":
-                    choix = \"Réponse 1 :<input type=\\\"text\\\" name=\\\"reponse1\\\"><br>Réponse 2 :<input type=\\\"text\\\" name=\\\"reponse2\\\"><br>Réponse 3 :<input type=\\\"text\\\" name=\\\"reponse3\\\"><br>Réponse 4 :<input type=\\\"text\\\" name=\\\"reponse4\\\"><br>\"
+                    choix = \" Réponse 1 :<input type=\\\"text\\\" name=\\\"reponse1\\\"><br><p id =\\\"1-1\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(1,1)\\\"> + Ajouter une reponse </button></p><br>\"
                     break
                 case \"ouverte\":
                     choix = \"Question ouverte: Aucun affichage disponible\"
@@ -173,13 +179,19 @@ class __TwigTemplate_27fd11a1ac82e9c49d45582e5baa721c extends Template
             }
             document.getElementById(\"typequestion1\").innerHTML = choix
         }
+
+        function newreponse(nbquest, nbrep) {
+            nbquestion++
+            document.getElementById(nbquest + \"-\" + nbrep).innerHTML = \"Réponse \" + nbquestion + \":<input type=\\\"text\\\" name=\\\"reponse\" + nbquestion + \"\\\"><br><p id=\\\"\" + nbquest + \"-\" + (nbrep + 1) + \"\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(\" + nbquest + \",\" + (nbrep + 1) + \")\\\"> + Ajouter une reponse </button></p>\"
+        }
+
     </script>
 
 
     <p style=\"font-style: italic ; font-size: 18px\">Create new Question</p>
         <label> Intitulé:
             <br>
-            <input type=\"text\" name=\"intitule1\">
+            <input type=\"text\" name=\"intitule1\" autocomplete=\"off\">
         </label>
 
         <br><br>
@@ -197,7 +209,7 @@ class __TwigTemplate_27fd11a1ac82e9c49d45582e5baa721c extends Template
 
         <label> Choix de reponse:
             <br>
-            <p id =\"typequestion1\"> Choisissez une option si dessus</p>
+            <p id =\"typequestion1\"> Choisissez une option ci dessus</p>
 
         </label>
 
