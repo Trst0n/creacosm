@@ -6,31 +6,41 @@
     <script>
         let int = 1;
         let nbquestion = 1;
+        let type =""
 
         function myFunction() {
+            if(type === "multiple"){
+                document.getElementById(int + "-" + (nbquestion+1)).innerHTML="";
+
+            }
+
             int ++
             document.getElementById("cpt").innerHTML = "<input name=\"nbquestion\" id=\"nbquestion\" type=\"hidden\" value =" + int +">";
             document.getElementById("demo"+int).innerHTML += "<label> Intitulé: <br> <input type=\"text\" name=\"intitule"+ int+"\"> </label> <br><br> <label for=\"type-select\">Choisissez un type:</label><br> <select name=\"type"+ int+"\" id=\"type-select\" autocomplete='off' onchange=\"choixtypebis(value,int)\" > <option value=\"\">--Choisissez une option--</option> <option value=\"multiple\">Question à choix multiple</option> <option value=\"ouverte\">Question ouverte</option> <option value=\"oui_non\">Question oui/non</option></select> <br><br> <label> Choix: <br> <p id=\"typequestion" + int +"\"></p><p id=\"demo" + (int+1) + "\"><br> </label> <br><br>";
 
             if (int > 1){
-                document.getElementById("removequest").innerHTML = "<button type=\"button\" onclick=\"removequestion(" + int + ")\"> - Supprimer une reponse </button>"
-
+                document.getElementById("removequest").innerHTML = "<button type=\"button\" onclick=\"removequestion(" + int + ")\"> - Supprimer une question </button>"
             }
+
         }
         function choixtypebis(val,id) {
             let choix;
             switch (val){
                 case "multiple":
+                    type = "multiple"
                     nbquestion =1
                     choix = "Réponse 1 :<input type=\"text\" name=\"reponse"+int+ "-"+nbquestion+"\"><br><p id =\"" + int + "-" + (nbquestion+1) +"\"><button type=\"button\" onclick=\"newreponse("+ int + "," + (nbquestion + 1)+ ")\"> + Ajouter une reponse </button></p><br>"
                     break
                 case "ouverte":
+                    type = "ouverte"
                     choix = "Question ouverte: Aucun affichage disponible"
                     break
                 case "oui_non":
+                    type = "oui_non"
                     choix = "<label>Oui <input type=\"radio\" name=\"visibilite\" value=\"oui\" checked> </label> <label>Non <input type=\"radio\" name=\"visibilite\" value=\"non\"> </label>"
                     break
                 default:
+                    type = ""
                     choix =""
                     break
             }
@@ -39,7 +49,7 @@
         }
         function newreponse(nbquest, nbrep){
             nbquestion ++
-            document.getElementById(nbquest + "-" + nbrep).innerHTML = "Réponse "+nbquestion+":<input type=\"text\" name=\"reponse"+nbquestion+"\"><br><p id=\""+ nbquest + "-" + (nbrep+1) + "\"><button type=\"button\" onclick=\"newreponse("+ nbquest +"," + (nbrep+1) +")\"> + Ajouter une reponse </button><button type=\"button\" onclick=\"removereponse("+ nbquest +"," + (nbrep)+ +")\"> - Supprimer une reponse </button></p>"
+            document.getElementById(nbquest + "-" + nbrep).innerHTML = "Réponse "+nbquestion+":<input type=\"text\" name=\"reponse"+ int + "-" +nbquestion+"\"><br><p id=\""+ nbquest + "-" + (nbrep+1) + "\"><button type=\"button\" onclick=\"newreponse("+ nbquest +"," + (nbrep+1) +")\"> + Ajouter une reponse </button><button type=\"button\" onclick=\"removereponse("+ nbquest +"," + (nbrep)+ +")\"> - Supprimer une reponse </button></p>"
         }
 
         function removereponse(quest,rep){
@@ -58,8 +68,7 @@
             document.getElementById("demo"+ id).innerHTML = "<input name=\"nbquestion\" id=\"nbquestion\" type=\"hidden\" value =" + int +">";
 
             if (int !== 1) {
-
-                document.getElementById("removequest").innerHTML = "<button type=\"button\" onclick=\"removequestion(" + int + ")\"> - Supprimer une reponse </button>"
+                document.getElementById("removequest").innerHTML = "<button type=\"button\" onclick=\"removequestion(" + int + ")\"> - Supprimer une question </button>"
             }
             else{
                 document.getElementById("removequest").innerHTML = ""

@@ -88,15 +88,19 @@ class __TwigTemplate_27fd11a1ac82e9c49d45582e5baa721c extends Template
             let choix;
             switch (val){
                 case \"multiple\":
-                    choix = \" Réponse 1 :<input type=\\\"text\\\" name=\\\"reponse1\\\"><br><p id =\\\"1-1\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(1,1)\\\"> + Ajouter une reponse </button></p><br>\"
+                    type = \"multiple\"
+                    choix = \" Réponse 1 :<input type=\\\"text\\\" name=\\\"reponse1-1\\\"><br><p id =\\\"1-2\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(1,2)\\\"> + Ajouter une reponse </button></p><br>\"
                     break
                 case \"ouverte\":
+                    type = \"ouverte\"
                     choix = \"Question ouverte: Aucun affichage disponible\"
                     break
                 case \"oui_non\":
+                    type = \"oui_non\"
                     choix = \"<label>Oui <input type=\\\"radio\\\" name=\\\"visibilite\\\" value=\\\"oui\\\" checked> </label> <label>Non <input type=\\\"radio\\\" name=\\\"visibilite\\\" value=\\\"non\\\"> </label>\"
                     break
                 default:
+                    type = \"\"
                     choix =\"\"
                     break
             }
@@ -105,7 +109,7 @@ class __TwigTemplate_27fd11a1ac82e9c49d45582e5baa721c extends Template
 
         function newreponse(nbquest, nbrep) {
             nbquestion++
-            document.getElementById(nbquest + \"-\" + nbrep).innerHTML = \"Réponse \" + nbquestion + \":<input type=\\\"text\\\" name=\\\"reponse\" + nbquestion + \"\\\"><br><p id=\\\"\" + nbquest + \"-\" + (nbrep + 1) + \"\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(\" + nbquest + \",\" + (nbrep + 1) + \")\\\"> + Ajouter une reponse </button><button type=\\\"button\\\" onclick=\\\"removereponse(\" + nbquest + \",\" + (nbrep) + \")\\\"> - Supprimer une reponse </button></p>\"
+            document.getElementById(nbquest + \"-\" + nbrep).innerHTML = \"Réponse \" + nbquestion + \":<input type=\\\"text\\\" name=\\\"reponse1-\" + nbquestion + \"\\\"><br><p id=\\\"\" + nbquest + \"-\" + (nbrep + 1) + \"\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(\" + nbquest + \",\" + (nbrep + 1) + \")\\\"> + Ajouter une reponse </button><button type=\\\"button\\\" onclick=\\\"removereponse(\" + nbquest + \",\" + (nbrep) + \")\\\"> - Supprimer une reponse </button></p>\"
         }
 
     </script>
@@ -165,15 +169,19 @@ class __TwigTemplate_27fd11a1ac82e9c49d45582e5baa721c extends Template
             let choix;
             switch (val){
                 case \"multiple\":
-                    choix = \" Réponse 1 :<input type=\\\"text\\\" name=\\\"reponse1\\\"><br><p id =\\\"1-1\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(1,1)\\\"> + Ajouter une reponse </button></p><br>\"
+                    type = \"multiple\"
+                    choix = \" Réponse 1 :<input type=\\\"text\\\" name=\\\"reponse1-1\\\"><br><p id =\\\"1-2\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(1,2)\\\"> + Ajouter une reponse </button></p><br>\"
                     break
                 case \"ouverte\":
+                    type = \"ouverte\"
                     choix = \"Question ouverte: Aucun affichage disponible\"
                     break
                 case \"oui_non\":
+                    type = \"oui_non\"
                     choix = \"<label>Oui <input type=\\\"radio\\\" name=\\\"visibilite\\\" value=\\\"oui\\\" checked> </label> <label>Non <input type=\\\"radio\\\" name=\\\"visibilite\\\" value=\\\"non\\\"> </label>\"
                     break
                 default:
+                    type = \"\"
                     choix =\"\"
                     break
             }
@@ -182,7 +190,7 @@ class __TwigTemplate_27fd11a1ac82e9c49d45582e5baa721c extends Template
 
         function newreponse(nbquest, nbrep) {
             nbquestion++
-            document.getElementById(nbquest + \"-\" + nbrep).innerHTML = \"Réponse \" + nbquestion + \":<input type=\\\"text\\\" name=\\\"reponse\" + nbquestion + \"\\\"><br><p id=\\\"\" + nbquest + \"-\" + (nbrep + 1) + \"\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(\" + nbquest + \",\" + (nbrep + 1) + \")\\\"> + Ajouter une reponse </button><button type=\\\"button\\\" onclick=\\\"removereponse(\" + nbquest + \",\" + (nbrep) + \")\\\"> - Supprimer une reponse </button></p>\"
+            document.getElementById(nbquest + \"-\" + nbrep).innerHTML = \"Réponse \" + nbquestion + \":<input type=\\\"text\\\" name=\\\"reponse1-\" + nbquestion + \"\\\"><br><p id=\\\"\" + nbquest + \"-\" + (nbrep + 1) + \"\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(\" + nbquest + \",\" + (nbrep + 1) + \")\\\"> + Ajouter une reponse </button><button type=\\\"button\\\" onclick=\\\"removereponse(\" + nbquest + \",\" + (nbrep) + \")\\\"> - Supprimer une reponse </button></p>\"
         }
 
     </script>

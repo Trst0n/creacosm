@@ -8,24 +8,24 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ sondage.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
+                <th>Nom :</th>
                 <td>{{ sondage.nom }}</td>
             </tr>
             <tr>
-                <th>Introduction</th>
+                <th>Introduction :</th>
                 <td>{{ sondage.introduction }}</td>
             </tr>
             <tr>
-                <th>Visibilite</th>
-                <td>{{ sondage.visibilite ? 'Yes' : 'No' }}</td>
+                <th>Visibilit2 :</th>
+                <td>{{ sondage.visibilite ? 'Public' : 'Privé' }}</td>
             </tr>
             <tr>
-                <th>Datecreation</th>
-                <td>{{ sondage.datecreation ? sondage.datecreation|date('Y-m-d H:i:s') : '' }}</td>
+                <th>Créé par :</th>
+                <td>{{ sondage.createur.nom }}</td>
+            </tr>
+            <tr>
+                <th>Le :</th>
+                <td>{{ sondage.datecreation ? sondage.datecreation|date('Y-m-d') : '' }}</td>
             </tr>
         </tbody>
     </table>

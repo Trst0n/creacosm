@@ -88,31 +88,41 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
         echo "    <script>
         let int = 1;
         let nbquestion = 1;
+        let type =\"\"
 
         function myFunction() {
+            if(type === \"multiple\"){
+                document.getElementById(int + \"-\" + (nbquestion+1)).innerHTML=\"\";
+
+            }
+
             int ++
             document.getElementById(\"cpt\").innerHTML = \"<input name=\\\"nbquestion\\\" id=\\\"nbquestion\\\" type=\\\"hidden\\\" value =\" + int +\">\";
             document.getElementById(\"demo\"+int).innerHTML += \"<label> Intitulé: <br> <input type=\\\"text\\\" name=\\\"intitule\"+ int+\"\\\"> </label> <br><br> <label for=\\\"type-select\\\">Choisissez un type:</label><br> <select name=\\\"type\"+ int+\"\\\" id=\\\"type-select\\\" autocomplete='off' onchange=\\\"choixtypebis(value,int)\\\" > <option value=\\\"\\\">--Choisissez une option--</option> <option value=\\\"multiple\\\">Question à choix multiple</option> <option value=\\\"ouverte\\\">Question ouverte</option> <option value=\\\"oui_non\\\">Question oui/non</option></select> <br><br> <label> Choix: <br> <p id=\\\"typequestion\" + int +\"\\\"></p><p id=\\\"demo\" + (int+1) + \"\\\"><br> </label> <br><br>\";
 
             if (int > 1){
-                document.getElementById(\"removequest\").innerHTML = \"<button type=\\\"button\\\" onclick=\\\"removequestion(\" + int + \")\\\"> - Supprimer une reponse </button>\"
-
+                document.getElementById(\"removequest\").innerHTML = \"<button type=\\\"button\\\" onclick=\\\"removequestion(\" + int + \")\\\"> - Supprimer une question </button>\"
             }
+
         }
         function choixtypebis(val,id) {
             let choix;
             switch (val){
                 case \"multiple\":
+                    type = \"multiple\"
                     nbquestion =1
                     choix = \"Réponse 1 :<input type=\\\"text\\\" name=\\\"reponse\"+int+ \"-\"+nbquestion+\"\\\"><br><p id =\\\"\" + int + \"-\" + (nbquestion+1) +\"\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(\"+ int + \",\" + (nbquestion + 1)+ \")\\\"> + Ajouter une reponse </button></p><br>\"
                     break
                 case \"ouverte\":
+                    type = \"ouverte\"
                     choix = \"Question ouverte: Aucun affichage disponible\"
                     break
                 case \"oui_non\":
+                    type = \"oui_non\"
                     choix = \"<label>Oui <input type=\\\"radio\\\" name=\\\"visibilite\\\" value=\\\"oui\\\" checked> </label> <label>Non <input type=\\\"radio\\\" name=\\\"visibilite\\\" value=\\\"non\\\"> </label>\"
                     break
                 default:
+                    type = \"\"
                     choix =\"\"
                     break
             }
@@ -121,7 +131,7 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
         }
         function newreponse(nbquest, nbrep){
             nbquestion ++
-            document.getElementById(nbquest + \"-\" + nbrep).innerHTML = \"Réponse \"+nbquestion+\":<input type=\\\"text\\\" name=\\\"reponse\"+nbquestion+\"\\\"><br><p id=\\\"\"+ nbquest + \"-\" + (nbrep+1) + \"\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(\"+ nbquest +\",\" + (nbrep+1) +\")\\\"> + Ajouter une reponse </button><button type=\\\"button\\\" onclick=\\\"removereponse(\"+ nbquest +\",\" + (nbrep)+ +\")\\\"> - Supprimer une reponse </button></p>\"
+            document.getElementById(nbquest + \"-\" + nbrep).innerHTML = \"Réponse \"+nbquestion+\":<input type=\\\"text\\\" name=\\\"reponse\"+ int + \"-\" +nbquestion+\"\\\"><br><p id=\\\"\"+ nbquest + \"-\" + (nbrep+1) + \"\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(\"+ nbquest +\",\" + (nbrep+1) +\")\\\"> + Ajouter une reponse </button><button type=\\\"button\\\" onclick=\\\"removereponse(\"+ nbquest +\",\" + (nbrep)+ +\")\\\"> - Supprimer une reponse </button></p>\"
         }
 
         function removereponse(quest,rep){
@@ -140,8 +150,7 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
             document.getElementById(\"demo\"+ id).innerHTML = \"<input name=\\\"nbquestion\\\" id=\\\"nbquestion\\\" type=\\\"hidden\\\" value =\" + int +\">\";
 
             if (int !== 1) {
-
-                document.getElementById(\"removequest\").innerHTML = \"<button type=\\\"button\\\" onclick=\\\"removequestion(\" + int + \")\\\"> - Supprimer une reponse </button>\"
+                document.getElementById(\"removequest\").innerHTML = \"<button type=\\\"button\\\" onclick=\\\"removequestion(\" + int + \")\\\"> - Supprimer une question </button>\"
             }
             else{
                 document.getElementById(\"removequest\").innerHTML = \"\"
@@ -176,7 +185,7 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
         </label>
         <br>
         ";
-        // line 96
+        // line 105
         echo twig_include($this->env, $context, "sondage/createquestion.html.twig");
         echo "
         <br>
@@ -189,7 +198,7 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
 
 
     <a href=\"";
-        // line 106
+        // line 115
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_sondage_index");
         echo "\">back to list</a>
 ";
@@ -213,7 +222,7 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
 
     public function getDebugInfo()
     {
-        return array (  193 => 106,  180 => 96,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  202 => 115,  189 => 105,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -226,31 +235,41 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
     <script>
         let int = 1;
         let nbquestion = 1;
+        let type =\"\"
 
         function myFunction() {
+            if(type === \"multiple\"){
+                document.getElementById(int + \"-\" + (nbquestion+1)).innerHTML=\"\";
+
+            }
+
             int ++
             document.getElementById(\"cpt\").innerHTML = \"<input name=\\\"nbquestion\\\" id=\\\"nbquestion\\\" type=\\\"hidden\\\" value =\" + int +\">\";
             document.getElementById(\"demo\"+int).innerHTML += \"<label> Intitulé: <br> <input type=\\\"text\\\" name=\\\"intitule\"+ int+\"\\\"> </label> <br><br> <label for=\\\"type-select\\\">Choisissez un type:</label><br> <select name=\\\"type\"+ int+\"\\\" id=\\\"type-select\\\" autocomplete='off' onchange=\\\"choixtypebis(value,int)\\\" > <option value=\\\"\\\">--Choisissez une option--</option> <option value=\\\"multiple\\\">Question à choix multiple</option> <option value=\\\"ouverte\\\">Question ouverte</option> <option value=\\\"oui_non\\\">Question oui/non</option></select> <br><br> <label> Choix: <br> <p id=\\\"typequestion\" + int +\"\\\"></p><p id=\\\"demo\" + (int+1) + \"\\\"><br> </label> <br><br>\";
 
             if (int > 1){
-                document.getElementById(\"removequest\").innerHTML = \"<button type=\\\"button\\\" onclick=\\\"removequestion(\" + int + \")\\\"> - Supprimer une reponse </button>\"
-
+                document.getElementById(\"removequest\").innerHTML = \"<button type=\\\"button\\\" onclick=\\\"removequestion(\" + int + \")\\\"> - Supprimer une question </button>\"
             }
+
         }
         function choixtypebis(val,id) {
             let choix;
             switch (val){
                 case \"multiple\":
+                    type = \"multiple\"
                     nbquestion =1
                     choix = \"Réponse 1 :<input type=\\\"text\\\" name=\\\"reponse\"+int+ \"-\"+nbquestion+\"\\\"><br><p id =\\\"\" + int + \"-\" + (nbquestion+1) +\"\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(\"+ int + \",\" + (nbquestion + 1)+ \")\\\"> + Ajouter une reponse </button></p><br>\"
                     break
                 case \"ouverte\":
+                    type = \"ouverte\"
                     choix = \"Question ouverte: Aucun affichage disponible\"
                     break
                 case \"oui_non\":
+                    type = \"oui_non\"
                     choix = \"<label>Oui <input type=\\\"radio\\\" name=\\\"visibilite\\\" value=\\\"oui\\\" checked> </label> <label>Non <input type=\\\"radio\\\" name=\\\"visibilite\\\" value=\\\"non\\\"> </label>\"
                     break
                 default:
+                    type = \"\"
                     choix =\"\"
                     break
             }
@@ -259,7 +278,7 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
         }
         function newreponse(nbquest, nbrep){
             nbquestion ++
-            document.getElementById(nbquest + \"-\" + nbrep).innerHTML = \"Réponse \"+nbquestion+\":<input type=\\\"text\\\" name=\\\"reponse\"+nbquestion+\"\\\"><br><p id=\\\"\"+ nbquest + \"-\" + (nbrep+1) + \"\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(\"+ nbquest +\",\" + (nbrep+1) +\")\\\"> + Ajouter une reponse </button><button type=\\\"button\\\" onclick=\\\"removereponse(\"+ nbquest +\",\" + (nbrep)+ +\")\\\"> - Supprimer une reponse </button></p>\"
+            document.getElementById(nbquest + \"-\" + nbrep).innerHTML = \"Réponse \"+nbquestion+\":<input type=\\\"text\\\" name=\\\"reponse\"+ int + \"-\" +nbquestion+\"\\\"><br><p id=\\\"\"+ nbquest + \"-\" + (nbrep+1) + \"\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(\"+ nbquest +\",\" + (nbrep+1) +\")\\\"> + Ajouter une reponse </button><button type=\\\"button\\\" onclick=\\\"removereponse(\"+ nbquest +\",\" + (nbrep)+ +\")\\\"> - Supprimer une reponse </button></p>\"
         }
 
         function removereponse(quest,rep){
@@ -278,8 +297,7 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
             document.getElementById(\"demo\"+ id).innerHTML = \"<input name=\\\"nbquestion\\\" id=\\\"nbquestion\\\" type=\\\"hidden\\\" value =\" + int +\">\";
 
             if (int !== 1) {
-
-                document.getElementById(\"removequest\").innerHTML = \"<button type=\\\"button\\\" onclick=\\\"removequestion(\" + int + \")\\\"> - Supprimer une reponse </button>\"
+                document.getElementById(\"removequest\").innerHTML = \"<button type=\\\"button\\\" onclick=\\\"removequestion(\" + int + \")\\\"> - Supprimer une question </button>\"
             }
             else{
                 document.getElementById(\"removequest\").innerHTML = \"\"

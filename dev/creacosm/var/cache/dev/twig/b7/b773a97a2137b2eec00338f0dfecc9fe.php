@@ -90,38 +90,38 @@ class __TwigTemplate_a965ee57eab589b7833e7c3bcdcde3a0 extends Template
     <table class=\"table\">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>Nom :</th>
                 <td>";
         // line 12
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["sondage"]) || array_key_exists("sondage", $context) ? $context["sondage"] : (function () { throw new RuntimeError('Variable "sondage" does not exist.', 12, $this->source); })()), "id", [], "any", false, false, false, 12), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["sondage"]) || array_key_exists("sondage", $context) ? $context["sondage"] : (function () { throw new RuntimeError('Variable "sondage" does not exist.', 12, $this->source); })()), "nom", [], "any", false, false, false, 12), "html", null, true);
         echo "</td>
             </tr>
             <tr>
-                <th>Nom</th>
+                <th>Introduction :</th>
                 <td>";
         // line 16
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["sondage"]) || array_key_exists("sondage", $context) ? $context["sondage"] : (function () { throw new RuntimeError('Variable "sondage" does not exist.', 16, $this->source); })()), "nom", [], "any", false, false, false, 16), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["sondage"]) || array_key_exists("sondage", $context) ? $context["sondage"] : (function () { throw new RuntimeError('Variable "sondage" does not exist.', 16, $this->source); })()), "introduction", [], "any", false, false, false, 16), "html", null, true);
         echo "</td>
             </tr>
             <tr>
-                <th>Introduction</th>
+                <th>Visibilit2 :</th>
                 <td>";
         // line 20
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["sondage"]) || array_key_exists("sondage", $context) ? $context["sondage"] : (function () { throw new RuntimeError('Variable "sondage" does not exist.', 20, $this->source); })()), "introduction", [], "any", false, false, false, 20), "html", null, true);
+        echo ((twig_get_attribute($this->env, $this->source, (isset($context["sondage"]) || array_key_exists("sondage", $context) ? $context["sondage"] : (function () { throw new RuntimeError('Variable "sondage" does not exist.', 20, $this->source); })()), "visibilite", [], "any", false, false, false, 20)) ? ("Public") : ("Privé"));
         echo "</td>
             </tr>
             <tr>
-                <th>Visibilite</th>
+                <th>Créé par :</th>
                 <td>";
         // line 24
-        echo ((twig_get_attribute($this->env, $this->source, (isset($context["sondage"]) || array_key_exists("sondage", $context) ? $context["sondage"] : (function () { throw new RuntimeError('Variable "sondage" does not exist.', 24, $this->source); })()), "visibilite", [], "any", false, false, false, 24)) ? ("Yes") : ("No"));
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["sondage"]) || array_key_exists("sondage", $context) ? $context["sondage"] : (function () { throw new RuntimeError('Variable "sondage" does not exist.', 24, $this->source); })()), "createur", [], "any", false, false, false, 24), "nom", [], "any", false, false, false, 24), "html", null, true);
         echo "</td>
             </tr>
             <tr>
-                <th>Datecreation</th>
+                <th>Le :</th>
                 <td>";
         // line 28
-        ((twig_get_attribute($this->env, $this->source, (isset($context["sondage"]) || array_key_exists("sondage", $context) ? $context["sondage"] : (function () { throw new RuntimeError('Variable "sondage" does not exist.', 28, $this->source); })()), "datecreation", [], "any", false, false, false, 28)) ? (print (twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["sondage"]) || array_key_exists("sondage", $context) ? $context["sondage"] : (function () { throw new RuntimeError('Variable "sondage" does not exist.', 28, $this->source); })()), "datecreation", [], "any", false, false, false, 28), "Y-m-d H:i:s"), "html", null, true))) : (print ("")));
+        ((twig_get_attribute($this->env, $this->source, (isset($context["sondage"]) || array_key_exists("sondage", $context) ? $context["sondage"] : (function () { throw new RuntimeError('Variable "sondage" does not exist.', 28, $this->source); })()), "datecreation", [], "any", false, false, false, 28)) ? (print (twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["sondage"]) || array_key_exists("sondage", $context) ? $context["sondage"] : (function () { throw new RuntimeError('Variable "sondage" does not exist.', 28, $this->source); })()), "datecreation", [], "any", false, false, false, 28), "Y-m-d"), "html", null, true))) : (print ("")));
         echo "</td>
             </tr>
         </tbody>
@@ -177,24 +177,24 @@ class __TwigTemplate_a965ee57eab589b7833e7c3bcdcde3a0 extends Template
     <table class=\"table\">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ sondage.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
+                <th>Nom :</th>
                 <td>{{ sondage.nom }}</td>
             </tr>
             <tr>
-                <th>Introduction</th>
+                <th>Introduction :</th>
                 <td>{{ sondage.introduction }}</td>
             </tr>
             <tr>
-                <th>Visibilite</th>
-                <td>{{ sondage.visibilite ? 'Yes' : 'No' }}</td>
+                <th>Visibilit2 :</th>
+                <td>{{ sondage.visibilite ? 'Public' : 'Privé' }}</td>
             </tr>
             <tr>
-                <th>Datecreation</th>
-                <td>{{ sondage.datecreation ? sondage.datecreation|date('Y-m-d H:i:s') : '' }}</td>
+                <th>Créé par :</th>
+                <td>{{ sondage.createur.nom }}</td>
+            </tr>
+            <tr>
+                <th>Le :</th>
+                <td>{{ sondage.datecreation ? sondage.datecreation|date('Y-m-d') : '' }}</td>
             </tr>
         </tbody>
     </table>
