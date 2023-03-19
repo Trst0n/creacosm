@@ -27,5 +27,6 @@ return [
     'app_sondage_create' => [[], ['_controller' => 'App\\Controller\\SondageController::create'], [], [['text', '/sondage/create']], [], [], []],
     'app_sondage_show' => [['id'], ['_controller' => 'App\\Controller\\SondageController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/sondage']], [], [], []],
     'app_sondage_edit' => [['id'], ['_controller' => 'App\\Controller\\SondageController::edit'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id', true], ['text', '/sondage']], [], [], []],
+    'app_sondage_edited' => [['id'], ['_controller' => 'App\\Controller\\SondageController::editted'], [], [['text', '/edited'], ['variable', '/', '[^/]++', 'id', true], ['text', '/sondage']], [], [], []],
     'app_sondage_delete' => [['id'], ['_controller' => 'App\\Controller\\SondageController::delete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/sondage']], [], [], []],
 ];

@@ -89,7 +89,7 @@ class __TwigTemplate_27fd11a1ac82e9c49d45582e5baa721c extends Template
             switch (val){
                 case \"multiple\":
                     type = \"multiple\"
-                    choix = \" Réponse 1 :<input type=\\\"text\\\" name=\\\"reponse1-1\\\"><br><p id =\\\"1-2\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(1,2)\\\"> + Ajouter une reponse </button></p><br>\"
+                    choix = \" Réponse 1 :<input type=\\\"text\\\" name=\\\"reponse1-1\\\"><br><p id =\\\"1-2\\\"><button type=\\\"button\\\" onclick=\\\"newreponse2(1,2)\\\"> + Ajouter une reponse </button></p><br>\"
                     break
                 case \"ouverte\":
                     type = \"ouverte\"
@@ -107,7 +107,7 @@ class __TwigTemplate_27fd11a1ac82e9c49d45582e5baa721c extends Template
             document.getElementById(\"typequestion1\").innerHTML = choix
         }
 
-        function newreponse(nbquest, nbrep) {
+       function newreponse2(nbquest, nbrep) {
             nbquestion++
             document.getElementById(nbquest + \"-\" + nbrep).innerHTML = \"Réponse \" + nbquestion + \":<input type=\\\"text\\\" name=\\\"reponse1-\" + nbquestion + \"\\\"><br><p id=\\\"\" + nbquest + \"-\" + (nbrep + 1) + \"\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(\" + nbquest + \",\" + (nbrep + 1) + \")\\\"> + Ajouter une reponse </button><button type=\\\"button\\\" onclick=\\\"removereponse(\" + nbquest + \",\" + (nbrep) + \")\\\"> - Supprimer une reponse </button></p>\"
         }
@@ -170,7 +170,7 @@ class __TwigTemplate_27fd11a1ac82e9c49d45582e5baa721c extends Template
             switch (val){
                 case \"multiple\":
                     type = \"multiple\"
-                    choix = \" Réponse 1 :<input type=\\\"text\\\" name=\\\"reponse1-1\\\"><br><p id =\\\"1-2\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(1,2)\\\"> + Ajouter une reponse </button></p><br>\"
+                    choix = \" Réponse 1 :<input type=\\\"text\\\" name=\\\"reponse1-1\\\"><br><p id =\\\"1-2\\\"><button type=\\\"button\\\" onclick=\\\"newreponse2(1,2)\\\"> + Ajouter une reponse </button></p><br>\"
                     break
                 case \"ouverte\":
                     type = \"ouverte\"
@@ -188,7 +188,7 @@ class __TwigTemplate_27fd11a1ac82e9c49d45582e5baa721c extends Template
             document.getElementById(\"typequestion1\").innerHTML = choix
         }
 
-        function newreponse(nbquest, nbrep) {
+       function newreponse2(nbquest, nbrep) {
             nbquestion++
             document.getElementById(nbquest + \"-\" + nbrep).innerHTML = \"Réponse \" + nbquestion + \":<input type=\\\"text\\\" name=\\\"reponse1-\" + nbquestion + \"\\\"><br><p id=\\\"\" + nbquest + \"-\" + (nbrep + 1) + \"\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(\" + nbquest + \",\" + (nbrep + 1) + \")\\\"> + Ajouter une reponse </button><button type=\\\"button\\\" onclick=\\\"removereponse(\" + nbquest + \",\" + (nbrep) + \")\\\"> - Supprimer une reponse </button></p>\"
         }

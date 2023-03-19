@@ -43,8 +43,11 @@ return [
                 .')'
                 .'|/sondage/([^/]++)(?'
                     .'|(*:189)'
-                    .'|/edit(*:202)'
-                    .'|(*:210)'
+                    .'|/edit(?'
+                        .'|(*:205)'
+                        .'|ed(*:215)'
+                    .')'
+                    .'|(*:224)'
                 .')'
             .')/?$}sDu',
     ],
@@ -57,8 +60,9 @@ return [
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
         189 => [[['_route' => 'app_sondage_show', '_controller' => 'App\\Controller\\SondageController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        202 => [[['_route' => 'app_sondage_edit', '_controller' => 'App\\Controller\\SondageController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        210 => [
+        205 => [[['_route' => 'app_sondage_edit', '_controller' => 'App\\Controller\\SondageController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        215 => [[['_route' => 'app_sondage_edited', '_controller' => 'App\\Controller\\SondageController::editted'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        224 => [
             [['_route' => 'app_sondage_delete', '_controller' => 'App\\Controller\\SondageController::delete'], ['id'], ['POST' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
