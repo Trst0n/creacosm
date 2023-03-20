@@ -100,6 +100,14 @@
             <input type="text" autocomplete="off" name="introduction" style="height:140px" required>
         </label>
         <br>
+        <select name="theme" id="type-select" autocomplete="off" >
+            {% for theme in theme %}
+            <option name="{{ theme.theme }}" value="{{ theme.theme }}">{{ theme.theme }}</option>
+            {% endfor %}
+        </select>
+        <br>
+
+        <br>
         {{ include('sondage/createquestion.html.twig') }}
         <br>
         <p id="demo2"></p>

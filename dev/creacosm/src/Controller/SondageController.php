@@ -29,9 +29,46 @@ class SondageController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_sondage_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, SondageRepository $sondageRepository): Response
+    #[Route('/createTheme', name: 'app_theme', methods: ['GET','POST'])]
+    public function createTheme(ThemeRepository $themeRepository):Response
     {
+        $theme = $themeRepository->findAll();
+        return $this->render('sondage/create_theme.html.twig', [
+            'theme' => $theme,
+        ],);
+    }
+
+    #[Route('/creationTheme', name: 'app_theme_creation', methods: ['GET','POST'])]
+    public function creationTheme(ThemeRepository $themeRepository):Response
+    {
+        $theme = $themeRepository->findAll();
+
+        $nom = $_POST["theme"];
+        $theme = new Theme();
+        $theme->setTheme($nom);
+        $themeRepository->save($theme,true);
+        return $this->redirectToRoute('app_theme', [
+            'theme' => $theme,
+        ],Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/{id}/deleteTheme', name: 'app_theme_delete', methods: ['GET','POST'])]
+    public function deleteTheme(Request $request, ThemeRepository $themeRepository):Response
+    {
+        $id = $request->attributes->get("id");
+
+        $themeRepository->remove($themeRepository->find($id),true);
+        $theme = $themeRepository->findAll();
+
+        return $this->redirectToRoute('app_theme', [
+            'theme' => $theme,
+        ],Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/new', name: 'app_sondage_new', methods: ['GET', 'POST'])]
+    public function new(Request $request,ThemeRepository $themeRepository, SondageRepository $sondageRepository): Response
+    {
+        $alltheme = $themeRepository->findAll();
         $sondage = new Sondage();
         $form = $this->createForm(SondageType::class, $sondage);
         $form->handleRequest($request);
@@ -45,12 +82,15 @@ class SondageController extends AbstractController
         return $this->renderForm('sondage/create.html.twig', [
             'sondage' => $sondage,
             'form' => $form,
+            'theme'=>$alltheme,
         ]);
     }
 
     #[Route('/create', name: 'app_sondage_create', methods: ['GET', 'POST'])]
     public function create(Request $request, ReponseRepository $reponseRepository, ThemeRepository $themeRepository, SondageRepository $sondageRepository, TypeRepository $typeRepository, QuestionRepository $questionRepository): Response
     {
+        $alltheme = $themeRepository->findAll();
+
         $nom =$_POST['nom'];
         $visbilite =$_POST['visibilite'];
         if($visbilite== 'public')
@@ -59,7 +99,7 @@ class SondageController extends AbstractController
 
 
         $theme = new Theme();
-        $theme->setTheme("theme");
+        $theme->setTheme($_POST["theme"]);
         $themeRepository->save($theme);
 
         $nb=$_POST["nbquestion"];
@@ -161,7 +201,7 @@ class SondageController extends AbstractController
         }
         $sondageRepository->save($sondage,true);
 
-        return $this->redirectToRoute('app_sondage_index', [],Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_sondage_index', ['theme'=>$alltheme],Response::HTTP_SEE_OTHER);
     }
 
     #[Route('/{id}', name: 'app_sondage_show', methods: ['GET'])]
@@ -291,4 +331,7 @@ class SondageController extends AbstractController
 
         return $this->redirectToRoute('app_sondage_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
+
 }

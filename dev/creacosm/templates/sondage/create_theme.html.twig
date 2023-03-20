@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Sondage{% endblock %}
+
+{% block body %}
+
+    <script>
+        function deleteT(id) {
+            document.getElementById("idp").innerHTML = "<input name=\"id\" id=\"id\" type=\"hidden\" value =\"77\">";
+        }
+
+    </script>
+    <h1>Create new Theme</h1>
+    <p id="idp">
+    <input name="id" id="id" type="hidden" value ="">
+    </p>
+    <form action="./creationTheme" id ="form" method="POST">
+        <label>
+            Nom du thème à créer : <input type="text" name="theme" required>
+        </label>
+        <button type="submit"  >Creer</button>
+    </form>
+
+    <h1>Liste Theme</h1>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Nom des themes</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for theme in theme %}
+            <tr>
+                <td>{{ theme.theme }}</td>
+                <td><a type="button" href="{{ path('app_theme_delete', {'id': theme.id}) }}">Supprimer</a>
+                </td>
+
+            </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </form>
+
+
+    <a href="{{ path('app_sondage_index') }}">back to list</a>
+
+{% endblock  body%}

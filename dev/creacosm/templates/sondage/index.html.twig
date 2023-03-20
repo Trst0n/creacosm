@@ -11,6 +11,7 @@
                 <th>Nom</th>
                 <th>Introduction</th>
                 <th>Visibilite</th>
+                <th>Theme</th>
                 <th>Datecreation</th>
                 <th>actions</th>
             </tr>
@@ -21,6 +22,7 @@
                 <td>{{ sondage.nom }}</td>
                 <td>{{ sondage.introduction }}</td>
                 <td>{{ sondage.visibilite ? 'Public' : 'Privé' }}</td>
+                <td> {{ sondage.theme.theme }}</td>
                 <td>{{ sondage.datecreation ? sondage.datecreation|date('Y-m-d') : '' }}</td>
                 <td>
                     <a href="{{ path('app_sondage_show', {'id': sondage.id}) }}">show</a>

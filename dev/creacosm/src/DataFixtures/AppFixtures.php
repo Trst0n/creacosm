@@ -68,7 +68,7 @@ class AppFixtures extends Fixture
         $manager->persist($user1);
 
         $sondage = new Sondage();
-        $sondage -> setCreateur($user) ->setNom($faker->name) ->setIntroduction($faker ->sentence) ->setDatecreation(new \DateTime('now')) ->setVisibilite(true);
+        $sondage -> setCreateur($user) ->setTheme($theme)->setNom($faker->name) ->setIntroduction($faker ->sentence) ->setDatecreation(new \DateTime('now')) ->setVisibilite(true);
         $manager->persist($sondage);
 
         $statistique = new Statistique();

@@ -98,9 +98,16 @@ class __TwigTemplate_d402b493fbf0345f1cc863af05897ca9 extends Template
         ";
         }
         // line 27
-        echo "        ";
-        $this->displayBlock('body', $context, $blocks);
+        echo "
+        <a href=\"";
+        // line 28
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_theme");
+        echo "\">Theme</a>
+
+        ";
         // line 30
+        $this->displayBlock('body', $context, $blocks);
+        // line 33
         echo "    </body>
 </html>
 ";
@@ -177,7 +184,7 @@ class __TwigTemplate_d402b493fbf0345f1cc863af05897ca9 extends Template
 
     }
 
-    // line 27
+    // line 30
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -187,7 +194,7 @@ class __TwigTemplate_d402b493fbf0345f1cc863af05897ca9 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 28
+        // line 31
         echo "
         ";
         
@@ -210,7 +217,7 @@ class __TwigTemplate_d402b493fbf0345f1cc863af05897ca9 extends Template
 
     public function getDebugInfo()
     {
-        return array (  191 => 28,  181 => 27,  168 => 13,  158 => 12,  145 => 9,  135 => 8,  116 => 5,  104 => 30,  101 => 27,  96 => 25,  91 => 24,  86 => 22,  81 => 21,  79 => 20,  74 => 18,  70 => 17,  66 => 15,  64 => 12,  61 => 11,  58 => 8,  53 => 5,  47 => 1,);
+        return array (  198 => 31,  188 => 30,  175 => 13,  165 => 12,  152 => 9,  142 => 8,  123 => 5,  111 => 33,  109 => 30,  104 => 28,  101 => 27,  96 => 25,  91 => 24,  86 => 22,  81 => 21,  79 => 20,  74 => 18,  70 => 17,  66 => 15,  64 => 12,  61 => 11,  58 => 8,  53 => 5,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -241,6 +248,9 @@ class __TwigTemplate_d402b493fbf0345f1cc863af05897ca9 extends Template
             <a href=\"{{ path('app_login') }}\">Connexion</a>
             <a href=\"{{ path('app_register') }}\">Inscription</a>
         {% endif %}
+
+        <a href=\"{{ path('app_theme') }}\">Theme</a>
+
         {% block body %}
 
         {% endblock %}

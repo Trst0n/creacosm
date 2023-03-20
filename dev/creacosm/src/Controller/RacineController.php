@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\ThemeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -32,4 +33,6 @@ class RacineController extends AbstractController
             'controller_name' => 'HomeController',
         ]);
     }
+
+
 }

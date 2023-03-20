@@ -21,6 +21,8 @@ return [
         '/login' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],
         '/logout' => [[['_route' => 'app_logout', '_controller' => 'App\\Controller\\SecurityController::logout'], null, null, null, false, false, null]],
         '/sondage' => [[['_route' => 'app_sondage_index', '_controller' => 'App\\Controller\\SondageController::index'], null, ['GET' => 0], null, true, false, null]],
+        '/sondage/createTheme' => [[['_route' => 'app_theme', '_controller' => 'App\\Controller\\SondageController::createTheme'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/sondage/creationTheme' => [[['_route' => 'app_theme_creation', '_controller' => 'App\\Controller\\SondageController::creationTheme'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/sondage/new' => [[['_route' => 'app_sondage_new', '_controller' => 'App\\Controller\\SondageController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/sondage/create' => [[['_route' => 'app_sondage_create', '_controller' => 'App\\Controller\\SondageController::create'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
     ],
@@ -42,12 +44,14 @@ return [
                     .')'
                 .')'
                 .'|/sondage/([^/]++)(?'
-                    .'|(*:189)'
-                    .'|/edit(?'
-                        .'|(*:205)'
-                        .'|ed(*:215)'
+                    .'|/(?'
+                        .'|deleteTheme(*:204)'
+                        .'|edit(?'
+                            .'|(*:219)'
+                            .'|ed(*:229)'
+                        .')'
                     .')'
-                    .'|(*:224)'
+                    .'|(*:239)'
                 .')'
             .')/?$}sDu',
     ],
@@ -59,10 +63,11 @@ return [
         136 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        189 => [[['_route' => 'app_sondage_show', '_controller' => 'App\\Controller\\SondageController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        205 => [[['_route' => 'app_sondage_edit', '_controller' => 'App\\Controller\\SondageController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        215 => [[['_route' => 'app_sondage_edited', '_controller' => 'App\\Controller\\SondageController::editted'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        224 => [
+        204 => [[['_route' => 'app_theme_delete', '_controller' => 'App\\Controller\\SondageController::deleteTheme'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        219 => [[['_route' => 'app_sondage_edit', '_controller' => 'App\\Controller\\SondageController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        229 => [[['_route' => 'app_sondage_edited', '_controller' => 'App\\Controller\\SondageController::editted'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        239 => [
+            [['_route' => 'app_sondage_show', '_controller' => 'App\\Controller\\SondageController::show'], ['id'], ['GET' => 0], null, false, true, null],
             [['_route' => 'app_sondage_delete', '_controller' => 'App\\Controller\\SondageController::delete'], ['id'], ['POST' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

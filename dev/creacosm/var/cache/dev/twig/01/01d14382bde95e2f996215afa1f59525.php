@@ -182,8 +182,32 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
             <input type=\"text\" autocomplete=\"off\" name=\"introduction\" style=\"height:140px\" required>
         </label>
         <br>
+        <select name=\"theme\" id=\"type-select\" autocomplete=\"off\" >
+            ";
+        // line 104
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable($context["theme"]);
+        foreach ($context['_seq'] as $context["_key"] => $context["theme"]) {
+            // line 105
+            echo "            <option name=\"";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["theme"], "theme", [], "any", false, false, false, 105), "html", null, true);
+            echo "\" value=\"";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["theme"], "theme", [], "any", false, false, false, 105), "html", null, true);
+            echo "\">";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["theme"], "theme", [], "any", false, false, false, 105), "html", null, true);
+            echo "</option>
+            ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['theme'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 107
+        echo "        </select>
+        <br>
+
+        <br>
         ";
-        // line 103
+        // line 111
         echo twig_include($this->env, $context, "sondage/createquestion.html.twig");
         echo "
         <br>
@@ -196,7 +220,7 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
 
 
     <a href=\"";
-        // line 113
+        // line 121
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_sondage_index");
         echo "\">back to list</a>
 ";
@@ -220,7 +244,7 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
 
     public function getDebugInfo()
     {
-        return array (  200 => 113,  187 => 103,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  224 => 121,  211 => 111,  205 => 107,  192 => 105,  188 => 104,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -326,6 +350,14 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
             <br>
             <input type=\"text\" autocomplete=\"off\" name=\"introduction\" style=\"height:140px\" required>
         </label>
+        <br>
+        <select name=\"theme\" id=\"type-select\" autocomplete=\"off\" >
+            {% for theme in theme %}
+            <option name=\"{{ theme.theme }}\" value=\"{{ theme.theme }}\">{{ theme.theme }}</option>
+            {% endfor %}
+        </select>
+        <br>
+
         <br>
         {{ include('sondage/createquestion.html.twig') }}
         <br>
