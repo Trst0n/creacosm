@@ -50,9 +50,13 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: Types::DATETIME_MUTABLE , nullable: true)]
     private ?\DateTimeInterface $datedenaissance = null;
 
+    #[ORM\ManyToMany(targetEntity: Reponse::class, inversedBy: 'utilisateurs')]
+    private Collection $reponses;
+
     public function __construct()
     {
         $this->sondages = new ArrayCollection();
+        $this->reponses = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -208,6 +212,30 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     public function setDatedenaissance(\DateTimeInterface $datedenaissance): self
     {
         $this->datedenaissance = $datedenaissance;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Reponse>
+     */
+    public function getReponses(): Collection
+    {
+        return $this->reponses;
+    }
+
+    public function addReponse(Reponse $reponse): self
+    {
+        if (!$this->reponses->contains($reponse)) {
+            $this->reponses->add($reponse);
+        }
+
+        return $this;
+    }
+
+    public function removeReponse(Reponse $reponse): self
+    {
+        $this->reponses->removeElement($reponse);
 
         return $this;
     }

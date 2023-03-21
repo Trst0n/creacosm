@@ -59,6 +59,16 @@
                     Mot de passe: <p id="modifierpassword"> ****** <button onclick="modifierinfos('******','modifier')">modifier</button> </p>
             </form>
 
+        {% for sondage in app.user.sondages %}
+            <h5>sondage:</h5> <br>
+            {% for reponse in app.user.reponses %}
+                {% if reponse.question.sondage == sondage %}
+                    {{ reponse.reponse }} <br>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+
+
 
     </div>
 {% endblock %}

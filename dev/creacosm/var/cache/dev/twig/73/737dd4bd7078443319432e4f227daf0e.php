@@ -136,18 +136,28 @@ class __TwigTemplate_a8bc8fc521ce2a02103181eb0b4a060b extends Template
             // line 29
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_sondage_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["sondage"], "id", [], "any", false, false, false, 29)]), "html", null, true);
             echo "\">edit</a>
-                    <a href=\"";
+                    ";
             // line 30
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_repondre", ["id" => twig_get_attribute($this->env, $this->source, $context["sondage"], "id", [], "any", false, false, false, 30)]), "html", null, true);
-            echo "\">Repondre</a>
-
+            if (twig_in_filter($context["sondage"], twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 30, $this->source); })()), "user", [], "any", false, false, false, 30), "sondages", [], "any", false, false, false, 30))) {
+                // line 31
+                echo "                        Sondage déjà repondu
+                    ";
+            } else {
+                // line 33
+                echo "                        <a href=\"";
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_repondre", ["id" => twig_get_attribute($this->env, $this->source, $context["sondage"], "id", [], "any", false, false, false, 33)]), "html", null, true);
+                echo "\" >Repondre</a>
+                    ";
+            }
+            // line 35
+            echo "
                 </td>
             </tr>
         ";
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 35
+            // line 39
             echo "            <tr>
                 <td colspan=\"6\">no records found</td>
             </tr>
@@ -156,12 +166,12 @@ class __TwigTemplate_a8bc8fc521ce2a02103181eb0b4a060b extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['sondage'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 39
+        // line 43
         echo "        </tbody>
     </table>
 
     <a href=\"";
-        // line 42
+        // line 46
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_sondage_new");
         echo "\">Create new</a>
 ";
@@ -185,7 +195,7 @@ class __TwigTemplate_a8bc8fc521ce2a02103181eb0b4a060b extends Template
 
     public function getDebugInfo()
     {
-        return array (  165 => 42,  160 => 39,  151 => 35,  141 => 30,  137 => 29,  133 => 28,  128 => 26,  124 => 25,  120 => 24,  116 => 23,  112 => 22,  109 => 21,  104 => 20,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  175 => 46,  170 => 43,  161 => 39,  153 => 35,  147 => 33,  143 => 31,  141 => 30,  137 => 29,  133 => 28,  128 => 26,  124 => 25,  120 => 24,  116 => 23,  112 => 22,  109 => 21,  104 => 20,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -219,7 +229,11 @@ class __TwigTemplate_a8bc8fc521ce2a02103181eb0b4a060b extends Template
                 <td>
                     <a href=\"{{ path('app_sondage_show', {'id': sondage.id}) }}\">show</a>
                     <a href=\"{{ path('app_sondage_edit', {'id': sondage.id}) }}\">edit</a>
-                    <a href=\"{{ path('app_repondre', {'id': sondage.id}) }}\">Repondre</a>
+                    {% if sondage in app.user.sondages %}
+                        Sondage déjà repondu
+                    {% else %}
+                        <a href=\"{{ path('app_repondre', {'id': sondage.id}) }}\" >Repondre</a>
+                    {%  endif %}
 
                 </td>
             </tr>

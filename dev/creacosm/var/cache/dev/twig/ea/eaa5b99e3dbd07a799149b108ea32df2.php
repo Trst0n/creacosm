@@ -180,6 +180,42 @@ class __TwigTemplate_a153cf8f2c0cc0a7ea27cc1ef137b6bd extends Template
                     Mot de passe: <p id=\"modifierpassword\"> ****** <button onclick=\"modifierinfos('******','modifier')\">modifier</button> </p>
             </form>
 
+        ";
+        // line 62
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 62, $this->source); })()), "user", [], "any", false, false, false, 62), "sondages", [], "any", false, false, false, 62));
+        foreach ($context['_seq'] as $context["_key"] => $context["sondage"]) {
+            // line 63
+            echo "            <h5>sondage:</h5> <br>
+            ";
+            // line 64
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 64, $this->source); })()), "user", [], "any", false, false, false, 64), "reponses", [], "any", false, false, false, 64));
+            foreach ($context['_seq'] as $context["_key"] => $context["reponse"]) {
+                // line 65
+                echo "                ";
+                if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["reponse"], "question", [], "any", false, false, false, 65), "sondage", [], "any", false, false, false, 65) == $context["sondage"])) {
+                    // line 66
+                    echo "                    ";
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["reponse"], "reponse", [], "any", false, false, false, 66), "html", null, true);
+                    echo " <br>
+                ";
+                }
+                // line 68
+                echo "            ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['reponse'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 69
+            echo "        ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['sondage'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 70
+        echo "
+
 
     </div>
 ";
@@ -203,7 +239,7 @@ class __TwigTemplate_a153cf8f2c0cc0a7ea27cc1ef137b6bd extends Template
 
     public function getDebugInfo()
     {
-        return array (  178 => 58,  170 => 55,  166 => 54,  163 => 53,  159 => 51,  157 => 50,  154 => 49,  152 => 48,  148 => 47,  144 => 46,  140 => 45,  136 => 44,  132 => 42,  128 => 40,  126 => 39,  123 => 38,  121 => 37,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  217 => 70,  211 => 69,  205 => 68,  199 => 66,  196 => 65,  192 => 64,  189 => 63,  185 => 62,  178 => 58,  170 => 55,  166 => 54,  163 => 53,  159 => 51,  157 => 50,  154 => 49,  152 => 48,  148 => 47,  144 => 46,  140 => 45,  136 => 44,  132 => 42,  128 => 40,  126 => 39,  123 => 38,  121 => 37,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -268,6 +304,16 @@ class __TwigTemplate_a153cf8f2c0cc0a7ea27cc1ef137b6bd extends Template
                 <input name=\"iduser\" type=\"hidden\" value={{ app.user.id }}>
                     Mot de passe: <p id=\"modifierpassword\"> ****** <button onclick=\"modifierinfos('******','modifier')\">modifier</button> </p>
             </form>
+
+        {% for sondage in app.user.sondages %}
+            <h5>sondage:</h5> <br>
+            {% for reponse in app.user.reponses %}
+                {% if reponse.question.sondage == sondage %}
+                    {{ reponse.reponse }} <br>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+
 
 
     </div>

@@ -27,7 +27,11 @@
                 <td>
                     <a href="{{ path('app_sondage_show', {'id': sondage.id}) }}">show</a>
                     <a href="{{ path('app_sondage_edit', {'id': sondage.id}) }}">edit</a>
-                    <a href="{{ path('app_repondre', {'id': sondage.id}) }}">Repondre</a>
+                    {% if sondage in app.user.sondages %}
+                        Sondage déjà repondu
+                    {% else %}
+                        <a href="{{ path('app_repondre', {'id': sondage.id}) }}" >Repondre</a>
+                    {%  endif %}
 
                 </td>
             </tr>

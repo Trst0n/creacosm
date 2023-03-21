@@ -24,6 +24,7 @@ return [
         '/sondage' => [[['_route' => 'app_sondage_index', '_controller' => 'App\\Controller\\SondageController::index'], null, ['GET' => 0], null, true, false, null]],
         '/sondage/createTheme' => [[['_route' => 'app_theme', '_controller' => 'App\\Controller\\SondageController::createTheme'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/sondage/creationTheme' => [[['_route' => 'app_theme_creation', '_controller' => 'App\\Controller\\SondageController::creationTheme'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/sondage/reponsesondage' => [[['_route' => 'app_repondre_sondage', '_controller' => 'App\\Controller\\SondageController::repondresondage'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/sondage/new' => [[['_route' => 'app_sondage_new', '_controller' => 'App\\Controller\\SondageController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/sondage/create' => [[['_route' => 'app_sondage_create', '_controller' => 'App\\Controller\\SondageController::create'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
     ],

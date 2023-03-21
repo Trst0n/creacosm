@@ -13,6 +13,7 @@ use App\Repository\ReponseRepository;
 use App\Repository\SondageRepository;
 use App\Repository\ThemeRepository;
 use App\Repository\TypeRepository;
+use App\Repository\UtilisateurRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -86,6 +87,56 @@ class SondageController extends AbstractController
             'sondage' =>$sondage,
         ],);
     }
+
+    #[Route('/reponsesondage', name: 'app_repondre_sondage', methods: ['GET','POST'])]
+    public function repondresondage(Request $request, SondageRepository $sondageRepository, UtilisateurRepository $utilisateurRepository, ReponseRepository $reponseRepository, QuestionRepository $questionRepository):Response
+    {
+       $sondage = $sondageRepository->find($_POST["idsondage"]);
+       $user = $utilisateurRepository->find($_POST["iduser"]);
+
+       $user->addSondage($sondage);
+       $utilisateurRepository->save($user, true);
+       $sondageRepository->save($sondage, true);
+
+
+       for($q = 0; $q < $sondage->getQuestions()->count(); $q++) {
+           switch ($sondage->getQuestions()->get($q)->getType()->getType()){
+
+               case("multiple"):
+                   for($r = 0; $r < $sondage->getQuestions()->get($q)->getReponses()->count(); $r++){
+                       if(isset($_POST[$sondage->getQuestions()->get($q)->getReponses()->get($r)->getId()])){
+                           $reponse = $reponseRepository->find($sondage->getQuestions()->get($q)->getReponses()->get($r)->getId());
+                           $user->addReponse($reponse);
+                           $utilisateurRepository->save($user, true);
+                       }
+                   }
+                   break;
+               case("oui_non"):
+                   for($r = 0; $r < $sondage->getQuestions()->get($q)->getReponses()->count(); $r++){
+                       if(isset($_POST[$sondage->getQuestions()->get($q)->getReponses()->get($r)->getId()])){
+                            $reponse = $reponseRepository->find($sondage->getQuestions()->get($q)->getReponses()->get($r)->getId());
+                       }
+                   }
+                   $user->addReponse($reponse);
+                   $utilisateurRepository->save($user, true);
+
+                   break;
+               case("ouverte"):
+                   $reponse = new Reponse();
+                   $question =$sondage->getQuestions()->get($q);
+                   $reponse->setReponse($_POST["ouverte".$q+1])->setQuestion($question);
+                   $reponseRepository->save($reponse);
+                   $questionRepository->save($question, true);
+                   $user->addReponse($reponse);
+                   $utilisateurRepository->save($user, true);
+
+                   break;
+           }
+       }
+        return $this->redirectToRoute('app_sondage_index', []);
+    }
+
+
     #[Route('/new', name: 'app_sondage_new', methods: ['GET', 'POST'])]
     public function new(Request $request,ThemeRepository $themeRepository, SondageRepository $sondageRepository): Response
     {

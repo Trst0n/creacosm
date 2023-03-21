@@ -8,25 +8,48 @@
 
     <h2>{{ sondage.nom }}</h2>
 
+
     <p>Introduction : {{ sondage.introduction }}</p>
-    <p>Visibilité : {{ sondage.visibilite }}</p>
+    <p>Visibilité : {{ sondage.visibilite  ? "Public" : "Privé" }}</p>
     {% set i = 1 %}
     {% for question in sondage.questions %}
 
         <h3>Question {{ i }}</h3>
-        <p> {{ question.intitule }} ?</p>
-        {% if question.type.type == 'multiple' or question.type.type == "oui_non"%}
-            {% for reponse in question.reponses %}
-            <input type="radio" id="{{ reponse.reponse }}" name="drone" value="{{ reponse.reponse }}"
-                   checked>
-            <label for="{{ reponse.reponse }}">{{ reponse.reponse }}</label>
-            {% endfor %}
-        {% else %}
-            <input type="text" id="{{ question.intitule }}" name="{{ question.intitule }}">
-        {% endif %}
+        <p> </p>
+
+        <form action="/sondage/reponsesondage" method="post">
+        <input type="hidden" name="idsondage" value="{{ sondage.id }}">
+        <input type="hidden" name="iduser" value="{{ app.user.id }}">
+        <fieldset>
+            <legend>{{ question.intitule }} </legend>
+
+            {% if question.type.type == 'multiple' %}
+                {% for reponse in question.reponses %}
+                    <div>
+                        <input type="checkbox" id="{{ reponse.id }}" name="{{ reponse.id }}" value="{{ reponse.id }}" autocomplete="off">
+                        <label for="{{ reponse.id }}">{{ reponse.reponse }}</label>
+                    </div>
+                    {% endfor %}
+                {% elseif question.type.type == 'oui_non' %}
+                    {% for reponse in question.reponses %}
+                    <div>
+                        <input type="radio" id="{{ reponse.id }}" name="{{ reponse.id }}" value="{{ reponse.reponse }}" autocomplete="off">
+                        <label for="{{ reponse.id }}">{{ reponse.reponse }}</label>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div>
+                        <textarea name="ouverte{{ i }}" rows="5" cols="33" style="resize:none;" autocomplete="off"></textarea>
+                    </div>
+            {% endif %}
+
+
+        </fieldset>
         {% set i = i + 1 %}
     {% endfor %}
-<br>
-    <br>
-    <button type="submit">Repondre au sondage </button>
+
+        <br>
+        <br>
+        <button type="submit">Repondre au sondage </button>
+    </form>
 {% endblock %}
