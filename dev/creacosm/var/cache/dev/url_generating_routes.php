@@ -19,6 +19,7 @@ return [
     'app_racine' => [[], ['_controller' => 'App\\Controller\\RacineController::index'], [], [['text', '/racine']], [], [], []],
     'app_accueil' => [[], ['_controller' => 'App\\Controller\\RacineController::accueil'], [], [['text', '/accueil']], [], [], []],
     'app_moncompte' => [[], ['_controller' => 'App\\Controller\\RacineController::account'], [], [['text', '/moncompte']], [], [], []],
+    'app_set_moncompte' => [[], ['_controller' => 'App\\Controller\\RacineController::modifierInformation'], [], [['text', '/setmoncompte']], [], [], []],
     'app_register' => [[], ['_controller' => 'App\\Controller\\RegistrationController::register'], [], [['text', '/register']], [], [], []],
     'app_login' => [[], ['_controller' => 'App\\Controller\\SecurityController::login'], [], [['text', '/login']], [], [], []],
     'app_logout' => [[], ['_controller' => 'App\\Controller\\SecurityController::logout'], [], [['text', '/logout']], [], [], []],
