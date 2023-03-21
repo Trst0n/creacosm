@@ -27,6 +27,8 @@
                 <td>
                     <a href="{{ path('app_sondage_show', {'id': sondage.id}) }}">show</a>
                     <a href="{{ path('app_sondage_edit', {'id': sondage.id}) }}">edit</a>
+                    <a href="{{ path('app_repondre', {'id': sondage.id}) }}">Repondre</a>
+
                 </td>
             </tr>
         {% else %}

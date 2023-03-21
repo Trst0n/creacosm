@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Repondre{% endblock %}
+
+{% block body %}
+
+    <h1>Repondre</h1>
+
+    <h2>{{ sondage.nom }}</h2>
+
+    <p>Introduction : {{ sondage.introduction }}</p>
+    <p>Visibilité : {{ sondage.visibilite }}</p>
+    {% set i = 1 %}
+    {% for question in sondage.questions %}
+
+        <h3>Question {{ i }}</h3>
+        <p> {{ question.intitule }} ?</p>
+        {% if question.type.type == 'multiple' or question.type.type == "oui_non"%}
+            {% for reponse in question.reponses %}
+            <input type="radio" id="{{ reponse.reponse }}" name="drone" value="{{ reponse.reponse }}"
+                   checked>
+            <label for="{{ reponse.reponse }}">{{ reponse.reponse }}</label>
+            {% endfor %}
+        {% else %}
+            <input type="text" id="{{ question.intitule }}" name="{{ question.intitule }}">
+        {% endif %}
+        {% set i = i + 1 %}
+    {% endfor %}
+<br>
+    <br>
+    <button type="submit">Repondre au sondage </button>
+{% endblock %}

@@ -36,6 +36,7 @@ class SondageController extends AbstractController
         $theme = $themeRepository->findAll();
         return $this->render('sondage/create_theme.html.twig', [
             'theme' => $theme,
+            'erreur' => ''
         ],);
     }
 
@@ -50,6 +51,7 @@ class SondageController extends AbstractController
         $themeRepository->save($theme,true);
         return $this->redirectToRoute('app_theme', [
             'theme' => $theme,
+
         ],Response::HTTP_SEE_OTHER);
     }
 
@@ -57,8 +59,17 @@ class SondageController extends AbstractController
     public function deleteTheme(Request $request, ThemeRepository $themeRepository):Response
     {
         $id = $request->attributes->get("id");
-
-        $themeRepository->remove($themeRepository->find($id),true);
+        if ($themeRepository->find($id)->getSondages()->count()==0) {
+            $themeRepository->remove($themeRepository->find($id),true);
+        }
+        else{
+            $theme = $themeRepository->findAll();
+            $erreur ='Vous ne pouvez pas supprimer ce thème car des sondages le possède';
+            return $this->render('sondage/create_theme.html.twig', [
+                'theme' => $theme,
+                'erreur'=> $erreur,
+            ],);
+        }
         $theme = $themeRepository->findAll();
 
         return $this->redirectToRoute('app_theme', [
@@ -66,6 +77,15 @@ class SondageController extends AbstractController
         ],Response::HTTP_SEE_OTHER);
     }
 
+    #[Route('/{id}/repondre', name: 'app_repondre', methods: ['GET','POST'])]
+    public function repondre(Request $request, SondageRepository $sondageRepository):Response
+    {
+        $id = $request->attributes->get("id");
+        $sondage = $sondageRepository->find($id);
+        return $this->render('sondage/repondre.html.twig', [
+            'sondage' =>$sondage,
+        ],);
+    }
     #[Route('/new', name: 'app_sondage_new', methods: ['GET', 'POST'])]
     public function new(Request $request,ThemeRepository $themeRepository, SondageRepository $sondageRepository): Response
     {

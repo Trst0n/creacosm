@@ -14,7 +14,7 @@
     <p id="idp">
     <input name="id" id="id" type="hidden" value ="">
     </p>
-    <form action="./creationTheme" id ="form" method="POST">
+    <form action="/sondage/creationTheme" id ="form" method="POST">
         <label>
             Nom du thème à créer : <input type="text" name="theme" required>
         </label>
@@ -22,7 +22,7 @@
     </form>
 
     <h1>Liste Theme</h1>
-
+        <p>{{ erreur }}</p>
         <table class="table">
             <thead>
             <tr>

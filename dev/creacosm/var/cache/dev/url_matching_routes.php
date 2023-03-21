@@ -47,12 +47,13 @@ return [
                 .'|/sondage/([^/]++)(?'
                     .'|/(?'
                         .'|deleteTheme(*:204)'
+                        .'|repondre(*:220)'
                         .'|edit(?'
-                            .'|(*:219)'
-                            .'|ed(*:229)'
+                            .'|(*:235)'
+                            .'|ed(*:245)'
                         .')'
                     .')'
-                    .'|(*:239)'
+                    .'|(*:255)'
                 .')'
             .')/?$}sDu',
     ],
@@ -65,9 +66,10 @@ return [
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
         204 => [[['_route' => 'app_theme_delete', '_controller' => 'App\\Controller\\SondageController::deleteTheme'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        219 => [[['_route' => 'app_sondage_edit', '_controller' => 'App\\Controller\\SondageController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        229 => [[['_route' => 'app_sondage_edited', '_controller' => 'App\\Controller\\SondageController::editted'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        239 => [
+        220 => [[['_route' => 'app_repondre', '_controller' => 'App\\Controller\\SondageController::repondre'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        235 => [[['_route' => 'app_sondage_edit', '_controller' => 'App\\Controller\\SondageController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        245 => [[['_route' => 'app_sondage_edited', '_controller' => 'App\\Controller\\SondageController::editted'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        255 => [
             [['_route' => 'app_sondage_show', '_controller' => 'App\\Controller\\SondageController::show'], ['id'], ['GET' => 0], null, false, true, null],
             [['_route' => 'app_sondage_delete', '_controller' => 'App\\Controller\\SondageController::delete'], ['id'], ['POST' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],

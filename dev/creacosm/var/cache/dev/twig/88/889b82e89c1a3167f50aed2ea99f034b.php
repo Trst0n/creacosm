@@ -96,7 +96,7 @@ class __TwigTemplate_52b5c78972ad738b872073c3fb272f2b extends Template
     <p id=\"idp\">
     <input name=\"id\" id=\"id\" type=\"hidden\" value =\"\">
     </p>
-    <form action=\"./creationTheme\" id =\"form\" method=\"POST\">
+    <form action=\"/sondage/creationTheme\" id =\"form\" method=\"POST\">
         <label>
             Nom du thème à créer : <input type=\"text\" name=\"theme\" required>
         </label>
@@ -104,7 +104,10 @@ class __TwigTemplate_52b5c78972ad738b872073c3fb272f2b extends Template
     </form>
 
     <h1>Liste Theme</h1>
-
+        <p>";
+        // line 25
+        echo twig_escape_filter($this->env, (isset($context["erreur"]) || array_key_exists("erreur", $context) ? $context["erreur"] : (function () { throw new RuntimeError('Variable "erreur" does not exist.', 25, $this->source); })()), "html", null, true);
+        echo "</p>
         <table class=\"table\">
             <thead>
             <tr>
@@ -168,7 +171,7 @@ class __TwigTemplate_52b5c78972ad738b872073c3fb272f2b extends Template
 
     public function getDebugInfo()
     {
-        return array (  147 => 47,  139 => 41,  128 => 36,  124 => 35,  121 => 34,  117 => 33,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  150 => 47,  142 => 41,  131 => 36,  127 => 35,  124 => 34,  120 => 33,  109 => 25,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -189,7 +192,7 @@ class __TwigTemplate_52b5c78972ad738b872073c3fb272f2b extends Template
     <p id=\"idp\">
     <input name=\"id\" id=\"id\" type=\"hidden\" value =\"\">
     </p>
-    <form action=\"./creationTheme\" id =\"form\" method=\"POST\">
+    <form action=\"/sondage/creationTheme\" id =\"form\" method=\"POST\">
         <label>
             Nom du thème à créer : <input type=\"text\" name=\"theme\" required>
         </label>
@@ -197,7 +200,7 @@ class __TwigTemplate_52b5c78972ad738b872073c3fb272f2b extends Template
     </form>
 
     <h1>Liste Theme</h1>
-
+        <p>{{ erreur }}</p>
         <table class=\"table\">
             <thead>
             <tr>

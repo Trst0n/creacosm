@@ -27,6 +27,7 @@ return [
     'app_theme' => [[], ['_controller' => 'App\\Controller\\SondageController::createTheme'], [], [['text', '/sondage/createTheme']], [], [], []],
     'app_theme_creation' => [[], ['_controller' => 'App\\Controller\\SondageController::creationTheme'], [], [['text', '/sondage/creationTheme']], [], [], []],
     'app_theme_delete' => [['id'], ['_controller' => 'App\\Controller\\SondageController::deleteTheme'], [], [['text', '/deleteTheme'], ['variable', '/', '[^/]++', 'id', true], ['text', '/sondage']], [], [], []],
+    'app_repondre' => [['id'], ['_controller' => 'App\\Controller\\SondageController::repondre'], [], [['text', '/repondre'], ['variable', '/', '[^/]++', 'id', true], ['text', '/sondage']], [], [], []],
     'app_sondage_new' => [[], ['_controller' => 'App\\Controller\\SondageController::new'], [], [['text', '/sondage/new']], [], [], []],
     'app_sondage_create' => [[], ['_controller' => 'App\\Controller\\SondageController::create'], [], [['text', '/sondage/create']], [], [], []],
     'app_sondage_show' => [['id'], ['_controller' => 'App\\Controller\\SondageController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/sondage']], [], [], []],
