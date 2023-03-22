@@ -21,6 +21,7 @@ return [
         '/register' => [[['_route' => 'app_register', '_controller' => 'App\\Controller\\RegistrationController::register'], null, null, null, false, false, null]],
         '/login' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],
         '/logout' => [[['_route' => 'app_logout', '_controller' => 'App\\Controller\\SecurityController::logout'], null, null, null, false, false, null]],
+        '/sondage/themedefine' => [[['_route' => 'app_sondage_theme_define', '_controller' => 'App\\Controller\\SondageController::themedefine'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/sondage' => [[['_route' => 'app_sondage_index', '_controller' => 'App\\Controller\\SondageController::index'], null, ['GET' => 0], null, true, false, null]],
         '/sondage/createTheme' => [[['_route' => 'app_theme', '_controller' => 'App\\Controller\\SondageController::createTheme'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/sondage/creationTheme' => [[['_route' => 'app_theme_creation', '_controller' => 'App\\Controller\\SondageController::creationTheme'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],

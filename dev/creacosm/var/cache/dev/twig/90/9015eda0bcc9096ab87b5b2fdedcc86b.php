@@ -166,7 +166,7 @@ class __TwigTemplate_6d18da65f7f858c6043ef81db4ab749c extends Template
         }
 
             function masquer(div,question) {
-                    document.getElementById(div).style.display = 'none';
+                document.getElementById(div).style.display = 'none';
                     let i = parseInt(document.getElementById(\"nbquestion\").value)-1;
 
                 document.getElementById(question).innerHTML=\"<input name=\\\"\"+ question +\"\\\" value=\\\"false\\\" type=\\\"hidden\\\">\";
@@ -429,7 +429,7 @@ class __TwigTemplate_6d18da65f7f858c6043ef81db4ab749c extends Template
         }
 
             function masquer(div,question) {
-                    document.getElementById(div).style.display = 'none';
+                document.getElementById(div).style.display = 'none';
                     let i = parseInt(document.getElementById(\"nbquestion\").value)-1;
 
                 document.getElementById(question).innerHTML=\"<input name=\\\"\"+ question +\"\\\" value=\\\"false\\\" type=\\\"hidden\\\">\";

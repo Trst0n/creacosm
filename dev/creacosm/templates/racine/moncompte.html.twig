@@ -5,12 +5,25 @@
 {% block body %}
     <script>
 
-        function changementscene(div,question) {
-            document.getElementById(div).style.display = 'none';
-            let i = parseInt(document.getElementById("nbquestion").value)-1;
+        function changementscene(div) {
+            switch (div){
+                case('infospersos'):
+                    document.getElementById("sondagesrep").style.display = 'none';
+                    document.getElementById("infospersos").style.display = 'block';
+                    document.getElementById("messondages").style.display = 'none';
+                    break;
+                case('messondages'):
+                    document.getElementById("sondagesrep").style.display = 'none';
+                    document.getElementById("infospersos").style.display = 'none';
+                    document.getElementById("messondages").style.display = 'block';
+                    break;
+                case('sondagesrep'):
+                    document.getElementById("sondagesrep").style.display = 'block';
+                    document.getElementById("infospersos").style.display = 'none';
+                    document.getElementById("messondages").style.display = 'none';
+                    break;
+            }
 
-            document.getElementById(question).innerHTML="<input name=\""+ question +"\" value=\"false\" type=\"hidden\">";
-            document.getElementById("cpt").innerHTML= "<input name=\"nbquestion\" id=\"nbquestion\" type=\"hidden\" value =\""+ i +"\">"
         }
         function modifierinfos(information, option){
 
@@ -32,13 +45,14 @@
             }
         }
     </script>
-    <div>
-        <br><a href="#">    Mes informations</a>
+    <br><br>
+        <br><button  onclick="changementscene('infospersos')">Mes informations</button>
         {% if 'ROLE_USER' in app.user.roles %}
-            <a href="#">Sondages repondus</a>
+            <button onclick="changementscene('sondagesrep')">Sondages repondus</button>
         {% elseif 'ROLE_ADMIN' in app.user.roles %}
-            <a href="#">Mes Sondages</a>
+            <button role="link" onclick="changementscene('messondages')">Mes Sondages</button>
         {% endif %}
+    <div id="infospersos">
         <br>
         <h4>Informations personelles</h4>
             Nom: {{ app.user.nom }} <br>
@@ -59,16 +73,29 @@
                     Mot de passe: <p id="modifierpassword"> ****** <button onclick="modifierinfos('******','modifier')">modifier</button> </p>
             </form>
 
+    </div>
+    <div id ="sondagesrep" style="display: none">
+        {%  if app.user.sondages.count() == 0%}
+            <br><br>
+            Vous n'avez répondu à aucun sondage
+        {% endif %}
         {% for sondage in app.user.sondages %}
-            <h5>sondage:</h5> <br>
+            <h4>Sondage: {{ sondage.nom }}</h4>
+            Créé par : {{ sondage.createur.prenom }} {{ sondage.createur.nom }}
+            Présentation: <br>
+            {{ sondage.introduction }}<br>
             {% for reponse in app.user.reponses %}
                 {% if reponse.question.sondage == sondage %}
-                    {{ reponse.reponse }} <br>
+                    <fieldset>
+                        <legend>{{ reponse.question.intitule }} </legend>
+                        Vous avez répondu: {{ reponse.reponse }} <br>
+                    </fieldset>
                 {% endif %}
             {% endfor %}
         {% endfor %}
+    </div>
 
-
+    <div id ="messondages" style="display: none">
 
     </div>
 {% endblock %}

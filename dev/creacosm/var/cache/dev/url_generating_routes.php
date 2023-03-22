@@ -23,6 +23,7 @@ return [
     'app_register' => [[], ['_controller' => 'App\\Controller\\RegistrationController::register'], [], [['text', '/register']], [], [], []],
     'app_login' => [[], ['_controller' => 'App\\Controller\\SecurityController::login'], [], [['text', '/login']], [], [], []],
     'app_logout' => [[], ['_controller' => 'App\\Controller\\SecurityController::logout'], [], [['text', '/logout']], [], [], []],
+    'app_sondage_theme_define' => [[], ['_controller' => 'App\\Controller\\SondageController::themedefine'], [], [['text', '/sondage/themedefine']], [], [], []],
     'app_sondage_index' => [[], ['_controller' => 'App\\Controller\\SondageController::index'], [], [['text', '/sondage/']], [], [], []],
     'app_theme' => [[], ['_controller' => 'App\\Controller\\SondageController::createTheme'], [], [['text', '/sondage/createTheme']], [], [], []],
     'app_theme_creation' => [[], ['_controller' => 'App\\Controller\\SondageController::creationTheme'], [], [['text', '/sondage/creationTheme']], [], [], []],

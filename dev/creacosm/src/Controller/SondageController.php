@@ -22,14 +22,34 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/sondage')]
 class SondageController extends AbstractController
 {
-    #[Route('/', name: 'app_sondage_index', methods: ['GET'])]
-    public function index(SondageRepository $sondageRepository): Response
+
+    #[Route('/themedefine', name: 'app_sondage_theme_define', methods: ['GET','POST'])]
+    public function themedefine(ThemeRepository $themeRepository, SondageRepository $sondageRepository): Response
     {
+        $theme = $_POST['theme'];
+        $sondage = [];
+
+        if ($theme == "Tous les sondages") {
+            $sondage = $sondageRepository->findAll();
+        }
+        else{
+            $Alltheme = $themeRepository->find($theme);
+            $sondage = $Alltheme->getSondages();
+        }
         return $this->render('sondage/index.html.twig', [
-            'sondages' => $sondageRepository->findAll(),
+            'sondages' => $sondage,
+            'theme'  => $themeRepository->findAll(),
         ]);
     }
 
+    #[Route('/', name: 'app_sondage_index', methods: ['GET'])]
+    public function index(ThemeRepository $themeRepository, SondageRepository $sondageRepository): Response
+    {
+        return $this->render('sondage/index.html.twig', [
+            'sondages' => $sondageRepository->findAll(),
+            'theme'  => $themeRepository->findAll(),
+        ]);
+    }
 
     #[Route('/createTheme', name: 'app_theme', methods: ['GET','POST'])]
     public function createTheme(ThemeRepository $themeRepository):Response
