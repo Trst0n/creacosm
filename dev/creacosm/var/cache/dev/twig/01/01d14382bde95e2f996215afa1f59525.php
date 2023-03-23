@@ -86,76 +86,81 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
 
         // line 6
         echo "    <script>
-    let int = 1;
-    let nbquestion = 1;
-    let type =\"\"
+        let int = 1;
+        let nbquestion = 1;
+        let type =\"\"
 
-    function myFunction() {
-    if(type === \"multiple\"){
-    document.getElementById(int + \"-\" + (nbquestion+1)).innerHTML=\"\";
+        function myFunction() {
+            if(type === \"multiple\"){
+                document.getElementById(int + \"-\" + (nbquestion+1)).innerHTML=\"\";
 
-    }
+            }
 
-    int ++
-    document.getElementById(\"cpt\").innerHTML = \"<input name=\\\"nbquestion\\\" id=\\\"nbquestion\\\" type=\\\"hidden\\\" value =\" + int +\">\";
-    document.getElementById(\"demo\"+int).innerHTML += \"<label> Intitulé: <br> <input type=\\\"text\\\" name=\\\"intitule\"+ int+\"\\\"> <br><br> <label> Image: <br> <input type=\\\"text\\\" name=\\\"image\"+ int+\"\\\"></label> <br><br> <label for=\\\"type-select\\\">Choisissez un type:</label><br> <select name=\\\"type\"+ int+\"\\\" id=\\\"type-select\\\" autocomplete='off' onchange=\\\"choixtypebis(value,\"+ int+\")\\\" > <option value=\\\"\\\">--Choisissez une option--</option> <option value=\\\"multiple\\\">Question à choix multiple</option> <option value=\\\"ouverte\\\">Question ouverte</option> <option value=\\\"oui_non\\\">Question oui/non</option></select> <br><br> <label> Choix: <br> <p id=\\\"typequestion\" + int +\"\\\"></p><p id=\\\"demo\" + (int+1) + \"\\\"><br> </label> <br><br>\";
+            int ++
+            document.getElementById(\"cpt\").innerHTML = \"<input name=\\\"nbquestion\\\" id=\\\"nbquestion\\\" type=\\\"hidden\\\" value =\" + int +\">\";
+            document.getElementById(\"demo\"+int).innerHTML += \"<label> Intitulé: <br> <input type=\\\"text\\\" name=\\\"intitule\"+ int+\"\\\"> <br><br> <label> Image: <br> <input type=\\\"text\\\" name=\\\"image\"+ int+\"\\\"></label> <br><br> <label for=\\\"type-select\\\">Choisissez un type:</label><br> <select name=\\\"type\"+ int+\"\\\" id=\\\"type-select\\\" autocomplete='off' onchange=\\\"choixtypebis(value,\"+ int+\")\\\" > <option value=\\\"\\\">--Choisissez une option--</option> <option value=\\\"multiple\\\">Question à choix multiple</option> <option value=\\\"unique\\\">Question à choix unique</option><option value=\\\"ouverte\\\">Question ouverte</option> <option value=\\\"oui_non\\\">Question oui/non</option></select> <br><br> <label> Choix: <br> <p id=\\\"typequestion\" + int +\"\\\"></p><p id=\\\"demo\" + (int+1) + \"\\\"><br> </label> <br><br>\";
 
-    if (int > 1){
-    document.getElementById(\"removequest\").innerHTML = \"<button type=\\\"button\\\" onclick=\\\"removequestion(\" + int + \")\\\"> - Supprimer une question </button>\"
-    }
+            if (int > 1){
+                document.getElementById(\"removequest\").innerHTML = \"<button type=\\\"button\\\" onclick=\\\"removequestion(\" + int + \")\\\"> - Supprimer une question </button>\"
+            }
 
-    }
-    function choixtypebis(val,id) {
-    let choix;
-    switch (val){
-    case \"multiple\":
-    type = \"multiple\"
-    nbquestion =1
-    choix = \"Réponse 1 :<input type=\\\"text\\\" name=\\\"reponse\"+int+ \"-\"+nbquestion+\"\\\"><br><p id =\\\"\" + int + \"-\" + (nbquestion+1) +\"\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(\"+ int + \",\" + (nbquestion + 1)+ \")\\\"> + Ajouter une reponse </button></p><br>\"
-    break
-    case \"ouverte\":
-    type = \"ouverte\"
-    choix = \"Question ouverte: Aucun affichage disponible\"
-    break
-    case \"oui_non\":
-    type = \"oui_non\"
-    choix = \"<label>Oui <input type=\\\"radio\\\" name=\\\"visibilite\\\" value=\\\"oui\\\" checked> </label> <label>Non <input type=\\\"radio\\\" name=\\\"visibilite\\\" value=\\\"non\\\"> </label>\"
-    break
-    default:
-    type = \"\"
-    choix =\"\"
-    break
-    }
-    let idbis = \"typequestion\" + id
-    document.getElementById(idbis).innerHTML = choix
-    }
-    function newreponse(nbquest, nbrep){
-    nbquestion ++
-        console.log(nbquestion)
+        }
+        function choixtypebis(val,id) {
+            let choix;
+            switch (val){
+                case \"multiple\":
+                    type = \"multiple\"
+                    nbquestion =1
+                    choix = \"Réponse 1 :<input type=\\\"text\\\" name=\\\"reponse\"+int+ \"-\"+nbquestion+\"\\\"><br><p id =\\\"\" + int + \"-\" + (nbquestion+1) +\"\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(\"+ int + \",\" + (nbquestion + 1)+ \")\\\"> + Ajouter une reponse </button></p><br>\"
+                    break
+                case \"unique\":
+                    type = \"unique\"
+                    nbquestion =1
+                    choix = \"Réponse 1 :<input type=\\\"text\\\" name=\\\"reponse\"+int+ \"-\"+nbquestion+\"\\\"><br><p id =\\\"\" + int + \"-\" + (nbquestion+1) +\"\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(\"+ int + \",\" + (nbquestion + 1)+ \")\\\"> + Ajouter une reponse </button></p><br>\"
+                    break
+                case \"ouverte\":
+                    type = \"ouverte\"
+                    choix = \"Question ouverte: Aucun affichage disponible\"
+                    break
+                case \"oui_non\":
+                    type = \"oui_non\"
+                    choix = \"<label>Oui <input type=\\\"radio\\\" name=\\\"visibilite\\\" value=\\\"oui\\\" checked> </label> <label>Non <input type=\\\"radio\\\" name=\\\"visibilite\\\" value=\\\"non\\\"> </label>\"
+                    break
+                default:
+                    type = \"\"
+                    choix =\"\"
+                    break
+            }
+            let idbis = \"typequestion\" + id
+            document.getElementById(idbis).innerHTML = choix
+        }
+        function newreponse(nbquest, nbrep){
+            nbquestion ++
+            console.log(nbquestion)
 
-    document.getElementById(nbquest + \"-\" + nbrep).innerHTML = \"Réponse \"+nbquestion+\":<input type=\\\"text\\\" name=\\\"reponse\"+ int + \"-\" +nbquestion+\"\\\"><br><p id=\\\"\"+ nbquest + \"-\" + (nbrep+1) + \"\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(\"+ nbquest +\",\" + (nbrep+1) +\")\\\"> + Ajouter une reponse </button><button type=\\\"button\\\" onclick=\\\"removereponse(\"+ nbquest +\",\" + (nbrep)+\")\\\"> - Supprimer une reponse </button></p>\"
-    }
-    function removereponse(quest,rep){
-    nbquestion --
-    if (nbquestion === 1){
-    document.getElementById(quest + \"-\" + rep).innerHTML=\"<button type=\\\"button\\\" onclick=\\\"newreponse(\"+ quest +\",\" + (rep) +\")\\\"> + Ajouter une reponse </button>\"
-    }else{
-    document.getElementById(quest + \"-\" + rep).innerHTML=\"<button type=\\\"button\\\" onclick=\\\"newreponse(\"+ quest +\",\" + (rep) +\")\\\"> + Ajouter une reponse </button><button type=\\\"button\\\" onclick=\\\"removereponse(\"+ quest +\",\" + (rep-1)+ \")\\\"> - Supprimer une reponse </button>\"
+            document.getElementById(nbquest + \"-\" + nbrep).innerHTML = \"Réponse \"+nbquestion+\":<input type=\\\"text\\\" name=\\\"reponse\"+ int + \"-\" +nbquestion+\"\\\"><br><p id=\\\"\"+ nbquest + \"-\" + (nbrep+1) + \"\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(\"+ nbquest +\",\" + (nbrep+1) +\")\\\"> + Ajouter une reponse </button><button type=\\\"button\\\" onclick=\\\"removereponse(\"+ nbquest +\",\" + (nbrep)+\")\\\"> - Supprimer une reponse </button></p>\"
+        }
+        function removereponse(quest,rep){
+            nbquestion --
+            if (nbquestion === 1){
+                document.getElementById(quest + \"-\" + rep).innerHTML=\"<button type=\\\"button\\\" onclick=\\\"newreponse(\"+ quest +\",\" + (rep) +\")\\\"> + Ajouter une reponse </button>\"
+            }else{
+                document.getElementById(quest + \"-\" + rep).innerHTML=\"<button type=\\\"button\\\" onclick=\\\"newreponse(\"+ quest +\",\" + (rep) +\")\\\"> + Ajouter une reponse </button><button type=\\\"button\\\" onclick=\\\"removereponse(\"+ quest +\",\" + (rep-1)+ \")\\\"> - Supprimer une reponse </button>\"
 
-    }
-    }
-    function removequestion(id){
-    int --
-    document.getElementById(\"cpt\").innerHTML = \"<input name=\\\"nbquestion\\\" id=\\\"nbquestion\\\" type=\\\"hidden\\\" value =\" + int +\">\";
-    document.getElementById(\"demo\"+ id).innerHTML = \"<input name=\\\"nbquestion\\\" id=\\\"nbquestion\\\" type=\\\"hidden\\\" value =\" + int +\">\";
+            }
+        }
+        function removequestion(id){
+            int --
+            document.getElementById(\"cpt\").innerHTML = \"<input name=\\\"nbquestion\\\" id=\\\"nbquestion\\\" type=\\\"hidden\\\" value =\" + int +\">\";
+            document.getElementById(\"demo\"+ id).innerHTML = \"<input name=\\\"nbquestion\\\" id=\\\"nbquestion\\\" type=\\\"hidden\\\" value =\" + int +\">\";
 
-    if (int !== 1) {
-    document.getElementById(\"removequest\").innerHTML = \"<button type=\\\"button\\\" onclick=\\\"removequestion(\" + int + \")\\\"> - Supprimer une question </button>\"
-    }
-    else{
-    document.getElementById(\"removequest\").innerHTML = \"\"
-    }
-    }
+            if (int !== 1) {
+                document.getElementById(\"removequest\").innerHTML = \"<button type=\\\"button\\\" onclick=\\\"removequestion(\" + int + \")\\\"> - Supprimer une question </button>\"
+            }
+            else{
+                document.getElementById(\"removequest\").innerHTML = \"\"
+            }
+        }
     </script>
 
     <h1>Create new Sondage</h1>
@@ -187,30 +192,30 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
         <label>Choisissez un thème parmis les suivants :</label>
         <select name=\"theme\" id=\"type-select\" autocomplete=\"off\" >
             ";
-        // line 107
+        // line 112
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable($context["theme"]);
         foreach ($context['_seq'] as $context["_key"] => $context["theme"]) {
-            // line 108
-            echo "            <option name=\"";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["theme"], "theme", [], "any", false, false, false, 108), "html", null, true);
+            // line 113
+            echo "                <option name=\"";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["theme"], "theme", [], "any", false, false, false, 113), "html", null, true);
             echo "\" value=\"";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["theme"], "theme", [], "any", false, false, false, 108), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["theme"], "theme", [], "any", false, false, false, 113), "html", null, true);
             echo "\">";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["theme"], "theme", [], "any", false, false, false, 108), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["theme"], "theme", [], "any", false, false, false, 113), "html", null, true);
             echo "</option>
             ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['theme'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 110
+        // line 115
         echo "        </select>
         <br>
 
         <br>
         ";
-        // line 114
+        // line 119
         echo twig_include($this->env, $context, "sondage/createquestion.html.twig");
         echo "
         <br>
@@ -223,7 +228,7 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
 
 
     <a href=\"";
-        // line 124
+        // line 129
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_sondage_index");
         echo "\">back to list</a>
 ";
@@ -247,7 +252,7 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
 
     public function getDebugInfo()
     {
-        return array (  227 => 124,  214 => 114,  208 => 110,  195 => 108,  191 => 107,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  232 => 129,  219 => 119,  213 => 115,  200 => 113,  196 => 112,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -258,76 +263,81 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
 
 {% block body %}
     <script>
-    let int = 1;
-    let nbquestion = 1;
-    let type =\"\"
+        let int = 1;
+        let nbquestion = 1;
+        let type =\"\"
 
-    function myFunction() {
-    if(type === \"multiple\"){
-    document.getElementById(int + \"-\" + (nbquestion+1)).innerHTML=\"\";
+        function myFunction() {
+            if(type === \"multiple\"){
+                document.getElementById(int + \"-\" + (nbquestion+1)).innerHTML=\"\";
 
-    }
+            }
 
-    int ++
-    document.getElementById(\"cpt\").innerHTML = \"<input name=\\\"nbquestion\\\" id=\\\"nbquestion\\\" type=\\\"hidden\\\" value =\" + int +\">\";
-    document.getElementById(\"demo\"+int).innerHTML += \"<label> Intitulé: <br> <input type=\\\"text\\\" name=\\\"intitule\"+ int+\"\\\"> <br><br> <label> Image: <br> <input type=\\\"text\\\" name=\\\"image\"+ int+\"\\\"></label> <br><br> <label for=\\\"type-select\\\">Choisissez un type:</label><br> <select name=\\\"type\"+ int+\"\\\" id=\\\"type-select\\\" autocomplete='off' onchange=\\\"choixtypebis(value,\"+ int+\")\\\" > <option value=\\\"\\\">--Choisissez une option--</option> <option value=\\\"multiple\\\">Question à choix multiple</option> <option value=\\\"ouverte\\\">Question ouverte</option> <option value=\\\"oui_non\\\">Question oui/non</option></select> <br><br> <label> Choix: <br> <p id=\\\"typequestion\" + int +\"\\\"></p><p id=\\\"demo\" + (int+1) + \"\\\"><br> </label> <br><br>\";
+            int ++
+            document.getElementById(\"cpt\").innerHTML = \"<input name=\\\"nbquestion\\\" id=\\\"nbquestion\\\" type=\\\"hidden\\\" value =\" + int +\">\";
+            document.getElementById(\"demo\"+int).innerHTML += \"<label> Intitulé: <br> <input type=\\\"text\\\" name=\\\"intitule\"+ int+\"\\\"> <br><br> <label> Image: <br> <input type=\\\"text\\\" name=\\\"image\"+ int+\"\\\"></label> <br><br> <label for=\\\"type-select\\\">Choisissez un type:</label><br> <select name=\\\"type\"+ int+\"\\\" id=\\\"type-select\\\" autocomplete='off' onchange=\\\"choixtypebis(value,\"+ int+\")\\\" > <option value=\\\"\\\">--Choisissez une option--</option> <option value=\\\"multiple\\\">Question à choix multiple</option> <option value=\\\"unique\\\">Question à choix unique</option><option value=\\\"ouverte\\\">Question ouverte</option> <option value=\\\"oui_non\\\">Question oui/non</option></select> <br><br> <label> Choix: <br> <p id=\\\"typequestion\" + int +\"\\\"></p><p id=\\\"demo\" + (int+1) + \"\\\"><br> </label> <br><br>\";
 
-    if (int > 1){
-    document.getElementById(\"removequest\").innerHTML = \"<button type=\\\"button\\\" onclick=\\\"removequestion(\" + int + \")\\\"> - Supprimer une question </button>\"
-    }
+            if (int > 1){
+                document.getElementById(\"removequest\").innerHTML = \"<button type=\\\"button\\\" onclick=\\\"removequestion(\" + int + \")\\\"> - Supprimer une question </button>\"
+            }
 
-    }
-    function choixtypebis(val,id) {
-    let choix;
-    switch (val){
-    case \"multiple\":
-    type = \"multiple\"
-    nbquestion =1
-    choix = \"Réponse 1 :<input type=\\\"text\\\" name=\\\"reponse\"+int+ \"-\"+nbquestion+\"\\\"><br><p id =\\\"\" + int + \"-\" + (nbquestion+1) +\"\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(\"+ int + \",\" + (nbquestion + 1)+ \")\\\"> + Ajouter une reponse </button></p><br>\"
-    break
-    case \"ouverte\":
-    type = \"ouverte\"
-    choix = \"Question ouverte: Aucun affichage disponible\"
-    break
-    case \"oui_non\":
-    type = \"oui_non\"
-    choix = \"<label>Oui <input type=\\\"radio\\\" name=\\\"visibilite\\\" value=\\\"oui\\\" checked> </label> <label>Non <input type=\\\"radio\\\" name=\\\"visibilite\\\" value=\\\"non\\\"> </label>\"
-    break
-    default:
-    type = \"\"
-    choix =\"\"
-    break
-    }
-    let idbis = \"typequestion\" + id
-    document.getElementById(idbis).innerHTML = choix
-    }
-    function newreponse(nbquest, nbrep){
-    nbquestion ++
-        console.log(nbquestion)
+        }
+        function choixtypebis(val,id) {
+            let choix;
+            switch (val){
+                case \"multiple\":
+                    type = \"multiple\"
+                    nbquestion =1
+                    choix = \"Réponse 1 :<input type=\\\"text\\\" name=\\\"reponse\"+int+ \"-\"+nbquestion+\"\\\"><br><p id =\\\"\" + int + \"-\" + (nbquestion+1) +\"\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(\"+ int + \",\" + (nbquestion + 1)+ \")\\\"> + Ajouter une reponse </button></p><br>\"
+                    break
+                case \"unique\":
+                    type = \"unique\"
+                    nbquestion =1
+                    choix = \"Réponse 1 :<input type=\\\"text\\\" name=\\\"reponse\"+int+ \"-\"+nbquestion+\"\\\"><br><p id =\\\"\" + int + \"-\" + (nbquestion+1) +\"\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(\"+ int + \",\" + (nbquestion + 1)+ \")\\\"> + Ajouter une reponse </button></p><br>\"
+                    break
+                case \"ouverte\":
+                    type = \"ouverte\"
+                    choix = \"Question ouverte: Aucun affichage disponible\"
+                    break
+                case \"oui_non\":
+                    type = \"oui_non\"
+                    choix = \"<label>Oui <input type=\\\"radio\\\" name=\\\"visibilite\\\" value=\\\"oui\\\" checked> </label> <label>Non <input type=\\\"radio\\\" name=\\\"visibilite\\\" value=\\\"non\\\"> </label>\"
+                    break
+                default:
+                    type = \"\"
+                    choix =\"\"
+                    break
+            }
+            let idbis = \"typequestion\" + id
+            document.getElementById(idbis).innerHTML = choix
+        }
+        function newreponse(nbquest, nbrep){
+            nbquestion ++
+            console.log(nbquestion)
 
-    document.getElementById(nbquest + \"-\" + nbrep).innerHTML = \"Réponse \"+nbquestion+\":<input type=\\\"text\\\" name=\\\"reponse\"+ int + \"-\" +nbquestion+\"\\\"><br><p id=\\\"\"+ nbquest + \"-\" + (nbrep+1) + \"\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(\"+ nbquest +\",\" + (nbrep+1) +\")\\\"> + Ajouter une reponse </button><button type=\\\"button\\\" onclick=\\\"removereponse(\"+ nbquest +\",\" + (nbrep)+\")\\\"> - Supprimer une reponse </button></p>\"
-    }
-    function removereponse(quest,rep){
-    nbquestion --
-    if (nbquestion === 1){
-    document.getElementById(quest + \"-\" + rep).innerHTML=\"<button type=\\\"button\\\" onclick=\\\"newreponse(\"+ quest +\",\" + (rep) +\")\\\"> + Ajouter une reponse </button>\"
-    }else{
-    document.getElementById(quest + \"-\" + rep).innerHTML=\"<button type=\\\"button\\\" onclick=\\\"newreponse(\"+ quest +\",\" + (rep) +\")\\\"> + Ajouter une reponse </button><button type=\\\"button\\\" onclick=\\\"removereponse(\"+ quest +\",\" + (rep-1)+ \")\\\"> - Supprimer une reponse </button>\"
+            document.getElementById(nbquest + \"-\" + nbrep).innerHTML = \"Réponse \"+nbquestion+\":<input type=\\\"text\\\" name=\\\"reponse\"+ int + \"-\" +nbquestion+\"\\\"><br><p id=\\\"\"+ nbquest + \"-\" + (nbrep+1) + \"\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(\"+ nbquest +\",\" + (nbrep+1) +\")\\\"> + Ajouter une reponse </button><button type=\\\"button\\\" onclick=\\\"removereponse(\"+ nbquest +\",\" + (nbrep)+\")\\\"> - Supprimer une reponse </button></p>\"
+        }
+        function removereponse(quest,rep){
+            nbquestion --
+            if (nbquestion === 1){
+                document.getElementById(quest + \"-\" + rep).innerHTML=\"<button type=\\\"button\\\" onclick=\\\"newreponse(\"+ quest +\",\" + (rep) +\")\\\"> + Ajouter une reponse </button>\"
+            }else{
+                document.getElementById(quest + \"-\" + rep).innerHTML=\"<button type=\\\"button\\\" onclick=\\\"newreponse(\"+ quest +\",\" + (rep) +\")\\\"> + Ajouter une reponse </button><button type=\\\"button\\\" onclick=\\\"removereponse(\"+ quest +\",\" + (rep-1)+ \")\\\"> - Supprimer une reponse </button>\"
 
-    }
-    }
-    function removequestion(id){
-    int --
-    document.getElementById(\"cpt\").innerHTML = \"<input name=\\\"nbquestion\\\" id=\\\"nbquestion\\\" type=\\\"hidden\\\" value =\" + int +\">\";
-    document.getElementById(\"demo\"+ id).innerHTML = \"<input name=\\\"nbquestion\\\" id=\\\"nbquestion\\\" type=\\\"hidden\\\" value =\" + int +\">\";
+            }
+        }
+        function removequestion(id){
+            int --
+            document.getElementById(\"cpt\").innerHTML = \"<input name=\\\"nbquestion\\\" id=\\\"nbquestion\\\" type=\\\"hidden\\\" value =\" + int +\">\";
+            document.getElementById(\"demo\"+ id).innerHTML = \"<input name=\\\"nbquestion\\\" id=\\\"nbquestion\\\" type=\\\"hidden\\\" value =\" + int +\">\";
 
-    if (int !== 1) {
-    document.getElementById(\"removequest\").innerHTML = \"<button type=\\\"button\\\" onclick=\\\"removequestion(\" + int + \")\\\"> - Supprimer une question </button>\"
-    }
-    else{
-    document.getElementById(\"removequest\").innerHTML = \"\"
-    }
-    }
+            if (int !== 1) {
+                document.getElementById(\"removequest\").innerHTML = \"<button type=\\\"button\\\" onclick=\\\"removequestion(\" + int + \")\\\"> - Supprimer une question </button>\"
+            }
+            else{
+                document.getElementById(\"removequest\").innerHTML = \"\"
+            }
+        }
     </script>
 
     <h1>Create new Sondage</h1>
@@ -359,7 +369,7 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
         <label>Choisissez un thème parmis les suivants :</label>
         <select name=\"theme\" id=\"type-select\" autocomplete=\"off\" >
             {% for theme in theme %}
-            <option name=\"{{ theme.theme }}\" value=\"{{ theme.theme }}\">{{ theme.theme }}</option>
+                <option name=\"{{ theme.theme }}\" value=\"{{ theme.theme }}\">{{ theme.theme }}</option>
             {% endfor %}
         </select>
         <br>

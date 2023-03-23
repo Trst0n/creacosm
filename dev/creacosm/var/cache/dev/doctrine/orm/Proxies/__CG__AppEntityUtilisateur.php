@@ -27,6 +27,7 @@ class Utilisateur extends \App\Entity\Utilisateur implements \Doctrine\Persisten
         "\0".parent::class."\0".'reponses' => [parent::class, 'reponses', null],
         "\0".parent::class."\0".'roles' => [parent::class, 'roles', null],
         "\0".parent::class."\0".'sondages' => [parent::class, 'sondages', null],
+        "\0".parent::class."\0".'sondagescree' => [parent::class, 'sondagescree', null],
         "\0".parent::class."\0".'ville' => [parent::class, 'ville', null],
         'datedenaissance' => [parent::class, 'datedenaissance', null],
         'genre' => [parent::class, 'genre', null],
@@ -38,6 +39,7 @@ class Utilisateur extends \App\Entity\Utilisateur implements \Doctrine\Persisten
         'reponses' => [parent::class, 'reponses', null],
         'roles' => [parent::class, 'roles', null],
         'sondages' => [parent::class, 'sondages', null],
+        'sondagescree' => [parent::class, 'sondagescree', null],
         'ville' => [parent::class, 'ville', null],
     ];
 

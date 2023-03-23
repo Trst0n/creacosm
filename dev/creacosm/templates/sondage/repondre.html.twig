@@ -23,7 +23,7 @@
         <fieldset>
             <legend>{{ question.intitule }} </legend>
             {% if question.visuel.visuel != "" %}
-            <img src="{{ question.visuel.visuel }} "  style="width:500px;height:300px;">
+                <img src="{{ question.visuel.visuel }} "  style="width:500px;height:300px;">
             {%endif %}
 
             {% if question.type.type == 'multiple' %}
@@ -32,18 +32,25 @@
                         <input type="checkbox" id="{{ reponse.id }}" name="{{ reponse.id }}" value="{{ reponse.id }}" autocomplete="off">
                         <label for="{{ reponse.id }}">{{ reponse.reponse }}</label>
                     </div>
-                    {% endfor %}
-                {% elseif question.type.type == 'oui_non' %}
-                    {% for reponse in question.reponses %}
+                {% endfor %}
+            {% elseif question.type.type == 'oui_non' %}
+                {% for reponse in question.reponses %}
                     <div>
-                        <input type="radio" id="{{ reponse.id }}" name="{{ reponse.id }}" value="{{ reponse.reponse }}" autocomplete="off">
+                        <input type="radio" id="{{ reponse.id }}" name="{{ question.id }}" value="{{ reponse.id }}" autocomplete="off">
                         <label for="{{ reponse.id }}">{{ reponse.reponse }}</label>
                     </div>
-                    {% endfor %}
-                {% else %}
+                {% endfor %}
+            {% elseif question.type.type == 'unique' %}
+                {% for reponse in question.reponses %}
                     <div>
-                        <textarea name="ouverte{{ i }}" rows="5" cols="33" style="resize:none;" autocomplete="off"></textarea>
+                        <input type="radio" id="{{ reponse.id }}" name="{{ question.id }}" value="{{ reponse.id }}" autocomplete="off">
+                        <label for="{{ reponse.id }}">{{ reponse.reponse }}</label>
                     </div>
+                {% endfor %}
+            {% else %}
+                <div>
+                    <textarea name="ouverte{{ i }}" rows="5" cols="33" style="resize:none;" autocomplete="off"></textarea>
+                </div>
             {% endif %}
 
 
@@ -51,8 +58,8 @@
         {% set i = i + 1 %}
     {% endfor %}
 
-        <br>
-        <br>
-        <button type="submit">Repondre au sondage </button>
+    <br>
+    <br>
+    <button type="submit">Repondre au sondage </button>
     </form>
 {% endblock %}

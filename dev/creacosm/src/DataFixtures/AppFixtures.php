@@ -50,17 +50,13 @@ class AppFixtures extends Fixture
         $theme -> setTheme("cosmetique");
         $manager->persist($theme);
 
-        $visuel = new Visuel();
-        $visuel ->setVisuel("photo");
-        $manager->persist($visuel);
-
         $format = new Format();
         $format->setFormat("diagramme");
         $manager->persist($format);
 
         /** CREATION QUESTION AGE **/
         $question = new Question();
-        $question -> setType($typemulti) ->setIntitule("Quel age avez-vous ?") ->setVisuel($visuel);
+        $question -> setType($typemulti) ->setIntitule("Quel age avez-vous ?");
         $manager->persist($question);
 
         $reponse1 = new Reponse();
@@ -81,7 +77,7 @@ class AppFixtures extends Fixture
 
         /** CREATION QUESTION AGE **/
         $questionbis = new Question();
-        $questionbis -> setType($typemulti) ->setIntitule("Quel age avez-vous ?") ->setVisuel($visuel);
+        $questionbis -> setType($typemulti) ->setIntitule("Quel age avez-vous ?") ;
         $manager->persist($questionbis);
 
         $reponse24 = new Reponse();
@@ -102,7 +98,7 @@ class AppFixtures extends Fixture
 
         /** CREATION QUESTION OUI/NON **/
         $question2 = new Question();
-        $question2 -> setType($typeon) ->setIntitule("Avez-vous testé notre nouveau produit cosmétique ?") ->setVisuel($visuel);
+        $question2 -> setType($typeon) ->setIntitule("Avez-vous testé notre nouveau produit cosmétique ?");
         $manager->persist($question2);
 
         $reponse5 = new Reponse();
@@ -115,7 +111,7 @@ class AppFixtures extends Fixture
 
         /** CREATION QUESTION PROFESSION **/
         $question1 = new Question();
-        $question1 -> setType($typemulti) ->setIntitule("Que faites vous dans le vie ?") ->setVisuel($visuel);
+        $question1 -> setType($typemulti) ->setIntitule("Que faites vous dans le vie ?") ;
         $manager->persist($question1);
 
         $reponse7 = new Reponse();
@@ -140,7 +136,7 @@ class AppFixtures extends Fixture
 
         /** CREATION QUESTION OUI/NON **/
         $question3 = new Question();
-        $question3 -> setType($typeon) ->setIntitule("Le recommenderiez vous à des amis ?") ->setVisuel($visuel);
+        $question3 -> setType($typeon) ->setIntitule("Le recommenderiez vous à des amis ?") ;
         $manager->persist($question3);
 
         $reponse12 = new Reponse();
@@ -153,13 +149,13 @@ class AppFixtures extends Fixture
 
         /** CREATION QUESTION OUVERTE **/
         $question4 = new Question();
-        $question4 -> setType($typeouv) ->setIntitule("Donnez nous votre avis dessus :") ->setVisuel($visuel);
+        $question4 -> setType($typeouv) ->setIntitule("Donnez nous votre avis dessus :") ;
         $manager->persist($question4);
 
 
         /** CREATION QUESTION MULTIPLE **/
         $question5 = new Question();
-        $question5 -> setType($typemulti) ->setIntitule("Quel type de produit aimeriez vous voir apparaitre dans notre ligne de cosmétique ?") ->setVisuel($visuel);
+        $question5 -> setType($typemulti) ->setIntitule("Quel type de produit aimeriez vous voir apparaitre dans notre ligne de cosmétique ?") ;
         $manager->persist($question5);
 
         $reponse15 = new Reponse();
@@ -181,7 +177,7 @@ class AppFixtures extends Fixture
 
         /** CREATION QUESTION MULTIPLE **/
         $question6 = new Question();
-        $question6 -> setType($typemulti) ->setIntitule("Jusqu'à combien mettez vous par mois dans les cosmétiques ?") ->setVisuel($visuel);
+        $question6 -> setType($typemulti) ->setIntitule("Jusqu'à combien mettez vous par mois dans les cosmétiques ?") ;
         $manager->persist($question6);
 
         $reponse19 = new Reponse();
@@ -200,7 +196,7 @@ class AppFixtures extends Fixture
         /** CREATION QUESTION OUI/NON **/
 
         $question6 = new Question();
-        $question6 -> setType($typeon) ->setIntitule("Aimeriez-vous recevoir des échantillons de nos nouveaux produits ?") ->setVisuel($visuel);
+        $question6 -> setType($typeon) ->setIntitule("Aimeriez-vous recevoir des échantillons de nos nouveaux produits ?") ;
         $manager->persist($question6);
 
         $reponse22 = new Reponse();
@@ -228,17 +224,17 @@ class AppFixtures extends Fixture
 
         /** CREATION SONDAGES **/
         $sondage1 = new Sondage();
-        $sondage1 -> setCreateur($user) ->setTheme($theme)->setNom($faker->name) ->setIntroduction($faker ->sentence) ->setDatecreation(new \DateTime('now'))
+        $sondage1 -> setAdministrateur($user) ->setTheme($theme)->setNom($faker->name) ->setIntroduction($faker ->sentence) ->setDatecreation(new \DateTime('now'))
             ->setVisibilite(true) ->addQuestion($questionbis)->addQuestion($question1)->addQuestion($question5);
         $manager->persist($sondage1);
 
         $sondage2 = new Sondage();
-        $sondage2 -> setCreateur($user) ->setTheme($theme)->setNom($faker->name) ->setIntroduction($faker ->sentence) ->setDatecreation(new \DateTime('now'))
+        $sondage2 -> setAdministrateur($user) ->setTheme($theme)->setNom($faker->name) ->setIntroduction($faker ->sentence) ->setDatecreation(new \DateTime('now'))
             ->setVisibilite(true)->addQuestion($question2)->addQuestion($question3)->addQuestion($question6);
         $manager->persist($sondage2);
 
         $sondage3 = new Sondage();
-        $sondage3 -> setCreateur($user) ->setTheme($theme)->setNom($faker->name) ->setIntroduction($faker ->sentence) ->setDatecreation(new \DateTime('now'))
+        $sondage3 -> setAdministrateur($user) ->setTheme($theme)->setNom($faker->name) ->setIntroduction($faker ->sentence) ->setDatecreation(new \DateTime('now'))
             ->setVisibilite(true)->addQuestion($question)->addQuestion($question4);
         $manager->persist($sondage3);
 

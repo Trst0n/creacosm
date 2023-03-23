@@ -87,8 +87,12 @@ class __TwigTemplate_27fd11a1ac82e9c49d45582e5baa721c extends Template
         function choixtype(val) {
             let choix;
             switch (val){
-                case \"multiple\":
+                case \"multiple\" :
                     type = \"multiple\"
+                    choix = \" Réponse 1 :<input type=\\\"text\\\" name=\\\"reponse1-1\\\"><br><p id =\\\"1-2\\\"><button type=\\\"button\\\" onclick=\\\"newreponse2(1,2)\\\"> + Ajouter une reponse </button></p><br>\"
+                    break
+                case \"unique\" :
+                    type = \"unique\"
                     choix = \" Réponse 1 :<input type=\\\"text\\\" name=\\\"reponse1-1\\\"><br><p id =\\\"1-2\\\"><button type=\\\"button\\\" onclick=\\\"newreponse2(1,2)\\\"> + Ajouter une reponse </button></p><br>\"
                     break
                 case \"ouverte\":
@@ -107,7 +111,7 @@ class __TwigTemplate_27fd11a1ac82e9c49d45582e5baa721c extends Template
             document.getElementById(\"typequestion1\").innerHTML = choix
         }
 
-       function newreponse2(nbquest, nbrep) {
+        function newreponse2(nbquest, nbrep) {
             nbquestion++
             document.getElementById(nbquest + \"-\" + nbrep).innerHTML = \"Réponse \" + nbquestion + \":<input type=\\\"text\\\" name=\\\"reponse1-\" + nbquestion + \"\\\"><br><p id=\\\"\" + nbquest + \"-\" + (nbrep + 1) + \"\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(\" + nbquest + \",\" + (nbrep + 1) + \")\\\"> + Ajouter une reponse </button><button type=\\\"button\\\" onclick=\\\"removereponse(\" + nbquest + \",\" + (nbrep) + \")\\\"> - Supprimer une reponse </button></p>\"
         }
@@ -116,30 +120,31 @@ class __TwigTemplate_27fd11a1ac82e9c49d45582e5baa721c extends Template
 
 
     <p style=\"font-style: italic ; font-size: 18px\">Create new Question</p>
-        <label> Intitulé:
-            <br>
-            <input type=\"text\" name=\"intitule1\" autocomplete=\"off\">
-        </label>
+    <label> Intitulé:
+        <br>
+        <input type=\"text\" name=\"intitule1\" autocomplete=\"off\">
+    </label>
     <br><br>
     <label> Image: <br> <input type=\"text\" name=\"image1\"></label>
     <br><br>
 
-        <label for=\"type-select\">Choisissez un type:</label><br>
+    <label for=\"type-select\">Choisissez un type:</label><br>
 
-        <select name=\"type1\" id=\"type-select\" autocomplete=\"off\" onchange=\"choixtype(value)\">
-            <option value=\"\">--Choisissez une option--</option>
-            <option value=\"multiple\">Question à choix multiple</option>
-            <option value=\"ouverte\">Question ouverte</option>
-            <option value=\"oui_non\">Question oui/non</option>
-        </select>
+    <select name=\"type1\" id=\"type-select\" autocomplete=\"off\" onchange=\"choixtype(value)\">
+        <option value=\"\">--Choisissez une option--</option>
+        <option value=\"multiple\">Question à choix multiple</option>
+        <option value=\"unique\">Question à choix unique</option>
+        <option value=\"ouverte\">Question ouverte</option>
+        <option value=\"oui_non\">Question oui/non</option>
+    </select>
 
-        <br><br>
+    <br><br>
 
-        <label> Choix de reponse:
-            <br>
-            <p id =\"typequestion1\"> Choisissez une option ci dessus</p>
+    <label> Choix de reponse:
+        <br>
+        <p id =\"typequestion1\"> Choisissez une option ci dessus</p>
 
-        </label>
+    </label>
 
 ";
         
@@ -169,8 +174,12 @@ class __TwigTemplate_27fd11a1ac82e9c49d45582e5baa721c extends Template
         function choixtype(val) {
             let choix;
             switch (val){
-                case \"multiple\":
+                case \"multiple\" :
                     type = \"multiple\"
+                    choix = \" Réponse 1 :<input type=\\\"text\\\" name=\\\"reponse1-1\\\"><br><p id =\\\"1-2\\\"><button type=\\\"button\\\" onclick=\\\"newreponse2(1,2)\\\"> + Ajouter une reponse </button></p><br>\"
+                    break
+                case \"unique\" :
+                    type = \"unique\"
                     choix = \" Réponse 1 :<input type=\\\"text\\\" name=\\\"reponse1-1\\\"><br><p id =\\\"1-2\\\"><button type=\\\"button\\\" onclick=\\\"newreponse2(1,2)\\\"> + Ajouter une reponse </button></p><br>\"
                     break
                 case \"ouverte\":
@@ -189,7 +198,7 @@ class __TwigTemplate_27fd11a1ac82e9c49d45582e5baa721c extends Template
             document.getElementById(\"typequestion1\").innerHTML = choix
         }
 
-       function newreponse2(nbquest, nbrep) {
+        function newreponse2(nbquest, nbrep) {
             nbquestion++
             document.getElementById(nbquest + \"-\" + nbrep).innerHTML = \"Réponse \" + nbquestion + \":<input type=\\\"text\\\" name=\\\"reponse1-\" + nbquestion + \"\\\"><br><p id=\\\"\" + nbquest + \"-\" + (nbrep + 1) + \"\\\"><button type=\\\"button\\\" onclick=\\\"newreponse(\" + nbquest + \",\" + (nbrep + 1) + \")\\\"> + Ajouter une reponse </button><button type=\\\"button\\\" onclick=\\\"removereponse(\" + nbquest + \",\" + (nbrep) + \")\\\"> - Supprimer une reponse </button></p>\"
         }
@@ -198,32 +207,32 @@ class __TwigTemplate_27fd11a1ac82e9c49d45582e5baa721c extends Template
 
 
     <p style=\"font-style: italic ; font-size: 18px\">Create new Question</p>
-        <label> Intitulé:
-            <br>
-            <input type=\"text\" name=\"intitule1\" autocomplete=\"off\">
-        </label>
+    <label> Intitulé:
+        <br>
+        <input type=\"text\" name=\"intitule1\" autocomplete=\"off\">
+    </label>
     <br><br>
     <label> Image: <br> <input type=\"text\" name=\"image1\"></label>
     <br><br>
 
-        <label for=\"type-select\">Choisissez un type:</label><br>
+    <label for=\"type-select\">Choisissez un type:</label><br>
 
-        <select name=\"type1\" id=\"type-select\" autocomplete=\"off\" onchange=\"choixtype(value)\">
-            <option value=\"\">--Choisissez une option--</option>
-            <option value=\"multiple\">Question à choix multiple</option>
-            <option value=\"ouverte\">Question ouverte</option>
-            <option value=\"oui_non\">Question oui/non</option>
-        </select>
+    <select name=\"type1\" id=\"type-select\" autocomplete=\"off\" onchange=\"choixtype(value)\">
+        <option value=\"\">--Choisissez une option--</option>
+        <option value=\"multiple\">Question à choix multiple</option>
+        <option value=\"unique\">Question à choix unique</option>
+        <option value=\"ouverte\">Question ouverte</option>
+        <option value=\"oui_non\">Question oui/non</option>
+    </select>
 
-        <br><br>
+    <br><br>
 
-        <label> Choix de reponse:
-            <br>
-            <p id =\"typequestion1\"> Choisissez une option ci dessus</p>
+    <label> Choix de reponse:
+        <br>
+        <p id =\"typequestion1\"> Choisissez une option ci dessus</p>
 
-        </label>
+    </label>
 
-{% endblock %}
-", "sondage/createquestion.html.twig", "/var/www/html/creacosm/templates/sondage/createquestion.html.twig");
+{% endblock %}", "sondage/createquestion.html.twig", "/var/www/html/creacosm/templates/sondage/createquestion.html.twig");
     }
 }

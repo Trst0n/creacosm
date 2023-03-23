@@ -44,6 +44,8 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: Sondage::class, mappedBy: 'utilisateurs')]
     private Collection $sondages;
 
+
+
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $genre = null;
 
@@ -53,10 +55,15 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: Reponse::class, inversedBy: 'utilisateurs')]
     private Collection $reponses;
 
+    #[ORM\OneToMany(mappedBy: 'administrateur', targetEntity: Sondage::class, orphanRemoval: true)]
+    private Collection $sondagescree;
+
     public function __construct()
     {
         $this->sondages = new ArrayCollection();
         $this->reponses = new ArrayCollection();
+        $this->sondagescree = new ArrayCollection();
+
     }
 
     public function getId(): ?int
@@ -192,6 +199,9 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+
+
+
     public function getGenre(): ?string
     {
         return $this->genre;
@@ -236,6 +246,36 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     public function removeReponse(Reponse $reponse): self
     {
         $this->reponses->removeElement($reponse);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Sondage>
+     */
+    public function getSondagescree(): Collection
+    {
+        return $this->sondagescree;
+    }
+
+    public function addSondagescree(Sondage $sondagescree): self
+    {
+        if (!$this->sondagescree->contains($sondagescree)) {
+            $this->sondagescree->add($sondagescree);
+            $sondagescree->setAdministrateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSondagescree(Sondage $sondagescree): self
+    {
+        if ($this->sondagescree->removeElement($sondagescree)) {
+            // set the owning side to null (unless already changed)
+            if ($sondagescree->getAdministrateur() === $this) {
+                $sondagescree->setAdministrateur(null);
+            }
+        }
 
         return $this;
     }

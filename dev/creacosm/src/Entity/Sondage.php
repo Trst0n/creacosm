@@ -25,9 +25,6 @@ class Sondage
     #[ORM\ManyToMany(targetEntity: Utilisateur::class, inversedBy: 'sondages')]
     private Collection $utilisateurs;
 
-    #[ORM\ManyToOne(inversedBy: 'sondages')]
-    private ?Utilisateur $createur = null;
-
     #[ORM\OneToMany(mappedBy: 'sondage', targetEntity: Statistique::class, orphanRemoval: true)]
     private Collection $statistique;
 
@@ -42,6 +39,10 @@ class Sondage
 
     #[ORM\OneToMany(mappedBy: 'sondage', targetEntity: Question::class , orphanRemoval: true)]
     private Collection $questions;
+
+    #[ORM\ManyToOne(inversedBy: 'sondagescree')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Utilisateur $administrateur = null;
 
     public function __construct()
     {
@@ -99,18 +100,6 @@ class Sondage
     public function removeUtilisateur(Utilisateur $utilisateur): self
     {
         $this->utilisateurs->removeElement($utilisateur);
-
-        return $this;
-    }
-
-    public function getCreateur(): ?Utilisateur
-    {
-        return $this->createur;
-    }
-
-    public function setCreateur(?Utilisateur $createur): self
-    {
-        $this->createur = $createur;
 
         return $this;
     }
@@ -207,6 +196,18 @@ class Sondage
                 $question->setSondage(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAdministrateur(): ?Utilisateur
+    {
+        return $this->administrateur;
+    }
+
+    public function setAdministrateur(?Utilisateur $administrateur): self
+    {
+        $this->administrateur = $administrateur;
 
         return $this;
     }

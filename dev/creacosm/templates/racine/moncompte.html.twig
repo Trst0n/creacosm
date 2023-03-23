@@ -49,7 +49,8 @@
         <br><button  onclick="changementscene('infospersos')">Mes informations</button>
         {% if 'ROLE_USER' in app.user.roles %}
             <button onclick="changementscene('sondagesrep')">Sondages repondus</button>
-        {% elseif 'ROLE_ADMIN' in app.user.roles %}
+        {% endif %}
+        {% if 'ROLE_ADMIN' in app.user.roles %}
             <button role="link" onclick="changementscene('messondages')">Mes Sondages</button>
         {% endif %}
     <div id="infospersos">
@@ -81,21 +82,76 @@
         {% endif %}
         {% for sondage in app.user.sondages %}
             <h4>Sondage: {{ sondage.nom }}</h4>
-            Créé par : {{ sondage.createur.prenom }} {{ sondage.createur.nom }}
+            Créé par : {{ sondage.administrateur.prenom }} {{ sondage.administrateur.nom }}
             Présentation: <br>
-            {{ sondage.introduction }}<br>
+            {{ sondage.introduction }}<br><br>
+            {% set reponses = [] %}
             {% for reponse in app.user.reponses %}
-                {% if reponse.question.sondage == sondage %}
+                {% if reponse.question.sondage == sondage and reponse not in reponses %}
+
+
                     <fieldset>
                         <legend>{{ reponse.question.intitule }} </legend>
                         Vous avez répondu: {{ reponse.reponse }} <br>
+                        {% set reponses = reponses|merge([reponse]) %}
+                        {% for r in app.user.reponses %}
+                            {% if r.question == reponse.question and r != reponse %}
+                                Vous avez répondu: {{ r.reponse }} <br>
+                              {% set reponses = reponses|merge([r]) %}
+                            {% endif %}
+                        {% endfor %}
                     </fieldset>
+
+
                 {% endif %}
             {% endfor %}
         {% endfor %}
     </div>
 
     <div id ="messondages" style="display: none">
+        {%  if app.user.sondagescree.count() == 0%}
+            <br><br>
+            Vous n'avez créé encore aucun sondage !
+            <a href="{{ path('app_sondage_new') }}">Créer votre tout premier sondage !</a>
+
+        {% else %}
+
+        <h4>Vos sondages :</h4>
+
+        <table class="block">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Introduction</th>
+                <th>Visibilité</th>
+                <th>Theme</th>
+                <th>Date de céeation</th>
+                <th>actions</th>
+            </tr>
+            </thead>
+            <tbody>
+        {% for sondage in app.user.sondagescree %}
+
+            <tr>
+                <td>{{ sondage.nom }}</td>
+                <td>{{ sondage.introduction }}</td>
+                <td>{{ sondage.visibilite ? 'Public' : 'Privé' }}</td>
+                <td> {{ sondage.theme.theme }}</td>
+                <td>{{ sondage.datecreation ? sondage.datecreation|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_sondage_show', {'id': sondage.id}) }}">show</a>
+                    <a href="{{ path('app_sondage_edit', {'id': sondage.id}) }}">edit</a>
+                </td>
+            </tr>
+
+
+        {% endfor %}
+            </tbody>
+        </table>
 
     </div>
+    <div id="statistique">
+
+    </div>
+    {% endif %}
 {% endblock %}

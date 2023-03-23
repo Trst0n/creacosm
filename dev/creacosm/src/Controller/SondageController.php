@@ -123,48 +123,57 @@ class SondageController extends AbstractController
     #[Route('/reponsesondage', name: 'app_repondre_sondage', methods: ['GET','POST'])]
     public function repondresondage(Request $request, SondageRepository $sondageRepository, UtilisateurRepository $utilisateurRepository, ReponseRepository $reponseRepository, QuestionRepository $questionRepository):Response
     {
-       $sondage = $sondageRepository->find($_POST["idsondage"]);
-       $user = $utilisateurRepository->find($_POST["iduser"]);
+        $sondage = $sondageRepository->find($_POST["idsondage"]);
+        $user = $utilisateurRepository->find($_POST["iduser"]);
 
-       $user->addSondage($sondage);
-       $utilisateurRepository->save($user, true);
-       $sondageRepository->save($sondage, true);
+        $user->addSondage($sondage);
+        $utilisateurRepository->save($user, true);
+        $sondageRepository->save($sondage, true);
 
 
-       for($q = 0; $q < $sondage->getQuestions()->count(); $q++) {
-           switch ($sondage->getQuestions()->get($q)->getType()->getType()){
+        for($q = 0; $q < $sondage->getQuestions()->count(); $q++) {
+            switch ($sondage->getQuestions()->get($q)->getType()->getType()){
 
-               case("multiple"):
-                   for($r = 0; $r < $sondage->getQuestions()->get($q)->getReponses()->count(); $r++){
-                       if(isset($_POST[$sondage->getQuestions()->get($q)->getReponses()->get($r)->getId()])){
-                           $reponse = $reponseRepository->find($sondage->getQuestions()->get($q)->getReponses()->get($r)->getId());
-                           $user->addReponse($reponse);
-                           $utilisateurRepository->save($user, true);
-                       }
-                   }
-                   break;
-               case("oui_non"):
-                   for($r = 0; $r < $sondage->getQuestions()->get($q)->getReponses()->count(); $r++){
-                       if(isset($_POST[$sondage->getQuestions()->get($q)->getReponses()->get($r)->getId()])){
+                case("multiple"):
+                    for($r = 0; $r < $sondage->getQuestions()->get($q)->getReponses()->count(); $r++){
+                        if(isset($_POST[$sondage->getQuestions()->get($q)->getReponses()->get($r)->getId()])){
                             $reponse = $reponseRepository->find($sondage->getQuestions()->get($q)->getReponses()->get($r)->getId());
-                       }
-                   }
-                   $user->addReponse($reponse);
-                   $utilisateurRepository->save($user, true);
+                            $user->addReponse($reponse);
+                            $utilisateurRepository->save($user, true);
+                        }
+                    }
+                    break;
+                case("unique"):
+                    for($r = 0; $r < $sondage->getQuestions()->get($q)->getReponses()->count(); $r++){
+                        if(isset($_POST[$sondage->getQuestions()->get($q)->getId()])){
+                            $reponse = $reponseRepository->find($_POST[$sondage->getQuestions()->get($q)->getId()]);
+                            $user->addReponse($reponse);
+                            $utilisateurRepository->save($user, true);
+                        }
+                    }
+                    break;
+                case("oui_non"):
+                    for($r = 0; $r < $sondage->getQuestions()->get($q)->getReponses()->count(); $r++){
+                        if(isset($_POST[$sondage->getQuestions()->get($q)->getId()])){
+                            $reponse = $reponseRepository->find($_POST[$sondage->getQuestions()->get($q)->getId()]);
+                        }
+                    }
+                    $user->addReponse($reponse);
+                    $utilisateurRepository->save($user, true);
 
-                   break;
-               case("ouverte"):
-                   $reponse = new Reponse();
-                   $question =$sondage->getQuestions()->get($q);
-                   $reponse->setReponse($_POST["ouverte".$q+1])->setQuestion($question);
-                   $reponseRepository->save($reponse);
-                   $questionRepository->save($question, true);
-                   $user->addReponse($reponse);
-                   $utilisateurRepository->save($user, true);
+                    break;
+                case("ouverte"):
+                    $reponse = new Reponse();
+                    $question =$sondage->getQuestions()->get($q);
+                    $reponse->setReponse($_POST["ouverte".$q+1])->setQuestion($question);
+                    $reponseRepository->save($reponse);
+                    $questionRepository->save($question, true);
+                    $user->addReponse($reponse);
+                    $utilisateurRepository->save($user, true);
 
-                   break;
-           }
-       }
+                    break;
+            }
+        }
         return $this->redirectToRoute('app_sondage_index', []);
     }
 
@@ -221,7 +230,7 @@ class SondageController extends AbstractController
         $typeRepository->save($type);
 
         $sondage= new Sondage();
-        $sondage -> setTheme($theme)->setNom($nom)->setCreateur($this->getUser())
+        $sondage -> setTheme($theme)->setNom($nom)->setAdministrateur($this->getUser())
             ->setDatecreation(new \DateTime('now'))->setIntroduction($introduction)->setVisibilite($visbilite);
         $sondageRepository->save($sondage);
 
@@ -231,6 +240,7 @@ class SondageController extends AbstractController
         $questionRepository->save($question);
 
         switch ($t){
+            case ("unique"):
             case("multiple"):
                 $j = 1;
                 while( isset($_POST["reponse1-".$j])){
@@ -243,6 +253,7 @@ class SondageController extends AbstractController
                     $j++;
                 }
                 break;
+
             case("oui_non"):
                 $rep1 = "oui";
                 $reponse= new Reponse();
@@ -281,6 +292,7 @@ class SondageController extends AbstractController
             $questionRepository->save($question,true);
 
             switch ($t){
+                case ("unique"):
                 case("multiple"):
                     $j = 1;
                     while( isset($_POST["reponse".$i."-".$j])){
@@ -397,6 +409,7 @@ class SondageController extends AbstractController
                 $questionRepository->save($question, true);
 
                 switch ($t) {
+                    case ("unique"):
                     case("multiple"):
                         $j = 1;
                         while (isset($_POST["reponse" . $i . "-" . $j])) {
@@ -409,6 +422,7 @@ class SondageController extends AbstractController
                             $j++;
                         }
                         break;
+
                     case("oui_non"):
                         $rep1 = "oui";
                         $reponse = new Reponse();
