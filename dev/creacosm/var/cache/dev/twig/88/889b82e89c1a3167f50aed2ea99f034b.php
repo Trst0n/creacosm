@@ -92,7 +92,13 @@ class __TwigTemplate_52b5c78972ad738b872073c3fb272f2b extends Template
         }
 
     </script>
+    <p>";
+        // line 13
+        echo twig_escape_filter($this->env, (isset($context["erreur"]) || array_key_exists("erreur", $context) ? $context["erreur"] : (function () { throw new RuntimeError('Variable "erreur" does not exist.', 13, $this->source); })()), "html", null, true);
+        echo "</p>
+
     <h1>Create new Theme</h1>
+
     <p id=\"idp\">
     <input name=\"id\" id=\"id\" type=\"hidden\" value =\"\">
     </p>
@@ -104,10 +110,6 @@ class __TwigTemplate_52b5c78972ad738b872073c3fb272f2b extends Template
     </form>
 
     <h1>Liste Theme</h1>
-        <p>";
-        // line 25
-        echo twig_escape_filter($this->env, (isset($context["erreur"]) || array_key_exists("erreur", $context) ? $context["erreur"] : (function () { throw new RuntimeError('Variable "erreur" does not exist.', 25, $this->source); })()), "html", null, true);
-        echo "</p>
         <table class=\"table\">
             <thead>
             <tr>
@@ -116,19 +118,19 @@ class __TwigTemplate_52b5c78972ad738b872073c3fb272f2b extends Template
             </thead>
             <tbody>
             ";
-        // line 33
+        // line 35
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable($context["theme"]);
         foreach ($context['_seq'] as $context["_key"] => $context["theme"]) {
-            // line 34
+            // line 36
             echo "            <tr>
                 <td>";
-            // line 35
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["theme"], "theme", [], "any", false, false, false, 35), "html", null, true);
+            // line 37
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["theme"], "theme", [], "any", false, false, false, 37), "html", null, true);
             echo "</td>
                 <td><a type=\"button\" href=\"";
-            // line 36
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_theme_delete", ["id" => twig_get_attribute($this->env, $this->source, $context["theme"], "id", [], "any", false, false, false, 36)]), "html", null, true);
+            // line 38
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_theme_delete", ["id" => twig_get_attribute($this->env, $this->source, $context["theme"], "id", [], "any", false, false, false, 38)]), "html", null, true);
             echo "\">Supprimer</a>
                 </td>
 
@@ -138,7 +140,7 @@ class __TwigTemplate_52b5c78972ad738b872073c3fb272f2b extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['theme'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 41
+        // line 43
         echo "
             </tbody>
         </table>
@@ -146,7 +148,7 @@ class __TwigTemplate_52b5c78972ad738b872073c3fb272f2b extends Template
 
 
     <a href=\"";
-        // line 47
+        // line 49
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_sondage_index");
         echo "\">back to list</a>
 
@@ -171,7 +173,7 @@ class __TwigTemplate_52b5c78972ad738b872073c3fb272f2b extends Template
 
     public function getDebugInfo()
     {
-        return array (  150 => 47,  142 => 41,  131 => 36,  127 => 35,  124 => 34,  120 => 33,  109 => 25,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  152 => 49,  144 => 43,  133 => 38,  129 => 37,  126 => 36,  122 => 35,  97 => 13,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -188,7 +190,10 @@ class __TwigTemplate_52b5c78972ad738b872073c3fb272f2b extends Template
         }
 
     </script>
+    <p>{{ erreur }}</p>
+
     <h1>Create new Theme</h1>
+
     <p id=\"idp\">
     <input name=\"id\" id=\"id\" type=\"hidden\" value =\"\">
     </p>
@@ -200,7 +205,6 @@ class __TwigTemplate_52b5c78972ad738b872073c3fb272f2b extends Template
     </form>
 
     <h1>Liste Theme</h1>
-        <p>{{ erreur }}</p>
         <table class=\"table\">
             <thead>
             <tr>

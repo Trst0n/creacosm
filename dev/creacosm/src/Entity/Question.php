@@ -18,7 +18,7 @@ class Question
     #[ORM\Column(length: 255)]
     private ?string $intitule = null;
 
-    #[ORM\OneToMany(mappedBy: 'question', targetEntity: Reponse::class)]
+    #[ORM\OneToMany(mappedBy: 'question', targetEntity: Reponse::class, orphanRemoval: true)]
     private Collection $reponses;
 
     #[ORM\ManyToOne]

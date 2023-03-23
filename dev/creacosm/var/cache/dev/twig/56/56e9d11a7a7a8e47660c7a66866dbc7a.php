@@ -120,8 +120,9 @@ class __TwigTemplate_27fd11a1ac82e9c49d45582e5baa721c extends Template
             <br>
             <input type=\"text\" name=\"intitule1\" autocomplete=\"off\">
         </label>
-
-        <br><br>
+    <br><br>
+    <label> Image: <br> <input type=\"text\" name=\"image1\"></label>
+    <br><br>
 
         <label for=\"type-select\">Choisissez un type:</label><br>
 
@@ -201,8 +202,9 @@ class __TwigTemplate_27fd11a1ac82e9c49d45582e5baa721c extends Template
             <br>
             <input type=\"text\" name=\"intitule1\" autocomplete=\"off\">
         </label>
-
-        <br><br>
+    <br><br>
+    <label> Image: <br> <input type=\"text\" name=\"image1\"></label>
+    <br><br>
 
         <label for=\"type-select\">Choisissez un type:</label><br>
 

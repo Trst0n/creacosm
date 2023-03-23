@@ -98,7 +98,7 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
 
     int ++
     document.getElementById(\"cpt\").innerHTML = \"<input name=\\\"nbquestion\\\" id=\\\"nbquestion\\\" type=\\\"hidden\\\" value =\" + int +\">\";
-    document.getElementById(\"demo\"+int).innerHTML += \"<label> Intitulé: <br> <input type=\\\"text\\\" name=\\\"intitule\"+ int+\"\\\"> </label> <br><br> <label for=\\\"type-select\\\">Choisissez un type:</label><br> <select name=\\\"type\"+ int+\"\\\" id=\\\"type-select\\\" autocomplete='off' onchange=\\\"choixtypebis(value,\"+ int+\")\\\" > <option value=\\\"\\\">--Choisissez une option--</option> <option value=\\\"multiple\\\">Question à choix multiple</option> <option value=\\\"ouverte\\\">Question ouverte</option> <option value=\\\"oui_non\\\">Question oui/non</option></select> <br><br> <label> Choix: <br> <p id=\\\"typequestion\" + int +\"\\\"></p><p id=\\\"demo\" + (int+1) + \"\\\"><br> </label> <br><br>\";
+    document.getElementById(\"demo\"+int).innerHTML += \"<label> Intitulé: <br> <input type=\\\"text\\\" name=\\\"intitule\"+ int+\"\\\"> <br><br> <label> Image: <br> <input type=\\\"text\\\" name=\\\"image\"+ int+\"\\\"></label> <br><br> <label for=\\\"type-select\\\">Choisissez un type:</label><br> <select name=\\\"type\"+ int+\"\\\" id=\\\"type-select\\\" autocomplete='off' onchange=\\\"choixtypebis(value,\"+ int+\")\\\" > <option value=\\\"\\\">--Choisissez une option--</option> <option value=\\\"multiple\\\">Question à choix multiple</option> <option value=\\\"ouverte\\\">Question ouverte</option> <option value=\\\"oui_non\\\">Question oui/non</option></select> <br><br> <label> Choix: <br> <p id=\\\"typequestion\" + int +\"\\\"></p><p id=\\\"demo\" + (int+1) + \"\\\"><br> </label> <br><br>\";
 
     if (int > 1){
     document.getElementById(\"removequest\").innerHTML = \"<button type=\\\"button\\\" onclick=\\\"removequestion(\" + int + \")\\\"> - Supprimer une question </button>\"
@@ -182,32 +182,35 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
             <input type=\"text\" autocomplete=\"off\" name=\"introduction\" style=\"height:140px\" required>
         </label>
         <br>
+        <br>
+
+        <label>Choisissez un thème parmis les suivants :</label>
         <select name=\"theme\" id=\"type-select\" autocomplete=\"off\" >
             ";
-        // line 104
+        // line 107
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable($context["theme"]);
         foreach ($context['_seq'] as $context["_key"] => $context["theme"]) {
-            // line 105
+            // line 108
             echo "            <option name=\"";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["theme"], "theme", [], "any", false, false, false, 105), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["theme"], "theme", [], "any", false, false, false, 108), "html", null, true);
             echo "\" value=\"";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["theme"], "theme", [], "any", false, false, false, 105), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["theme"], "theme", [], "any", false, false, false, 108), "html", null, true);
             echo "\">";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["theme"], "theme", [], "any", false, false, false, 105), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["theme"], "theme", [], "any", false, false, false, 108), "html", null, true);
             echo "</option>
             ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['theme'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 107
+        // line 110
         echo "        </select>
         <br>
 
         <br>
         ";
-        // line 111
+        // line 114
         echo twig_include($this->env, $context, "sondage/createquestion.html.twig");
         echo "
         <br>
@@ -220,7 +223,7 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
 
 
     <a href=\"";
-        // line 121
+        // line 124
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_sondage_index");
         echo "\">back to list</a>
 ";
@@ -244,7 +247,7 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
 
     public function getDebugInfo()
     {
-        return array (  224 => 121,  211 => 111,  205 => 107,  192 => 105,  188 => 104,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  227 => 124,  214 => 114,  208 => 110,  195 => 108,  191 => 107,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -267,7 +270,7 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
 
     int ++
     document.getElementById(\"cpt\").innerHTML = \"<input name=\\\"nbquestion\\\" id=\\\"nbquestion\\\" type=\\\"hidden\\\" value =\" + int +\">\";
-    document.getElementById(\"demo\"+int).innerHTML += \"<label> Intitulé: <br> <input type=\\\"text\\\" name=\\\"intitule\"+ int+\"\\\"> </label> <br><br> <label for=\\\"type-select\\\">Choisissez un type:</label><br> <select name=\\\"type\"+ int+\"\\\" id=\\\"type-select\\\" autocomplete='off' onchange=\\\"choixtypebis(value,\"+ int+\")\\\" > <option value=\\\"\\\">--Choisissez une option--</option> <option value=\\\"multiple\\\">Question à choix multiple</option> <option value=\\\"ouverte\\\">Question ouverte</option> <option value=\\\"oui_non\\\">Question oui/non</option></select> <br><br> <label> Choix: <br> <p id=\\\"typequestion\" + int +\"\\\"></p><p id=\\\"demo\" + (int+1) + \"\\\"><br> </label> <br><br>\";
+    document.getElementById(\"demo\"+int).innerHTML += \"<label> Intitulé: <br> <input type=\\\"text\\\" name=\\\"intitule\"+ int+\"\\\"> <br><br> <label> Image: <br> <input type=\\\"text\\\" name=\\\"image\"+ int+\"\\\"></label> <br><br> <label for=\\\"type-select\\\">Choisissez un type:</label><br> <select name=\\\"type\"+ int+\"\\\" id=\\\"type-select\\\" autocomplete='off' onchange=\\\"choixtypebis(value,\"+ int+\")\\\" > <option value=\\\"\\\">--Choisissez une option--</option> <option value=\\\"multiple\\\">Question à choix multiple</option> <option value=\\\"ouverte\\\">Question ouverte</option> <option value=\\\"oui_non\\\">Question oui/non</option></select> <br><br> <label> Choix: <br> <p id=\\\"typequestion\" + int +\"\\\"></p><p id=\\\"demo\" + (int+1) + \"\\\"><br> </label> <br><br>\";
 
     if (int > 1){
     document.getElementById(\"removequest\").innerHTML = \"<button type=\\\"button\\\" onclick=\\\"removequestion(\" + int + \")\\\"> - Supprimer une question </button>\"
@@ -351,6 +354,9 @@ class __TwigTemplate_4a35b6a068ad70150bc4bc5c074f00df extends Template
             <input type=\"text\" autocomplete=\"off\" name=\"introduction\" style=\"height:140px\" required>
         </label>
         <br>
+        <br>
+
+        <label>Choisissez un thème parmis les suivants :</label>
         <select name=\"theme\" id=\"type-select\" autocomplete=\"off\" >
             {% for theme in theme %}
             <option name=\"{{ theme.theme }}\" value=\"{{ theme.theme }}\">{{ theme.theme }}</option>

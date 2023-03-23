@@ -101,7 +101,7 @@ class __TwigTemplate_6d18da65f7f858c6043ef81db4ab749c extends Template
 
             document.getElementById(\"newq\").innerHTML = \"<input name=\\\"newquestion\\\" id=\\\"newquestion\\\" type=\\\"hidden\\\" value =\" + nbQ +\">\";
 
-            document.getElementById(\"demo\"+nbQ).innerHTML += \"<label> Intitulé: <br> <input type=\\\"text\\\" name=\\\"intitule\"+ nbQ+\"\\\"> </label> <br><br> <label for=\\\"type-select\\\">Choisissez un type:</label><br> <select name=\\\"type\"+ nbQ+\"\\\" id=\\\"type-select\\\" autocomplete='off' onchange=\\\"choix(value,\"+ nbQ+ \")\\\" > <option value=\\\"\\\">--Choisissez une option--</option> <option value=\\\"multiple\\\">Question à choix multiple</option> <option value=\\\"ouverte\\\">Question ouverte</option> <option value=\\\"oui_non\\\">Question oui/non</option></select> <br><br> <label> Choix: <br> <p id=\\\"typequestion\" + nbQ +\"\\\"></p><p id=\\\"demo\" + (nbQ+1) + \"\\\"><br> </label> <br><br>\";
+            document.getElementById(\"demo\"+nbQ).innerHTML += \"<label> Intitulé: <br> <input type=\\\"text\\\" name=\\\"intitule\"+ nbQ+\"\\\"> </label> <br><br> <label> Image: <br> <input type=\\\"text\\\" name=\\\"image\"+ nbQ+\"\\\"> <br><br> </label> <label for=\\\"type-select\\\">Choisissez un type:</label><br> <select name=\\\"type\"+ nbQ+\"\\\" id=\\\"type-select\\\" autocomplete='off' onchange=\\\"choix(value,\"+ nbQ+ \")\\\" > <option value=\\\"\\\">--Choisissez une option--</option> <option value=\\\"multiple\\\">Question à choix multiple</option> <option value=\\\"ouverte\\\">Question ouverte</option> <option value=\\\"oui_non\\\">Question oui/non</option></select> <br><br> <label> Choix: <br> <p id=\\\"typequestion\" + nbQ +\"\\\"></p><p id=\\\"demo\" + (nbQ+1) + \"\\\"><br> </label> <br><br>\";
 
             if (nbQ >= 1){
             document.getElementById(\"removequest\").innerHTML = \"<button type=\\\"button\\\" onclick=\\\"suprquest(\" + nbQ + \")\\\"> - Supprimer une question </button>\"
@@ -238,68 +238,75 @@ class __TwigTemplate_6d18da65f7f858c6043ef81db4ab749c extends Template
             echo "\" value=\"";
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["question"], "intitule", [], "any", false, false, false, 125), "html", null, true);
             echo "\" ><br>
-        <label>Type de la question : ";
+            <label>Visuel :</label> <input name=\"image";
             // line 126
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["question"], "type", [], "any", false, false, false, 126), "type", [], "any", false, false, false, 126), "html", null, true);
+            echo twig_escape_filter($this->env, (isset($context["numquestion"]) || array_key_exists("numquestion", $context) ? $context["numquestion"] : (function () { throw new RuntimeError('Variable "numquestion" does not exist.', 126, $this->source); })()), "html", null, true);
+            echo "\" value=\"";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["question"], "visuel", [], "any", false, false, false, 126), "visuel", [], "any", false, false, false, 126), "html", null, true);
+            echo "\" ><br>
+
+            <label>Type de la question : ";
+            // line 128
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["question"], "type", [], "any", false, false, false, 128), "type", [], "any", false, false, false, 128), "html", null, true);
             echo "</label><br>
         ";
-            // line 127
-            if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["question"], "type", [], "any", false, false, false, 127), "type", [], "any", false, false, false, 127) == "multiple")) {
-                // line 128
+            // line 129
+            if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["question"], "type", [], "any", false, false, false, 129), "type", [], "any", false, false, false, 129) == "multiple")) {
+                // line 130
                 echo "            ";
                 $context["i"] = 1;
-                // line 129
+                // line 131
                 echo "            ";
                 $context['_parent'] = $context;
-                $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["question"], "reponses", [], "any", false, false, false, 129));
+                $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["question"], "reponses", [], "any", false, false, false, 131));
                 foreach ($context['_seq'] as $context["_key"] => $context["reponse"]) {
-                    // line 130
+                    // line 132
                     echo "                <label>Reponse ";
-                    echo twig_escape_filter($this->env, (isset($context["i"]) || array_key_exists("i", $context) ? $context["i"] : (function () { throw new RuntimeError('Variable "i" does not exist.', 130, $this->source); })()), "html", null, true);
+                    echo twig_escape_filter($this->env, (isset($context["i"]) || array_key_exists("i", $context) ? $context["i"] : (function () { throw new RuntimeError('Variable "i" does not exist.', 132, $this->source); })()), "html", null, true);
                     echo " :</label><input  name=\"reponse";
-                    echo twig_escape_filter($this->env, (isset($context["numquestion"]) || array_key_exists("numquestion", $context) ? $context["numquestion"] : (function () { throw new RuntimeError('Variable "numquestion" does not exist.', 130, $this->source); })()), "html", null, true);
-                    echo twig_escape_filter($this->env, (isset($context["i"]) || array_key_exists("i", $context) ? $context["i"] : (function () { throw new RuntimeError('Variable "i" does not exist.', 130, $this->source); })()), "html", null, true);
+                    echo twig_escape_filter($this->env, (isset($context["numquestion"]) || array_key_exists("numquestion", $context) ? $context["numquestion"] : (function () { throw new RuntimeError('Variable "numquestion" does not exist.', 132, $this->source); })()), "html", null, true);
+                    echo twig_escape_filter($this->env, (isset($context["i"]) || array_key_exists("i", $context) ? $context["i"] : (function () { throw new RuntimeError('Variable "i" does not exist.', 132, $this->source); })()), "html", null, true);
                     echo "\" value=\"";
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["reponse"], "reponse", [], "any", false, false, false, 130), "html", null, true);
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["reponse"], "reponse", [], "any", false, false, false, 132), "html", null, true);
                     echo "\"><br>
                 ";
-                    // line 131
-                    $context["i"] = ((isset($context["i"]) || array_key_exists("i", $context) ? $context["i"] : (function () { throw new RuntimeError('Variable "i" does not exist.', 131, $this->source); })()) + 1);
-                    // line 132
+                    // line 133
+                    $context["i"] = ((isset($context["i"]) || array_key_exists("i", $context) ? $context["i"] : (function () { throw new RuntimeError('Variable "i" does not exist.', 133, $this->source); })()) + 1);
+                    // line 134
                     echo "            ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['reponse'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 133
+                // line 135
                 echo "
         ";
             }
-            // line 135
+            // line 137
             echo "            <p id=\"";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["question"], "id", [], "any", false, false, false, 135), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["question"], "id", [], "any", false, false, false, 137), "html", null, true);
             echo "\">
                 <input name=\"";
-            // line 136
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["question"], "id", [], "any", false, false, false, 136), "html", null, true);
+            // line 138
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["question"], "id", [], "any", false, false, false, 138), "html", null, true);
             echo "\" value=\"true\" type=\"hidden\"></p>
             <button type=\"button\"  value=\"Masquer\" onclick=\"masquer('question";
-            // line 137
-            echo twig_escape_filter($this->env, (isset($context["numquestion"]) || array_key_exists("numquestion", $context) ? $context["numquestion"] : (function () { throw new RuntimeError('Variable "numquestion" does not exist.', 137, $this->source); })()), "html", null, true);
+            // line 139
+            echo twig_escape_filter($this->env, (isset($context["numquestion"]) || array_key_exists("numquestion", $context) ? $context["numquestion"] : (function () { throw new RuntimeError('Variable "numquestion" does not exist.', 139, $this->source); })()), "html", null, true);
             echo "','";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["question"], "id", [], "any", false, false, false, 137), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["question"], "id", [], "any", false, false, false, 139), "html", null, true);
             echo "');\" > Supprimer la question </button><br>
         </div>
         ";
-            // line 139
-            $context["numquestion"] = ((isset($context["numquestion"]) || array_key_exists("numquestion", $context) ? $context["numquestion"] : (function () { throw new RuntimeError('Variable "numquestion" does not exist.', 139, $this->source); })()) + 1);
-            // line 140
+            // line 141
+            $context["numquestion"] = ((isset($context["numquestion"]) || array_key_exists("numquestion", $context) ? $context["numquestion"] : (function () { throw new RuntimeError('Variable "numquestion" does not exist.', 141, $this->source); })()) + 1);
+            // line 142
             echo "    ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['question'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 141
+        // line 143
         echo "
         <p id=\"demo1\"></p>
         <p id=\"removequest\"></p>
@@ -310,12 +317,12 @@ class __TwigTemplate_6d18da65f7f858c6043ef81db4ab749c extends Template
     </form>
 
     <a href=\"";
-        // line 150
+        // line 152
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_sondage_index");
         echo "\">back to list</a>
 
     ";
-        // line 152
+        // line 154
         echo twig_include($this->env, $context, "sondage/_delete_form.html.twig");
         echo "
 ";
@@ -339,7 +346,7 @@ class __TwigTemplate_6d18da65f7f858c6043ef81db4ab749c extends Template
 
     public function getDebugInfo()
     {
-        return array (  319 => 152,  314 => 150,  303 => 141,  297 => 140,  295 => 139,  288 => 137,  284 => 136,  279 => 135,  275 => 133,  269 => 132,  267 => 131,  257 => 130,  252 => 129,  249 => 128,  247 => 127,  243 => 126,  237 => 125,  232 => 124,  227 => 123,  225 => 122,  222 => 121,  213 => 114,  204 => 107,  202 => 106,  194 => 103,  189 => 101,  183 => 98,  88 => 5,  78 => 4,  59 => 2,  36 => 1,);
+        return array (  326 => 154,  321 => 152,  310 => 143,  304 => 142,  302 => 141,  295 => 139,  291 => 138,  286 => 137,  282 => 135,  276 => 134,  274 => 133,  264 => 132,  259 => 131,  256 => 130,  254 => 129,  250 => 128,  243 => 126,  237 => 125,  232 => 124,  227 => 123,  225 => 122,  222 => 121,  213 => 114,  204 => 107,  202 => 106,  194 => 103,  189 => 101,  183 => 98,  88 => 5,  78 => 4,  59 => 2,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -364,7 +371,7 @@ class __TwigTemplate_6d18da65f7f858c6043ef81db4ab749c extends Template
 
             document.getElementById(\"newq\").innerHTML = \"<input name=\\\"newquestion\\\" id=\\\"newquestion\\\" type=\\\"hidden\\\" value =\" + nbQ +\">\";
 
-            document.getElementById(\"demo\"+nbQ).innerHTML += \"<label> Intitulé: <br> <input type=\\\"text\\\" name=\\\"intitule\"+ nbQ+\"\\\"> </label> <br><br> <label for=\\\"type-select\\\">Choisissez un type:</label><br> <select name=\\\"type\"+ nbQ+\"\\\" id=\\\"type-select\\\" autocomplete='off' onchange=\\\"choix(value,\"+ nbQ+ \")\\\" > <option value=\\\"\\\">--Choisissez une option--</option> <option value=\\\"multiple\\\">Question à choix multiple</option> <option value=\\\"ouverte\\\">Question ouverte</option> <option value=\\\"oui_non\\\">Question oui/non</option></select> <br><br> <label> Choix: <br> <p id=\\\"typequestion\" + nbQ +\"\\\"></p><p id=\\\"demo\" + (nbQ+1) + \"\\\"><br> </label> <br><br>\";
+            document.getElementById(\"demo\"+nbQ).innerHTML += \"<label> Intitulé: <br> <input type=\\\"text\\\" name=\\\"intitule\"+ nbQ+\"\\\"> </label> <br><br> <label> Image: <br> <input type=\\\"text\\\" name=\\\"image\"+ nbQ+\"\\\"> <br><br> </label> <label for=\\\"type-select\\\">Choisissez un type:</label><br> <select name=\\\"type\"+ nbQ+\"\\\" id=\\\"type-select\\\" autocomplete='off' onchange=\\\"choix(value,\"+ nbQ+ \")\\\" > <option value=\\\"\\\">--Choisissez une option--</option> <option value=\\\"multiple\\\">Question à choix multiple</option> <option value=\\\"ouverte\\\">Question ouverte</option> <option value=\\\"oui_non\\\">Question oui/non</option></select> <br><br> <label> Choix: <br> <p id=\\\"typequestion\" + nbQ +\"\\\"></p><p id=\\\"demo\" + (nbQ+1) + \"\\\"><br> </label> <br><br>\";
 
             if (nbQ >= 1){
             document.getElementById(\"removequest\").innerHTML = \"<button type=\\\"button\\\" onclick=\\\"suprquest(\" + nbQ + \")\\\"> - Supprimer une question </button>\"
@@ -469,7 +476,9 @@ class __TwigTemplate_6d18da65f7f858c6043ef81db4ab749c extends Template
         {% for question in sondage.questions %}
         <div id=\"question{{ numquestion }}\">
         <label>Nom:</label> <input name=\"question{{ numquestion }}\" value=\"{{ question.intitule }}\" ><br>
-        <label>Type de la question : {{ question.type.type }}</label><br>
+            <label>Visuel :</label> <input name=\"image{{ numquestion }}\" value=\"{{ question.visuel.visuel }}\" ><br>
+
+            <label>Type de la question : {{ question.type.type }}</label><br>
         {% if question.type.type == \"multiple\" %}
             {% set i = 1 %}
             {% for reponse in question.reponses %}

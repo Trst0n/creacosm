@@ -40,7 +40,7 @@ class Sondage
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $datecreation = null;
 
-    #[ORM\OneToMany(mappedBy: 'sondage', targetEntity: Question::class)]
+    #[ORM\OneToMany(mappedBy: 'sondage', targetEntity: Question::class , orphanRemoval: true)]
     private Collection $questions;
 
     public function __construct()

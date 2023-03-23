@@ -7,6 +7,7 @@ use App\Entity\Reponse;
 use App\Entity\Sondage;
 use App\Entity\Theme;
 use App\Entity\Type;
+use App\Entity\Visuel;
 use App\Form\SondageType;
 use App\Repository\QuestionRepository;
 use App\Repository\ReponseRepository;
@@ -14,6 +15,7 @@ use App\Repository\SondageRepository;
 use App\Repository\ThemeRepository;
 use App\Repository\TypeRepository;
 use App\Repository\UtilisateurRepository;
+use App\Repository\VisuelRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -67,6 +69,16 @@ class SondageController extends AbstractController
         $theme = $themeRepository->findAll();
 
         $nom = $_POST["theme"];
+        $erreur = "Un thème portant le même nom existe deja";
+        for ($i=0; $i<count($theme);$i++){
+            if($theme[$i]->getTheme() == $nom){
+                return $this->render('sondage/create_theme.html.twig', [
+                    'theme' => $theme,
+                    'erreur' => $erreur
+                ],);
+            }
+        }
+
         $theme = new Theme();
         $theme->setTheme($nom);
         $themeRepository->save($theme,true);
@@ -179,7 +191,7 @@ class SondageController extends AbstractController
     }
 
     #[Route('/create', name: 'app_sondage_create', methods: ['GET', 'POST'])]
-    public function create(Request $request, ReponseRepository $reponseRepository, ThemeRepository $themeRepository, SondageRepository $sondageRepository, TypeRepository $typeRepository, QuestionRepository $questionRepository): Response
+    public function create(Request $request,VisuelRepository $visuelRepository, ReponseRepository $reponseRepository, ThemeRepository $themeRepository, SondageRepository $sondageRepository, TypeRepository $typeRepository, QuestionRepository $questionRepository): Response
     {
         $alltheme = $themeRepository->findAll();
 
@@ -198,6 +210,11 @@ class SondageController extends AbstractController
         $introduction =$_POST['introduction'];
         $nomQuestion = $_POST["intitule1"];
 
+        $image = $_POST["image1"];
+        $visuel = new Visuel();
+        $visuel->setVisuel($image);
+        $visuelRepository->save($visuel);
+
         $t = $_POST["type1"];
         $type = new Type();
         $type->setType($t);
@@ -210,7 +227,7 @@ class SondageController extends AbstractController
 
 
         $question = new Question();
-        $question ->setIntitule($nomQuestion) ->setType($type)->setSondage($sondage);
+        $question ->setIntitule($nomQuestion) ->setType($type)->setSondage($sondage)->setVisuel($visuel);
         $questionRepository->save($question);
 
         switch ($t){
@@ -254,8 +271,13 @@ class SondageController extends AbstractController
             $type->setType($t);
             $typeRepository->save($type);
 
+            $image = $_POST["image".$i];
+            $visuel = new Visuel();
+            $visuel->setVisuel($image);
+            $visuelRepository->save($visuel);
+
             $question = new Question();
-            $question ->setIntitule($nomQuestion) ->setType($type)->setSondage($sondage);
+            $question ->setIntitule($nomQuestion) ->setType($type)->setSondage($sondage)->setVisuel($visuel);
             $questionRepository->save($question,true);
 
             switch ($t){
@@ -314,7 +336,7 @@ class SondageController extends AbstractController
     }
 
     #[Route('/{id}/edited', name: 'app_sondage_edited', methods: ['GET', 'POST'])]
-    public function editted(Request $request,ReponseRepository $reponseRepository, TypeRepository $typeRepository, QuestionRepository $questionRepository, Sondage $sondage, SondageRepository $sondageRepository): Response
+    public function editted(Request $request,VisuelRepository $visuelRepository, ReponseRepository $reponseRepository, TypeRepository $typeRepository, QuestionRepository $questionRepository, Sondage $sondage, SondageRepository $sondageRepository): Response
     {
         $nb=$_POST["nbquestion"];
         if($nb!="0") {
@@ -333,10 +355,12 @@ class SondageController extends AbstractController
             while (isset($_POST["question" . $j])) {
                 $intitulequestion = $_POST["question" . $j];
                 $sondage->getQuestions()->get($j - 1)->setIntitule($intitulequestion);
+                $sondage->getQuestions()->get($j -1)->getVisuel()->setVisuel($_POST["image".$j]);
                 $i = 1;
                 while (isset($_POST["reponse" . $j . $i])) {
                     $repquestion = $_POST["reponse" . $j . $i];
                     $sondage->getQuestions()->get($j - 1)->getReponses()->get($i - 1)->setReponse($repquestion);
+
                     $i++;
                 }
                 $j++;
@@ -363,8 +387,13 @@ class SondageController extends AbstractController
                 $type->setType($t);
                 $typeRepository->save($type);
 
+                $image = $_POST["image".$i];
+                $visuel = new Visuel();
+                $visuel->setVisuel($image);
+                $visuelRepository->save($visuel);
+
                 $question = new Question();
-                $question->setIntitule($nomQuestion)->setType($type)->setSondage($sondage);
+                $question->setIntitule($nomQuestion)->setType($type)->setSondage($sondage)->setVisuel($visuel);
                 $questionRepository->save($question, true);
 
                 switch ($t) {

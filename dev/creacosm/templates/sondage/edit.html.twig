@@ -18,7 +18,7 @@
 
             document.getElementById("newq").innerHTML = "<input name=\"newquestion\" id=\"newquestion\" type=\"hidden\" value =" + nbQ +">";
 
-            document.getElementById("demo"+nbQ).innerHTML += "<label> Intitulé: <br> <input type=\"text\" name=\"intitule"+ nbQ+"\"> </label> <br><br> <label for=\"type-select\">Choisissez un type:</label><br> <select name=\"type"+ nbQ+"\" id=\"type-select\" autocomplete='off' onchange=\"choix(value,"+ nbQ+ ")\" > <option value=\"\">--Choisissez une option--</option> <option value=\"multiple\">Question à choix multiple</option> <option value=\"ouverte\">Question ouverte</option> <option value=\"oui_non\">Question oui/non</option></select> <br><br> <label> Choix: <br> <p id=\"typequestion" + nbQ +"\"></p><p id=\"demo" + (nbQ+1) + "\"><br> </label> <br><br>";
+            document.getElementById("demo"+nbQ).innerHTML += "<label> Intitulé: <br> <input type=\"text\" name=\"intitule"+ nbQ+"\"> </label> <br><br> <label> Image: <br> <input type=\"text\" name=\"image"+ nbQ+"\"> <br><br> </label> <label for=\"type-select\">Choisissez un type:</label><br> <select name=\"type"+ nbQ+"\" id=\"type-select\" autocomplete='off' onchange=\"choix(value,"+ nbQ+ ")\" > <option value=\"\">--Choisissez une option--</option> <option value=\"multiple\">Question à choix multiple</option> <option value=\"ouverte\">Question ouverte</option> <option value=\"oui_non\">Question oui/non</option></select> <br><br> <label> Choix: <br> <p id=\"typequestion" + nbQ +"\"></p><p id=\"demo" + (nbQ+1) + "\"><br> </label> <br><br>";
 
             if (nbQ >= 1){
             document.getElementById("removequest").innerHTML = "<button type=\"button\" onclick=\"suprquest(" + nbQ + ")\"> - Supprimer une question </button>"
@@ -123,7 +123,9 @@
         {% for question in sondage.questions %}
         <div id="question{{ numquestion }}">
         <label>Nom:</label> <input name="question{{ numquestion }}" value="{{ question.intitule }}" ><br>
-        <label>Type de la question : {{ question.type.type }}</label><br>
+            <label>Visuel :</label> <input name="image{{ numquestion }}" value="{{ question.visuel.visuel }}" ><br>
+
+            <label>Type de la question : {{ question.type.type }}</label><br>
         {% if question.type.type == "multiple" %}
             {% set i = 1 %}
             {% for reponse in question.reponses %}
