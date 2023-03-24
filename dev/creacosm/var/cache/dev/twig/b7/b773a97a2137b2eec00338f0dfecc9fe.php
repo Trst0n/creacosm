@@ -114,7 +114,7 @@ class __TwigTemplate_a965ee57eab589b7833e7c3bcdcde3a0 extends Template
                 <th>Créé par :</th>
                 <td>";
         // line 24
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["sondage"]) || array_key_exists("sondage", $context) ? $context["sondage"] : (function () { throw new RuntimeError('Variable "sondage" does not exist.', 24, $this->source); })()), "createur", [], "any", false, false, false, 24), "nom", [], "any", false, false, false, 24), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["sondage"]) || array_key_exists("sondage", $context) ? $context["sondage"] : (function () { throw new RuntimeError('Variable "sondage" does not exist.', 24, $this->source); })()), "administrateur", [], "any", false, false, false, 24), "nom", [], "any", false, false, false, 24), "html", null, true);
         echo "</td>
             </tr>
             <tr>
@@ -190,7 +190,7 @@ class __TwigTemplate_a965ee57eab589b7833e7c3bcdcde3a0 extends Template
             </tr>
             <tr>
                 <th>Créé par :</th>
-                <td>{{ sondage.createur.nom }}</td>
+                <td>{{ sondage.administrateur.nom }}</td>
             </tr>
             <tr>
                 <th>Le :</th>
