@@ -18,6 +18,8 @@ return [
         '/accueil' => [[['_route' => 'app_accueil', '_controller' => 'App\\Controller\\RacineController::accueil'], null, null, null, false, false, null]],
         '/moncompte' => [[['_route' => 'app_moncompte', '_controller' => 'App\\Controller\\RacineController::account'], null, null, null, false, false, null]],
         '/setmoncompte' => [[['_route' => 'app_set_moncompte', '_controller' => 'App\\Controller\\RacineController::modifierInformation'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/error403' => [[['_route' => 'app_error', '_controller' => 'App\\Controller\\RacineController::error403'], null, ['GET' => 0], null, false, false, null]],
+        '/error404' => [[['_route' => 'app_error404', '_controller' => 'App\\Controller\\RacineController::show404'], null, ['GET' => 0], null, false, false, null]],
         '/register' => [[['_route' => 'app_register', '_controller' => 'App\\Controller\\RegistrationController::register'], null, null, null, false, false, null]],
         '/login' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],
         '/logout' => [[['_route' => 'app_logout', '_controller' => 'App\\Controller\\SecurityController::logout'], null, null, null, false, false, null]],

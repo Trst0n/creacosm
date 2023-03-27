@@ -22,9 +22,12 @@
         <input type="hidden" name="iduser" value="{{ app.user.id }}">
         <fieldset>
             <legend>{{ question.intitule }} </legend>
-            {% if question.visuel.visuel != "" %}
-                <img src="{{ question.visuel.visuel }} "  style="width:500px;height:300px;">
-            {%endif %}
+            {% if question.visuel %}
+                {% if question.visuel.visuel != "" %}
+                    <img src="{{ question.visuel.visuel }} "  style="width:500px;height:300px;">
+                {%endif %}
+            {% endif %}
+
 
             {% if question.type.type == 'multiple' %}
                 {% for reponse in question.reponses %}

@@ -136,11 +136,7 @@ class __TwigTemplate_a965ee57eab589b7833e7c3bcdcde3a0 extends Template
         // line 35
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_sondage_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["sondage"]) || array_key_exists("sondage", $context) ? $context["sondage"] : (function () { throw new RuntimeError('Variable "sondage" does not exist.', 35, $this->source); })()), "id", [], "any", false, false, false, 35)]), "html", null, true);
         echo "\">edit</a>
-
-    ";
-        // line 37
-        echo twig_include($this->env, $context, "sondage/_delete_form.html.twig");
-        echo "
+    
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -162,7 +158,7 @@ class __TwigTemplate_a965ee57eab589b7833e7c3bcdcde3a0 extends Template
 
     public function getDebugInfo()
     {
-        return array (  142 => 37,  137 => 35,  132 => 33,  124 => 28,  117 => 24,  110 => 20,  103 => 16,  96 => 12,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  137 => 35,  132 => 33,  124 => 28,  117 => 24,  110 => 20,  103 => 16,  96 => 12,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -202,8 +198,7 @@ class __TwigTemplate_a965ee57eab589b7833e7c3bcdcde3a0 extends Template
     <a href=\"{{ path('app_sondage_index') }}\">back to list</a>
 
     <a href=\"{{ path('app_sondage_edit', {'id': sondage.id}) }}\">edit</a>
-
-    {{ include('sondage/_delete_form.html.twig') }}
+    
 {% endblock %}
 ", "sondage/show.html.twig", "/var/www/html/creacosm/templates/sondage/show.html.twig");
     }

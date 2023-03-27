@@ -9,7 +9,7 @@ services:
         UID: 1000
         MAIL: wassim.oulhadj@etu.univ-orleans.fr
         NOM: "tristan"
-    container_name: container_itri
+    container_name: container
     volumes:
       - ./dev:/var/www/html
     ports:

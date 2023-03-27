@@ -55,4 +55,16 @@ class RacineController extends AbstractController
         return $this->redirectToRoute('app_moncompte', []);
     }
 
+    #[Route('/error403', name: 'app_error', methods: ['GET'])]
+    public function error403(): Response
+    {
+        return $this->render('bundles/TwigBundle/Exception/error403.html.twig');
+    }
+
+    #[Route('/error404', name: 'app_error404', methods: ['GET'])]
+    public function show404(): Response
+    {
+        return $this->render('bundles/TwigBundle/Exception/error404.html.twig');
+    }
+
 }

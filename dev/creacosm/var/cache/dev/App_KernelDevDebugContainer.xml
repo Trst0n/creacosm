@@ -109,7 +109,7 @@
     <parameter key="kernel.trusted_hosts" type="collection"/>
     <parameter key="kernel.default_locale">en</parameter>
     <parameter key="kernel.enabled_locales" type="collection"/>
-    <parameter key="kernel.error_controller">error_controller</parameter>
+    <parameter key="kernel.error_controller">App\Controller\RacineController::show404</parameter>
     <parameter key="debug.file_link_format">%env(default::SYMFONY_IDE)%</parameter>
     <parameter key="asset.request_context.base_path">null</parameter>
     <parameter key="asset.request_context.secure">null</parameter>
@@ -219,7 +219,7 @@
     <parameter key="web_profiler.debug_toolbar.intercept_redirects">false</parameter>
     <parameter key="web_profiler.debug_toolbar.mode">2</parameter>
     <parameter key="security.role_hierarchy.roles" type="collection"/>
-    <parameter key="security.access.denied_url">null</parameter>
+    <parameter key="security.access.denied_url">/error403</parameter>
     <parameter key="security.authentication.manager.erase_credentials">true</parameter>
     <parameter key="security.authentication.session_strategy.strategy">migrate</parameter>
     <parameter key="security.authentication.hide_user_not_found">true</parameter>
@@ -493,7 +493,7 @@
     </service>
     <service id="error_controller" class="Symfony\Component\HttpKernel\Controller\ErrorController" public="true">
       <argument type="service" id="http_kernel"/>
-      <argument>error_controller</argument>
+      <argument>App\Controller\RacineController::show404</argument>
       <argument type="service" id="error_handler.error_renderer.serializer"/>
     </service>
     <service id="exception_listener" class="Symfony\Component\HttpKernel\EventListener\ErrorListener">
@@ -501,7 +501,7 @@
       <tag name="monolog.logger" channel="request"/>
       <tag name="container.hot_path"/>
       <tag name="container.hot_path"/>
-      <argument>error_controller</argument>
+      <argument>App\Controller\RacineController::show404</argument>
       <argument type="service" id="monolog.logger.request" on-invalid="null"/>
       <argument>true</argument>
       <argument type="collection"/>
@@ -4993,6 +4993,14 @@
         <argument>!Debug</argument>
       </call>
       <call method="addPath">
+        <argument>/var/www/html/creacosm/templates/bundles/TwigBundle</argument>
+        <argument>Twig</argument>
+      </call>
+      <call method="addPath">
+        <argument>/var/www/html/creacosm/templates/bundles/TwigBundle</argument>
+        <argument>!Twig</argument>
+      </call>
+      <call method="addPath">
         <argument>/var/www/html/creacosm/vendor/symfony/web-profiler-bundle/Resources/views</argument>
         <argument>WebProfiler</argument>
       </call>
@@ -5427,7 +5435,36 @@
         </service>
       </argument>
     </service>
-    <service id="security.access_map" class="Symfony\Component\Security\Http\AccessMap"/>
+    <service id="security.access_map" class="Symfony\Component\Security\Http\AccessMap">
+      <call method="add">
+        <argument type="service" id=".security.request_matcher.ba8HGR1"/>
+        <argument type="collection">
+          <argument>ROLE_ADMIN</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
+      <call method="add">
+        <argument type="service" id=".security.request_matcher.ygx1OYG"/>
+        <argument type="collection">
+          <argument>ROLE_ADMIN</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
+      <call method="add">
+        <argument type="service" id=".security.request_matcher.ZNRkOin"/>
+        <argument type="collection">
+          <argument>ROLE_ADMIN</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
+      <call method="add">
+        <argument type="service" id=".security.request_matcher.C5s6NgA"/>
+        <argument type="collection">
+          <argument>IS_AUTHENTICATED_FULLY</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
+    </service>
     <service id="security.context_listener" class="Symfony\Component\Security\Http\Firewall\ContextListener">
       <tag name="monolog.logger" channel="security"/>
       <argument type="service" id="security.untracked_token_storage"/>
@@ -5496,7 +5533,7 @@
       <argument type="service" id="security.http_utils"/>
       <argument type="abstract">Provider-shared Key</argument>
       <argument type="service" id="security.authentication.entry_point" on-invalid="null"/>
-      <argument>null</argument>
+      <argument>/error403</argument>
       <argument type="service" id="security.access.denied_handler" on-invalid="null"/>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
       <argument>false</argument>
@@ -5910,7 +5947,7 @@
       <argument type="service" id="security.http_utils"/>
       <argument>main</argument>
       <argument type="service" id="App\Security\UtilisateurAuthenticator"/>
-      <argument>null</argument>
+      <argument>/error403</argument>
       <argument>null</argument>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
       <argument>false</argument>
@@ -5938,6 +5975,38 @@
       <argument type="collection">
         <argument key="security.firewall.map.context.dev" type="service_closure" id="security.firewall.map.context.dev"/>
         <argument key="security.firewall.map.context.main" type="service_closure" id="security.firewall.map.context.main"/>
+      </argument>
+    </service>
+    <service id=".security.request_matcher.P3_AA2O" class="Symfony\Component\HttpFoundation\RequestMatcher\PathRequestMatcher">
+      <argument>^/sondage/new</argument>
+    </service>
+    <service id=".security.request_matcher.ba8HGR1" class="Symfony\Component\HttpFoundation\ChainRequestMatcher">
+      <argument type="collection">
+        <argument type="service" id=".security.request_matcher.P3_AA2O"/>
+      </argument>
+    </service>
+    <service id=".security.request_matcher..nANCf." class="Symfony\Component\HttpFoundation\RequestMatcher\PathRequestMatcher">
+      <argument>^/sondage/\d+/edit</argument>
+    </service>
+    <service id=".security.request_matcher.ygx1OYG" class="Symfony\Component\HttpFoundation\ChainRequestMatcher">
+      <argument type="collection">
+        <argument type="service" id=".security.request_matcher..nANCf."/>
+      </argument>
+    </service>
+    <service id=".security.request_matcher.h4Wwbiw" class="Symfony\Component\HttpFoundation\RequestMatcher\PathRequestMatcher">
+      <argument>^/sondage/createTheme</argument>
+    </service>
+    <service id=".security.request_matcher.ZNRkOin" class="Symfony\Component\HttpFoundation\ChainRequestMatcher">
+      <argument type="collection">
+        <argument type="service" id=".security.request_matcher.h4Wwbiw"/>
+      </argument>
+    </service>
+    <service id=".security.request_matcher.AWYC5ed" class="Symfony\Component\HttpFoundation\RequestMatcher\PathRequestMatcher">
+      <argument>^/sondage/</argument>
+    </service>
+    <service id=".security.request_matcher.C5s6NgA" class="Symfony\Component\HttpFoundation\ChainRequestMatcher">
+      <argument type="collection">
+        <argument type="service" id=".security.request_matcher.AWYC5ed"/>
       </argument>
     </service>
     <service id="security.command.user_password_hash" class="Symfony\Component\PasswordHasher\Command\UserPasswordHashCommand">

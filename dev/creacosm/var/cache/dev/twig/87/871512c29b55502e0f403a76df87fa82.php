@@ -85,29 +85,35 @@ class __TwigTemplate_d402b493fbf0345f1cc863af05897ca9 extends Template
             // line 22
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
             echo "\">Déconnexion</a>
-        ";
+            ";
+            // line 23
+            if (twig_in_filter("ROLE_ADMIN", twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 23, $this->source); })()), "user", [], "any", false, false, false, 23), "roles", [], "any", false, false, false, 23))) {
+                // line 24
+                echo "                <a href=\"";
+                echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_theme");
+                echo "\">Theme</a>
+            ";
+            }
+            // line 26
+            echo "        ";
         } else {
-            // line 24
+            // line 27
             echo "            <a href=\"";
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
             echo "\">Connexion</a>
             <a href=\"";
-            // line 25
+            // line 28
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
             echo "\">Inscription</a>
         ";
         }
-        // line 27
+        // line 30
         echo "
-        <a href=\"";
-        // line 28
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_theme");
-        echo "\">Theme</a>
 
         ";
-        // line 30
+        // line 32
         $this->displayBlock('body', $context, $blocks);
-        // line 33
+        // line 35
         echo "    </body>
 </html>
 ";
@@ -184,7 +190,7 @@ class __TwigTemplate_d402b493fbf0345f1cc863af05897ca9 extends Template
 
     }
 
-    // line 30
+    // line 32
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -194,7 +200,7 @@ class __TwigTemplate_d402b493fbf0345f1cc863af05897ca9 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 31
+        // line 33
         echo "
         ";
         
@@ -217,7 +223,7 @@ class __TwigTemplate_d402b493fbf0345f1cc863af05897ca9 extends Template
 
     public function getDebugInfo()
     {
-        return array (  198 => 31,  188 => 30,  175 => 13,  165 => 12,  152 => 9,  142 => 8,  123 => 5,  111 => 33,  109 => 30,  104 => 28,  101 => 27,  96 => 25,  91 => 24,  86 => 22,  81 => 21,  79 => 20,  74 => 18,  70 => 17,  66 => 15,  64 => 12,  61 => 11,  58 => 8,  53 => 5,  47 => 1,);
+        return array (  204 => 33,  194 => 32,  181 => 13,  171 => 12,  158 => 9,  148 => 8,  129 => 5,  117 => 35,  115 => 32,  111 => 30,  106 => 28,  101 => 27,  98 => 26,  92 => 24,  90 => 23,  86 => 22,  81 => 21,  79 => 20,  74 => 18,  70 => 17,  66 => 15,  64 => 12,  61 => 11,  58 => 8,  53 => 5,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -244,12 +250,14 @@ class __TwigTemplate_d402b493fbf0345f1cc863af05897ca9 extends Template
         {% if app.user %}
             <a href=\"{{ path('app_moncompte') }}\">Mon compte</a>
             <a href=\"{{ path('app_logout') }}\">Déconnexion</a>
+            {% if 'ROLE_ADMIN' in app.user.roles %}
+                <a href=\"{{ path('app_theme') }}\">Theme</a>
+            {% endif %}
         {% else %}
             <a href=\"{{ path('app_login') }}\">Connexion</a>
             <a href=\"{{ path('app_register') }}\">Inscription</a>
         {% endif %}
 
-        <a href=\"{{ path('app_theme') }}\">Theme</a>
 
         {% block body %}
 

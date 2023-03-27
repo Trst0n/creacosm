@@ -11,16 +11,25 @@
                     document.getElementById("sondagesrep").style.display = 'none';
                     document.getElementById("infospersos").style.display = 'block';
                     document.getElementById("messondages").style.display = 'none';
+                    document.getElementById("messtatistiques").style.display = 'none';
                     break;
                 case('messondages'):
                     document.getElementById("sondagesrep").style.display = 'none';
                     document.getElementById("infospersos").style.display = 'none';
                     document.getElementById("messondages").style.display = 'block';
+                    document.getElementById("messtatistiques").style.display = 'none';
                     break;
                 case('sondagesrep'):
                     document.getElementById("sondagesrep").style.display = 'block';
                     document.getElementById("infospersos").style.display = 'none';
                     document.getElementById("messondages").style.display = 'none';
+                    document.getElementById("messtatistiques").style.display = 'none';
+                    break;
+                case('messtatistiques'):
+                    document.getElementById("sondagesrep").style.display = 'none';
+                    document.getElementById("infospersos").style.display = 'none';
+                    document.getElementById("messondages").style.display = 'none';
+                    document.getElementById("messtatistiques").style.display = 'block';
                     break;
             }
 
@@ -44,6 +53,10 @@
                 }
             }
         }
+        // function chargementStat(valeur){
+        //     document.getElementById("statistique").innerHTML=
+        //
+        // }
     </script>
     <br><br>
         <br><button  onclick="changementscene('infospersos')">Mes informations</button>
@@ -52,7 +65,9 @@
         {% endif %}
         {% if 'ROLE_ADMIN' in app.user.roles %}
             <button role="link" onclick="changementscene('messondages')">Mes Sondages</button>
+            <button role="link" onclick="changementscene('messtatistiques')">Statistiques</button>
         {% endif %}
+
     <div id="infospersos">
         <br>
         <h4>Informations personelles</h4>
@@ -107,7 +122,6 @@
             {% endfor %}
         {% endfor %}
     </div>
-
     <div id ="messondages" style="display: none">
         {%  if app.user.sondagescree.count() == 0%}
             <br><br>
@@ -154,4 +168,62 @@
 
     </div>
     {% endif %}
+    <div id="messtatistiques" style="display: none">
+        <h1>Statistiques</h1>
+        {%  if app.user.sondagescree.count() == 0%}
+            <br><br>
+            Vous n'avez créé encore aucun sondage !
+            <a href="{{ path('app_sondage_new') }}">Créer votre tout premier sondage !</a>
+        {% else %}
+
+{#            <select name="theme" id="type-select" autocomplete="off" onchange="" >#}
+{#                <option name="age" value="age">Voir statistique par tranche d'age</option>#}
+{#                <option name="ville" value="ville">Voir statistique en fonction de la ville</option>#}
+{#                <option name="genre" value="genre">Voir statistique en fonction du genre</option>#}
+{#                <option name="profession" value="profession">Voir statistique en fonction de la profession</option>#}
+{#                <option name="age" value="age">Voir statistique en fonction de l'age</option>#}
+{#                <option name="age" value="age">Voir statistique en fonction de l'age</option>#}
+
+{#            </select>#}
+
+            {% for sondage in app.user.sondagescree %}
+                <h4>Statitique du sondage : {{ sondage.nom }}</h4>
+                <p id="statitique"></p>
+                Créé par : {{ sondage.administrateur.prenom }} {{ sondage.administrateur.nom }}
+                Présentation: <br>
+                {{ sondage.introduction }}<br><br>
+                {% for question in sondage.questions  %}
+                <fieldset>
+                    <legend>{{question.intitule }} </legend>
+                    {% if question.type.type == "multiple" %}
+                        {% set nb = 0 %}
+                        {% for reponse in question.reponses %}
+                            {% set nb = nb + reponse.utilisateurs|length %}
+                        {% endfor %}
+                    {%  endif %}
+                    {% for reponse in question.reponses %}
+                        {{ reponse.reponse }}
+                        {% if question.type.type == "multiple" %}
+                            {% if nb == 0 %}
+                                0%<br>
+                            {% else %}
+                                {{ reponse.utilisateurs|length /  nb *100}}% <br>
+                            {% endif %}
+                        {%  else %}
+                            {% if sondage.utilisateurs|length == 0 %}
+                                0%<br>
+                            {% else %}
+                                {{ reponse.utilisateurs|length /  sondage.utilisateurs|length *100}}% <br>
+                            {% endif %}
+                        {% endif %}
+
+
+                    {% endfor %}
+
+                </fieldset>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+    </div>
+
 {% endblock %}

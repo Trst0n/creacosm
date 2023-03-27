@@ -20,12 +20,14 @@
         {% if app.user %}
             <a href="{{ path('app_moncompte') }}">Mon compte</a>
             <a href="{{ path('app_logout') }}">Déconnexion</a>
+            {% if 'ROLE_ADMIN' in app.user.roles %}
+                <a href="{{ path('app_theme') }}">Theme</a>
+            {% endif %}
         {% else %}
             <a href="{{ path('app_login') }}">Connexion</a>
             <a href="{{ path('app_register') }}">Inscription</a>
         {% endif %}
 
-        <a href="{{ path('app_theme') }}">Theme</a>
 
         {% block body %}
 

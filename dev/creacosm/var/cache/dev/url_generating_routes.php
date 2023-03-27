@@ -20,6 +20,8 @@ return [
     'app_accueil' => [[], ['_controller' => 'App\\Controller\\RacineController::accueil'], [], [['text', '/accueil']], [], [], []],
     'app_moncompte' => [[], ['_controller' => 'App\\Controller\\RacineController::account'], [], [['text', '/moncompte']], [], [], []],
     'app_set_moncompte' => [[], ['_controller' => 'App\\Controller\\RacineController::modifierInformation'], [], [['text', '/setmoncompte']], [], [], []],
+    'app_error' => [[], ['_controller' => 'App\\Controller\\RacineController::error403'], [], [['text', '/error403']], [], [], []],
+    'app_error404' => [[], ['_controller' => 'App\\Controller\\RacineController::show404'], [], [['text', '/error404']], [], [], []],
     'app_register' => [[], ['_controller' => 'App\\Controller\\RegistrationController::register'], [], [['text', '/register']], [], [], []],
     'app_login' => [[], ['_controller' => 'App\\Controller\\SecurityController::login'], [], [['text', '/login']], [], [], []],
     'app_logout' => [[], ['_controller' => 'App\\Controller\\SecurityController::logout'], [], [['text', '/logout']], [], [], []],

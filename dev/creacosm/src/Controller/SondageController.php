@@ -207,13 +207,18 @@ class SondageController extends AbstractController
         $nom =$_POST['nom'];
         $visbilite =$_POST['visibilite'];
         if($visbilite== 'public')
-        {$visbilite=true;}
+            {$visbilite=true;}
         else $visbilite=false;
 
 
-        $theme = new Theme();
-        $theme->setTheme($_POST["theme"]);
-        $themeRepository->save($theme);
+
+        $t = $_POST["theme"];
+        for($i = 1; $i < count($themeRepository->findAll()); $i ++){
+            if($themeRepository->findAll()[$i]->getTheme() == $t){
+                $theme = $themeRepository->findAll()[$i];
+            }
+        }
+
 
         $nb=$_POST["nbquestion"];
         $introduction =$_POST['introduction'];
