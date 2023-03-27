@@ -1,0 +1,58 @@
+<nav class="navbar navbar-dark  navbar-expand-lg navbar-light" style="background-color: #0a53be">
+    <div class="container-fluid collapse navbar-collapse">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon navbar-light"></span>
+        </button>
+        <div class="container-fluid collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav  me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_accueil') }}">Accueil</a>
+                </li>
+                {% if app.user %}
+                    <li class="nav-item">
+                        <a class="nav-link"  href="{{ path('app_sondage_index') }}">Sondages</a>
+                    </li>
+                    {% if "ROLE_ADMIN" in app.user.roles %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_moncompte') }}">Mon compte</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_theme') }}">Theme</a>
+                        </li>
+                    {% endif %}
+                {% endif %}
+
+            </ul>
+            <div class="d-flex">
+                <ul class="navbar-nav  me-auto mb-2 mb-lg-0">
+                    {% if app.user %}
+                    <li class="nav-item">
+                        <button onclick="location.href='{{ path('app_logout') }}'" class="nav-link btn btn-danger">
+                            Déconnexion
+                        </button>
+                    </li>
+                    {% else %}
+
+
+                    <li class="nav-item">
+                        <button onclick="location.href='{{ path('app_login') }}'"
+                                style="margin-right: 10px; padding-left: 20px;padding-right: 20px"
+                                class="nav-link btn btn-outline-success">
+                            Connexion
+                        </button>
+
+                    </li>
+                    <li class="nav-item">
+                        <button onclick="location.href='{{ path('app_register') }}'" class="nav-link btn btn-success">
+                            Inscription
+                        </button>
+
+                    </li>
+
+                </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</nav>
