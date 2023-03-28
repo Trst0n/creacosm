@@ -88,12 +88,12 @@ class __TwigTemplate_07ae4d87d27c1d60eae82b705068f051 extends Template
         echo "    <div class=\"container  align-items-center \" style=\"margin-top: 5%\">
         <h1>Sondage index</h1>
 
-        <div class=align-middle\">
+        <div class=-container\">
     <table class=\"table table-striped\">
         <thead>
             <tr>
                 <th>Nom</th>
-                <th>Introduction</th>
+                <th>Présentation</th>
                 <th>Visibilite</th>
                 <th>Theme</th>
                 <th>Datecreation</th>
@@ -102,9 +102,9 @@ class __TwigTemplate_07ae4d87d27c1d60eae82b705068f051 extends Template
         </thead>
         <tbody>
 
-        <p> Filtrer les sondages par leur thème : </p>
+        <p class=\"form-control-plaintext\" > Filtrer les sondages par leur thème : </p>
         <form action=\"./themedefine\" method=\"POST\">
-            <select name=\"theme\" id=\"type-select\" autocomplete=\"off\" >
+            <select class=\"form-select\" name=\"theme\" id=\"type-select\" autocomplete=\"off\" >
                 <option name=\"Tous les sondages\" value=\"Tous les sondages\">Tous les sondages</option>
                 ";
         // line 27
@@ -127,66 +127,67 @@ class __TwigTemplate_07ae4d87d27c1d60eae82b705068f051 extends Template
         // line 30
         echo "
             </select>
-            <input type=\"submit\" value=\"Valider\">
+            <br>
+            <input class=\"btn btn-primary\" type=\"submit\" value=\"Valider\">
         </form>
 
         ";
-        // line 35
+        // line 36
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["sondages"]) || array_key_exists("sondages", $context) ? $context["sondages"] : (function () { throw new RuntimeError('Variable "sondages" does not exist.', 35, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["sondages"]) || array_key_exists("sondages", $context) ? $context["sondages"] : (function () { throw new RuntimeError('Variable "sondages" does not exist.', 36, $this->source); })()));
         $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["sondage"]) {
-            // line 36
+            // line 37
             echo "            <tr>
                 <td>";
-            // line 37
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["sondage"], "nom", [], "any", false, false, false, 37), "html", null, true);
-            echo "</td>
-                <td>";
             // line 38
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["sondage"], "introduction", [], "any", false, false, false, 38), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["sondage"], "nom", [], "any", false, false, false, 38), "html", null, true);
             echo "</td>
                 <td>";
             // line 39
-            echo ((twig_get_attribute($this->env, $this->source, $context["sondage"], "visibilite", [], "any", false, false, false, 39)) ? ("Public") : ("Privé"));
-            echo "</td>
-                <td> ";
-            // line 40
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["sondage"], "theme", [], "any", false, false, false, 40), "theme", [], "any", false, false, false, 40), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["sondage"], "introduction", [], "any", false, false, false, 39), "html", null, true);
             echo "</td>
                 <td>";
+            // line 40
+            echo ((twig_get_attribute($this->env, $this->source, $context["sondage"], "visibilite", [], "any", false, false, false, 40)) ? ("Public") : ("Privé"));
+            echo "</td>
+                <td> ";
             // line 41
-            ((twig_get_attribute($this->env, $this->source, $context["sondage"], "datecreation", [], "any", false, false, false, 41)) ? (print (twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["sondage"], "datecreation", [], "any", false, false, false, 41), "Y-m-d"), "html", null, true))) : (print ("")));
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["sondage"], "theme", [], "any", false, false, false, 41), "theme", [], "any", false, false, false, 41), "html", null, true);
+            echo "</td>
+                <td>";
+            // line 42
+            ((twig_get_attribute($this->env, $this->source, $context["sondage"], "datecreation", [], "any", false, false, false, 42)) ? (print (twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["sondage"], "datecreation", [], "any", false, false, false, 42), "Y-m-d"), "html", null, true))) : (print ("")));
             echo "</td>
                 <td>
-                    <a href=\"";
-            // line 43
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_sondage_show", ["id" => twig_get_attribute($this->env, $this->source, $context["sondage"], "id", [], "any", false, false, false, 43)]), "html", null, true);
-            echo "\">show</a>
-                    <a href=\"";
+                    <a class=\"btn btn-outline-info\" href=\"";
             // line 44
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_sondage_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["sondage"], "id", [], "any", false, false, false, 44)]), "html", null, true);
-            echo "\">edit</a>
-                    ";
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_sondage_show", ["id" => twig_get_attribute($this->env, $this->source, $context["sondage"], "id", [], "any", false, false, false, 44)]), "html", null, true);
+            echo "\">Voir</a>
+                    <a class=\"btn btn-outline-secondary\" href=\"";
             // line 45
-            if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 45, $this->source); })()), "user", [], "any", false, false, false, 45)) {
-                // line 46
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_sondage_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["sondage"], "id", [], "any", false, false, false, 45)]), "html", null, true);
+            echo "\">Modifier</a>
+                    ";
+            // line 46
+            if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 46, $this->source); })()), "user", [], "any", false, false, false, 46)) {
+                // line 47
                 echo "                    ";
-                if (twig_in_filter($context["sondage"], twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 46, $this->source); })()), "user", [], "any", false, false, false, 46), "sondages", [], "any", false, false, false, 46))) {
-                    // line 47
-                    echo "                        Sondage déjà repondu
+                if (twig_in_filter($context["sondage"], twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 47, $this->source); })()), "user", [], "any", false, false, false, 47), "sondages", [], "any", false, false, false, 47))) {
+                    // line 48
+                    echo "                        <label > Sondage déjà repondu </label>
                     ";
                 } else {
-                    // line 49
-                    echo "                        <a href=\"";
-                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_repondre", ["id" => twig_get_attribute($this->env, $this->source, $context["sondage"], "id", [], "any", false, false, false, 49)]), "html", null, true);
-                    echo "\" >Repondre</a>
+                    // line 50
+                    echo "                        <a class=\"btn btn-outline-success\" href=\"";
+                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_repondre", ["id" => twig_get_attribute($this->env, $this->source, $context["sondage"], "id", [], "any", false, false, false, 50)]), "html", null, true);
+                    echo "\" >Répondre</a>
                     ";
                 }
-                // line 51
+                // line 52
                 echo "                    ";
             }
-            // line 52
+            // line 53
             echo "
 
                 </td>
@@ -195,7 +196,7 @@ class __TwigTemplate_07ae4d87d27c1d60eae82b705068f051 extends Template
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 57
+            // line 58
             echo "            <tr>
                 <td colspan=\"6\">no records found</td>
             </tr>
@@ -204,16 +205,21 @@ class __TwigTemplate_07ae4d87d27c1d60eae82b705068f051 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['sondage'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 61
+        // line 62
         echo "        </tbody>
     </table>
+            ";
+        // line 64
+        if (twig_in_filter("ROLE_ADMIN", twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 64, $this->source); })()), "user", [], "any", false, false, false, 64), "roles", [], "any", false, false, false, 64))) {
+            // line 65
+            echo "    <a class=\"btn btn-success btn-lg btn-block\" href=\"";
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_sondage_new");
+            echo "\">Creer un nouveau Sondage</a>
 
-
-    <a href=\"";
-        // line 65
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_sondage_new");
-        echo "\">Create new</a>
-        </div>
+            ";
+        }
+        // line 68
+        echo "        </div>
     </div>
 ";
         
@@ -236,7 +242,7 @@ class __TwigTemplate_07ae4d87d27c1d60eae82b705068f051 extends Template
 
     public function getDebugInfo()
     {
-        return array (  214 => 65,  208 => 61,  199 => 57,  190 => 52,  187 => 51,  181 => 49,  177 => 47,  174 => 46,  172 => 45,  168 => 44,  164 => 43,  159 => 41,  155 => 40,  151 => 39,  147 => 38,  143 => 37,  140 => 36,  135 => 35,  128 => 30,  115 => 28,  111 => 27,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  222 => 68,  215 => 65,  213 => 64,  209 => 62,  200 => 58,  191 => 53,  188 => 52,  182 => 50,  178 => 48,  175 => 47,  173 => 46,  169 => 45,  165 => 44,  160 => 42,  156 => 41,  152 => 40,  148 => 39,  144 => 38,  141 => 37,  136 => 36,  128 => 30,  115 => 28,  111 => 27,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -249,12 +255,12 @@ class __TwigTemplate_07ae4d87d27c1d60eae82b705068f051 extends Template
     <div class=\"container  align-items-center \" style=\"margin-top: 5%\">
         <h1>Sondage index</h1>
 
-        <div class=align-middle\">
+        <div class=-container\">
     <table class=\"table table-striped\">
         <thead>
             <tr>
                 <th>Nom</th>
-                <th>Introduction</th>
+                <th>Présentation</th>
                 <th>Visibilite</th>
                 <th>Theme</th>
                 <th>Datecreation</th>
@@ -263,16 +269,17 @@ class __TwigTemplate_07ae4d87d27c1d60eae82b705068f051 extends Template
         </thead>
         <tbody>
 
-        <p> Filtrer les sondages par leur thème : </p>
+        <p class=\"form-control-plaintext\" > Filtrer les sondages par leur thème : </p>
         <form action=\"./themedefine\" method=\"POST\">
-            <select name=\"theme\" id=\"type-select\" autocomplete=\"off\" >
+            <select class=\"form-select\" name=\"theme\" id=\"type-select\" autocomplete=\"off\" >
                 <option name=\"Tous les sondages\" value=\"Tous les sondages\">Tous les sondages</option>
                 {% for theme in theme %}
                     <option name=\"{{ theme.id }}\" value=\"{{ theme.id }}\">{{ theme.theme }}</option>
                 {% endfor %}
 
             </select>
-            <input type=\"submit\" value=\"Valider\">
+            <br>
+            <input class=\"btn btn-primary\" type=\"submit\" value=\"Valider\">
         </form>
 
         {% for sondage in sondages %}
@@ -283,13 +290,13 @@ class __TwigTemplate_07ae4d87d27c1d60eae82b705068f051 extends Template
                 <td> {{ sondage.theme.theme }}</td>
                 <td>{{ sondage.datecreation ? sondage.datecreation|date('Y-m-d') : '' }}</td>
                 <td>
-                    <a href=\"{{ path('app_sondage_show', {'id': sondage.id}) }}\">show</a>
-                    <a href=\"{{ path('app_sondage_edit', {'id': sondage.id}) }}\">edit</a>
+                    <a class=\"btn btn-outline-info\" href=\"{{ path('app_sondage_show', {'id': sondage.id}) }}\">Voir</a>
+                    <a class=\"btn btn-outline-secondary\" href=\"{{ path('app_sondage_edit', {'id': sondage.id}) }}\">Modifier</a>
                     {% if app.user %}
                     {% if sondage in app.user.sondages %}
-                        Sondage déjà repondu
+                        <label > Sondage déjà repondu </label>
                     {% else %}
-                        <a href=\"{{ path('app_repondre', {'id': sondage.id}) }}\" >Repondre</a>
+                        <a class=\"btn btn-outline-success\" href=\"{{ path('app_repondre', {'id': sondage.id}) }}\" >Répondre</a>
                     {%  endif %}
                     {%  endif %}
 
@@ -303,9 +310,10 @@ class __TwigTemplate_07ae4d87d27c1d60eae82b705068f051 extends Template
         {% endfor %}
         </tbody>
     </table>
+            {% if \"ROLE_ADMIN\" in app.user.roles %}
+    <a class=\"btn btn-success btn-lg btn-block\" href=\"{{ path('app_sondage_new') }}\">Creer un nouveau Sondage</a>
 
-
-    <a href=\"{{ path('app_sondage_new') }}\">Create new</a>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

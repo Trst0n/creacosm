@@ -3,20 +3,22 @@
 {% block title %}Sondage{% endblock %}
 
 {% block body %}
+<div class="container">
+    <div class="align-middle" style="margin-top: 10%">
     <h1>Sondage</h1>
-
-    <table class="table">
+        <br>
+        <table class="table table-striped">
         <tbody>
             <tr>
                 <th>Nom :</th>
                 <td>{{ sondage.nom }}</td>
             </tr>
             <tr>
-                <th>Introduction :</th>
+                <th>Présentation :</th>
                 <td>{{ sondage.introduction }}</td>
             </tr>
             <tr>
-                <th>Visibilit2 :</th>
+                <th>Visibilité :</th>
                 <td>{{ sondage.visibilite ? 'Public' : 'Privé' }}</td>
             </tr>
             <tr>
@@ -30,8 +32,10 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_sondage_index') }}">back to list</a>
+    <a class="btn btn-outline-dark" href="{{ path('app_sondage_index') }}">Retour</a>
 
-    <a href="{{ path('app_sondage_edit', {'id': sondage.id}) }}">edit</a>
+    <a class="btn btn-outline-secondary" href="{{ path('app_sondage_edit', {'id': sondage.id}) }}">Modifier</a>
+    </div>
+</div>
 
 {% endblock %}

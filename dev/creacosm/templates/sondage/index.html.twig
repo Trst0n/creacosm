@@ -6,12 +6,12 @@
     <div class="container  align-items-center " style="margin-top: 5%">
         <h1>Sondage index</h1>
 
-        <div class=align-middle">
+        <div class=-container">
     <table class="table table-striped">
         <thead>
             <tr>
                 <th>Nom</th>
-                <th>Introduction</th>
+                <th>Présentation</th>
                 <th>Visibilite</th>
                 <th>Theme</th>
                 <th>Datecreation</th>
@@ -20,16 +20,17 @@
         </thead>
         <tbody>
 
-        <p> Filtrer les sondages par leur thème : </p>
+        <p class="form-control-plaintext" > Filtrer les sondages par leur thème : </p>
         <form action="./themedefine" method="POST">
-            <select name="theme" id="type-select" autocomplete="off" >
+            <select class="form-select" name="theme" id="type-select" autocomplete="off" >
                 <option name="Tous les sondages" value="Tous les sondages">Tous les sondages</option>
                 {% for theme in theme %}
                     <option name="{{ theme.id }}" value="{{ theme.id }}">{{ theme.theme }}</option>
                 {% endfor %}
 
             </select>
-            <input type="submit" value="Valider">
+            <br>
+            <input class="btn btn-primary" type="submit" value="Valider">
         </form>
 
         {% for sondage in sondages %}
@@ -40,13 +41,13 @@
                 <td> {{ sondage.theme.theme }}</td>
                 <td>{{ sondage.datecreation ? sondage.datecreation|date('Y-m-d') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_sondage_show', {'id': sondage.id}) }}">show</a>
-                    <a href="{{ path('app_sondage_edit', {'id': sondage.id}) }}">edit</a>
+                    <a class="btn btn-outline-info" href="{{ path('app_sondage_show', {'id': sondage.id}) }}">Voir</a>
+                    <a class="btn btn-outline-secondary" href="{{ path('app_sondage_edit', {'id': sondage.id}) }}">Modifier</a>
                     {% if app.user %}
                     {% if sondage in app.user.sondages %}
-                        Sondage déjà repondu
+                        <label > Sondage déjà repondu </label>
                     {% else %}
-                        <a href="{{ path('app_repondre', {'id': sondage.id}) }}" >Repondre</a>
+                        <a class="btn btn-outline-success" href="{{ path('app_repondre', {'id': sondage.id}) }}" >Répondre</a>
                     {%  endif %}
                     {%  endif %}
 
@@ -60,9 +61,10 @@
         {% endfor %}
         </tbody>
     </table>
+            {% if "ROLE_ADMIN" in app.user.roles %}
+    <a class="btn btn-success btn-lg btn-block" href="{{ path('app_sondage_new') }}">Creer un nouveau Sondage</a>
 
-
-    <a href="{{ path('app_sondage_new') }}">Create new</a>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

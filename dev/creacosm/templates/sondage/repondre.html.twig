@@ -3,13 +3,14 @@
 {% block title %}Repondre{% endblock %}
 
 {% block body %}
-
+    <div class="container   ">
+    <div class="align-middle" style="margin-top: 3%">
     <h1>Repondre</h1>
 
     <h2>{{ sondage.nom }}</h2>
 
 
-    <p>Introduction : {{ sondage.introduction }}</p>
+    <p>Présentation : {{ sondage.introduction }}</p>
     <p>Visibilité : {{ sondage.visibilite  ? "Public" : "Privé" }}</p>
     {% set i = 1 %}
     {% for question in sondage.questions %}
@@ -24,7 +25,7 @@
             <legend>{{ question.intitule }} </legend>
             {% if question.visuel %}
                 {% if question.visuel.visuel != "" %}
-                    <img src="{{ question.visuel.visuel }} "  style="width:500px;height:300px;">
+                    <img class="img-fluid" alt="Responsive image" src="{{ question.visuel.visuel }} "  >
                 {%endif %}
             {% endif %}
 
@@ -32,27 +33,27 @@
             {% if question.type.type == 'multiple' %}
                 {% for reponse in question.reponses %}
                     <div>
-                        <input type="checkbox" id="{{ reponse.id }}" name="{{ reponse.id }}" value="{{ reponse.id }}" autocomplete="off">
+                        <input class="form-check-input" type="checkbox" id="{{ reponse.id }}" name="{{ reponse.id }}" value="{{ reponse.id }}" autocomplete="off">
                         <label for="{{ reponse.id }}">{{ reponse.reponse }}</label>
                     </div>
                 {% endfor %}
             {% elseif question.type.type == 'oui_non' %}
                 {% for reponse in question.reponses %}
                     <div>
-                        <input type="radio" id="{{ reponse.id }}" name="{{ question.id }}" value="{{ reponse.id }}" autocomplete="off">
+                        <input  class="form-check-input" type="radio" id="{{ reponse.id }}" name="{{ question.id }}" value="{{ reponse.id }}" autocomplete="off">
                         <label for="{{ reponse.id }}">{{ reponse.reponse }}</label>
                     </div>
                 {% endfor %}
             {% elseif question.type.type == 'unique' %}
                 {% for reponse in question.reponses %}
                     <div>
-                        <input type="radio" id="{{ reponse.id }}" name="{{ question.id }}" value="{{ reponse.id }}" autocomplete="off">
+                        <input class="form-check-input" type="radio" id="{{ reponse.id }}" name="{{ question.id }}" value="{{ reponse.id }}" autocomplete="off">
                         <label for="{{ reponse.id }}">{{ reponse.reponse }}</label>
                     </div>
                 {% endfor %}
             {% else %}
                 <div>
-                    <textarea name="ouverte{{ i }}" rows="5" cols="33" style="resize:none;" autocomplete="off"></textarea>
+                    <textarea class="form-control"  name="ouverte{{ i }}" rows="5" cols="33" style="resize:none;" autocomplete="off"></textarea>
                 </div>
             {% endif %}
 
@@ -63,6 +64,12 @@
 
     <br>
     <br>
-    <button type="submit">Repondre au sondage </button>
+    <button class="btn btn-success" type="submit">Repondre au sondage </button>
     </form>
+        <br>
+        <a class="btn btn-outline-dark" href="{{ path('app_sondage_index') }}">Retour</a>
+
+    </div>
+    </div>
+
 {% endblock %}

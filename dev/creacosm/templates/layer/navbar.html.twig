@@ -13,10 +13,11 @@
                     <li class="nav-item">
                         <a class="nav-link"  href="{{ path('app_sondage_index') }}">Sondages</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_moncompte') }}">Mon compte</a>
+                    </li>
                     {% if "ROLE_ADMIN" in app.user.roles %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('app_moncompte') }}">Mon compte</a>
-                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('app_theme') }}">Theme</a>
                         </li>

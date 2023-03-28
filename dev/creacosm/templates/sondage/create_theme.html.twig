@@ -10,22 +10,28 @@
         }
 
     </script>
-    <p>{{ erreur }}</p>
+    {% if erreur|length > 0 %}
+    <p class="alert alert-danger" >{{ erreur }}</p>
+    {% endif %}
 
+    <div class="container   ">
+        <div class="align-middle" style="margin-top: 3%">
     <h1>Create new Theme</h1>
+
 
     <p id="idp">
     <input name="id" id="id" type="hidden" value ="">
     </p>
     <form action="/sondage/creationTheme" id ="form" method="POST">
         <label>
-            Nom du thème à créer : <input type="text" name="theme" required>
+            Nom du thème à créer : <input class="form-control"  type="text" name="theme" required>
         </label>
-        <button type="submit"  >Creer</button>
+        <button type="submit" class="btn btn-outline-primary" >Creer</button>
     </form>
-
+<br>
     <h1>Liste Theme</h1>
-        <table class="table">
+            <br>
+            <table class="table table-striped">
             <thead>
             <tr>
                 <th>Nom des themes</th>
@@ -35,7 +41,7 @@
             {% for theme in theme %}
             <tr>
                 <td>{{ theme.theme }}</td>
-                <td><a type="button" href="{{ path('app_theme_delete', {'id': theme.id}) }}">Supprimer</a>
+                <td><a class="btn btn-danger" type="button" href="{{ path('app_theme_delete', {'id': theme.id}) }}">Supprimer</a>
                 </td>
 
             </tr>
@@ -46,6 +52,8 @@
     </form>
 
 
-    <a href="{{ path('app_sondage_index') }}">back to list</a>
+            <a class="btn btn-outline-dark" href="{{ path('app_sondage_index') }}">Retour</a>
+        </div>
+    </div>
 
 {% endblock  body%}

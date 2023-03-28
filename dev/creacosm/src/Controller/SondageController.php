@@ -213,9 +213,9 @@ class SondageController extends AbstractController
 
 
         $t = $_POST["theme"];
-        for($i = 1; $i < count($themeRepository->findAll()); $i ++){
-            if($themeRepository->findAll()[$i]->getTheme() == $t){
-                $theme = $themeRepository->findAll()[$i];
+        for($i = 1; $i <= count($themeRepository->findAll()); $i ++){
+            if($themeRepository->findAll()[$i-1]->getTheme() == $t){
+                $theme = $themeRepository->findAll()[$i-1];
             }
         }
 
@@ -372,7 +372,9 @@ class SondageController extends AbstractController
             while (isset($_POST["question" . $j])) {
                 $intitulequestion = $_POST["question" . $j];
                 $sondage->getQuestions()->get($j - 1)->setIntitule($intitulequestion);
-                $sondage->getQuestions()->get($j -1)->getVisuel()->setVisuel($_POST["image".$j]);
+                if($_POST["image".$j]) {
+                    $sondage->getQuestions()->get($j - 1)->getVisuel()->setVisuel($_POST["image" . $j]);
+                }
                 $i = 1;
                 while (isset($_POST["reponse" . $j . $i])) {
                     $repquestion = $_POST["reponse" . $j . $i];

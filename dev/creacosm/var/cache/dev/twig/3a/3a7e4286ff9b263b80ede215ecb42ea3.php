@@ -47,7 +47,7 @@ class __TwigTemplate_77b1c84375093f90738bd349ac604d6a extends Template
         // line 2
         echo twig_escape_filter($this->env, $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken(("delete" . twig_get_attribute($this->env, $this->source, (isset($context["sondage"]) || array_key_exists("sondage", $context) ? $context["sondage"] : (function () { throw new RuntimeError('Variable "sondage" does not exist.', 2, $this->source); })()), "id", [], "any", false, false, false, 2))), "html", null, true);
         echo "\">
-    <button class=\"btn\">Delete</button>
+    <button class=\"btn btn-danger\">Delete</button>
 </form>
 ";
         
@@ -77,7 +77,7 @@ class __TwigTemplate_77b1c84375093f90738bd349ac604d6a extends Template
     {
         return new Source("<form method=\"post\" action=\"{{ path('app_sondage_delete', {'id': sondage.id}) }}\" onsubmit=\"return confirm('Are you sure you want to delete this item?');\">
     <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token('delete' ~ sondage.id) }}\">
-    <button class=\"btn\">Delete</button>
+    <button class=\"btn btn-danger\">Delete</button>
 </form>
 ", "sondage/_delete_form.html.twig", "/var/www/html/creacosm/templates/sondage/_delete_form.html.twig");
     }

@@ -38,18 +38,18 @@
 
             if (information === '******'){
                 if(option === 'modifier'){
-                    document.getElementById("modifierpassword").innerHTML= "<input name=\"password\" type=\"text\" value=\"" + information + "\"/><button type='submit' >Valider</button><button onclick=\"modifierinfos('******','reset')\">Annuler</button>"
+                    document.getElementById("modifierpassword").innerHTML= "<input class=\"form-control\"  name=\"password\" type=\"text\" value=\"" + information + "\"/><button class=\"btn btn-outline-success\" type='submit' >Valider</button><button class=\"btn btn-outline-danger\" onclick=\"modifierinfos('******','reset')\">Annuler</button>"
                 }
                 else{
 
-                    document.getElementById("modifierpassword").innerHTML= "****** <button onclick=\"modifierinfos('******','modifier')\">modifier</button>"
+                    document.getElementById("modifierpassword").innerHTML= "****** <button class=\"btn btn-outline-secondary\" onclick=\"modifierinfos('******','modifier')\">Modifier</button>"
                 }
             }else{
                 if(option === 'modifier'){
-                    document.getElementById("modifierlogin").innerHTML= "<input name=\"login\" type=\"text\" value=\"" + information + "\"/><button type='submit'> Valider </button>  <button onclick=\"modifierinfos('"+ information +"','reset')\">Annuler</button>"
+                    document.getElementById("modifierlogin").innerHTML= "<br><input class=\"form-control\" name=\"login\" type=\"text\" value=\"" + information + "\"/><button class=\"btn btn-outline-success\" type='submit'> Valider </button>  <button class=\"btn btn-outline-danger\" onclick=\"modifierinfos('"+ information +"','reset')\">Annuler</button>"
                 }
                 else{
-                    document.getElementById("modifierlogin").innerHTML=  information +"<button onclick=\"modifierinfos('" + information + "','modifier')\">modifier</button>"
+                    document.getElementById("modifierlogin").innerHTML=  information +"<button class=\"btn btn-outline-secondary\"  onclick=\"modifierinfos('" + information + "','modifier')\">Modifier</button>"
                 }
             }
         }
@@ -59,22 +59,26 @@
         // }
     </script>
     <br><br>
-        <br><button  onclick="changementscene('infospersos')">Mes informations</button>
+    <div class="container   ">
+        <div class="align-middle" style="margin-top: 1%">
+    <h1>Mon Compte</h1>
+        <br><button class="btn btn-secondary" onclick="changementscene('infospersos')">Mes informations</button>
         {% if 'ROLE_USER' in app.user.roles %}
-            <button onclick="changementscene('sondagesrep')">Sondages repondus</button>
+            <button class="btn btn-secondary" onclick="changementscene('sondagesrep')">Sondages repondus</button>
         {% endif %}
         {% if 'ROLE_ADMIN' in app.user.roles %}
-            <button role="link" onclick="changementscene('messondages')">Mes Sondages</button>
-            <button role="link" onclick="changementscene('messtatistiques')">Statistiques</button>
+            <button class="btn btn-secondary" role="link" onclick="changementscene('messondages')">Mes Sondages</button>
+            <button class="btn btn-secondary" role="link" onclick="changementscene('messtatistiques')">Statistiques</button>
         {% endif %}
 
     <div id="infospersos">
         <br>
-        <h4>Informations personelles</h4>
+        <h1>Informations personelles</h1>
             Nom: {{ app.user.nom }} <br>
             Prenom: {{ app.user.prenom }} <br>
-            Date de naissance: {{ app.user.datedenaissance }} <br>
-            Ville : {{ app.user.ville }} <br>
+            Date de naissance: {{ app.user.datedenaissance ? app.user.datedenaissance|date('Y-m-d') : ''  }} <br>
+
+        Ville : {{ app.user.ville }} <br>
             {% if 'ROLE_USER' in app.user.roles %}
                 Profession: Non renseigné <br>
             {% elseif 'ROLE_ADMIN' in app.user.roles %}
@@ -82,11 +86,11 @@
             {% endif %}
             <form action="./setmoncompte" method="post">
                 <input name="iduser" type="hidden" value={{ app.user.id }}>
-                    Login: <p id="modifierlogin">{{ app.user.login }}  <button onclick="modifierinfos('{{ app.user.login }}', 'modifier')">modifier</button> </p>
+                    Login: <p id="modifierlogin">{{ app.user.login }}  <button class="btn btn-outline-secondary" onclick="modifierinfos('{{ app.user.login }}', 'modifier')">Modifier</button> </p>
             </form> <br>
             <form action="./setmoncompte" method="post">
                 <input name="iduser" type="hidden" value={{ app.user.id }}>
-                    Mot de passe: <p id="modifierpassword"> ****** <button onclick="modifierinfos('******','modifier')">modifier</button> </p>
+                    Mot de passe: <p id="modifierpassword"> ****** <button class="btn btn-outline-secondary" onclick="modifierinfos('******','modifier')">Modifier</button> </p>
             </form>
 
     </div>
@@ -129,10 +133,11 @@
             <a href="{{ path('app_sondage_new') }}">Créer votre tout premier sondage !</a>
 
         {% else %}
+        <br>
+        <h1>Vos sondages :</h1>
+        <table class="t">
 
-        <h4>Vos sondages :</h4>
-
-        <table class="block">
+        <table class="block table table-striped">
             <thead>
             <tr>
                 <th>Nom</th>
@@ -153,8 +158,8 @@
                 <td> {{ sondage.theme.theme }}</td>
                 <td>{{ sondage.datecreation ? sondage.datecreation|date('Y-m-d') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_sondage_show', {'id': sondage.id}) }}">show</a>
-                    <a href="{{ path('app_sondage_edit', {'id': sondage.id}) }}">edit</a>
+                    <a class="btn btn-outline-info" href="{{ path('app_sondage_show', {'id': sondage.id}) }}">Voir</a>
+                    <a class="btn btn-outline-secondary"  href="{{ path('app_sondage_edit', {'id': sondage.id}) }}">Modifier</a>
                 </td>
             </tr>
 
@@ -169,6 +174,7 @@
     </div>
     {% endif %}
     <div id="messtatistiques" style="display: none">
+        <br>
         <h1>Statistiques</h1>
         {%  if app.user.sondagescree.count() == 0%}
             <br><br>
@@ -225,5 +231,11 @@
             {% endfor %}
         {% endif %}
     </div>
+        </div>
+        <br>
+        <a class="btn btn-outline-dark" href="{{ path('app_sondage_index') }}">Retour</a>
+
+    </div>
+
 
 {% endblock %}

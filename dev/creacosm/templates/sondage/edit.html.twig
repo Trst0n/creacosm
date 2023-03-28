@@ -97,44 +97,57 @@
 
     </script>
 
+    <div class="container">
+        <div class="align-middle" style="margin-top: 3%">
 
-    <h1>Edit Sondage</h1>
-    <form action="./edited" id ="form" method="POST">
-        <p id ="cpt">       <input name="nbquestion" id="nbquestion" type="hidden" value ="{{ sondage.questions.count() }}"></p>
+    <h1>Modifier Sondage</h1>
+
+    <form  action="./edited" id ="form" method="POST">
+        <p id ="cpt">       <input  name="nbquestion" id="nbquestion" type="hidden" value ="{{ sondage.questions.count() }}"></p>
         <p id ="newq">       <input name="newquestion" id="newquestion" type="hidden" value ="0"></p>
 
-        <label> Nom du sondage : </label><input name="nom" value="{{ sondage.nom }}"><br><br>
+        <label > Nom du sondage : </label><input class="form-control" name="nom" value="{{ sondage.nom }}"><br><br>
         <!-- <label> Createur du sondage :</label><br><br>-->
-        <label> Introduction: </label><br><textarea name="introduction" rows="5" cols="33" style="resize:none;" value="{{ sondage.introduction }}">{{ sondage.introduction }}</textarea><br><br>
+        <label> Introduction: </label><br><textarea class="form-control" name="introduction" rows="5" cols="33" style="resize:none;" value="{{ sondage.introduction }}">{{ sondage.introduction }}</textarea><br><br>
         <label >Visibilité</label>
         <br>
         {% if sondage.visibilite %}
             <label>public
-                <input type="radio" name="visibilite" value="public" checked>
+                <input class="form-check-input" type="radio" name="visibilite" value="public" checked>
             </label>
             <label>privé
-                <input type="radio" name="visibilite" value="prive" >
+                <input class="form-check-input" type="radio" name="visibilite" value="prive" >
             </label>
         {% else %}
             <label>public
-                <input type="radio" name="visibilite" value="public" >
+                <input class="form-check-input" type="radio" name="visibilite" value="public" >
             </label>
             <label>privé
-                <input type="radio" name="visibilite" value="prive" checked>
+                <input class="form-check-input" type="radio" name="visibilite" value="prive" checked>
             </label>
         {% endif %}
         <br>
         {% set numquestion = 1 %}
         {% for question in sondage.questions %}
             <div id="question{{ numquestion }}">
-                <label>Nom:</label> <input name="question{{ numquestion }}" value="{{ question.intitule }}" ><br>
-                <label>Visuel :</label> <input name="image{{ numquestion }}" value="{{ question.visuel.visuel }}" ><br>
+                <br>
+                <label>Nom:</label> <input  class="form-control" name="question{{ numquestion }}" value="{{ question.intitule }}" ><br>
 
-                <label>Type de la question : {{ question.type.type }}</label><br>
+                <label>Visuel :</label>
+                {% if question.visuel %}
+                {% if question.visuel.visuel != "" %}
+                <input class="form-control" name="image{{ numquestion }}" value="{{ question.visuel.visuel }}" ><br>
+                    {% endif %}
+                {% else %}
+                    <input class="form-control" name="image{{ numquestion }}" value="" ><br>
+                    {% endif %}
+
+                    <label>Type de la question : {{ question.type.type }}</label><br>
                 {% if question.type.type == "multiple" %}
                     {% set i = 1 %}
                     {% for reponse in question.reponses %}
-                        <label>Reponse {{ i }} :</label><input  name="reponse{{ numquestion }}{{ i }}" value="{{ reponse.reponse }}"><br>
+                        <br>
+                        <label>Reponse {{ i }} :</label><input class="form-control" name="reponse{{ numquestion }}{{ i }}" value="{{ reponse.reponse }}"><br>
                         {% set i = i + 1 %}
                     {% endfor %}
 
@@ -142,27 +155,30 @@
                 {% if question.type.type == "unique" %}
                     {% set i = 1 %}
                     {% for reponse in question.reponses %}
-                        <label>Reponse {{ i }} :</label><input  name="reponse{{ numquestion }}{{ i }}" value="{{ reponse.reponse }}"><br>
+                        <label>Reponse {{ i }} :</label><input  class="form-control" name="reponse{{ numquestion }}{{ i }}" value="{{ reponse.reponse }}"><br>
                         {% set i = i + 1 %}
                     {% endfor %}
 
                 {% endif %}
                 <p id="{{ question.id }}">
-                    <input name="{{ question.id }}" value="true" type="hidden"></p>
-                <button type="button"  value="Masquer" onclick="masquer('question{{ numquestion }}','{{ question.id }}');" > Supprimer la question </button><br>
+                    <input  name="{{ question.id }}" value="true" type="hidden"></p>
+                <button type="button" class="btn btn-outline-danger" value="Masquer" onclick="masquer('question{{ numquestion }}','{{ question.id }}');" > Supprimer la question </button><br>
             </div>
             {% set numquestion = numquestion + 1 %}
         {% endfor %}
 
         <p id="demo1"></p>
         <p id="removequest"></p>
-        <button type="button" onclick="ajoutQ()" > + Ajouter une question </button><br><br>
+        <button class="btn btn-success" type="button" onclick="ajoutQ()" > + Ajouter une question </button><br><br>
 
 
-        <button type="submit">Valider modification</button>
+        <button class="btn btn-primary" type="submit">Valider modification</button>
     </form>
-
-    <a href="{{ path('app_sondage_index') }}">back to list</a>
-
-    {{ include('sondage/_delete_form.html.twig') }}
+            <br>
+            {{ include('sondage/_delete_form.html.twig') }}
+<br>
+            <a class="btn btn-outline-dark" href="{{ path('app_sondage_index') }}">Retour</a>
+            <br>
+        </div>
+    </div>
 {% endblock %}

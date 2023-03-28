@@ -92,25 +92,35 @@ class __TwigTemplate_e703e2efef6bc97e8c14f0b421bac0eb extends Template
         }
 
     </script>
-    <p>";
+    ";
         // line 13
-        echo twig_escape_filter($this->env, (isset($context["erreur"]) || array_key_exists("erreur", $context) ? $context["erreur"] : (function () { throw new RuntimeError('Variable "erreur" does not exist.', 13, $this->source); })()), "html", null, true);
-        echo "</p>
-
+        if ((twig_length_filter($this->env, (isset($context["erreur"]) || array_key_exists("erreur", $context) ? $context["erreur"] : (function () { throw new RuntimeError('Variable "erreur" does not exist.', 13, $this->source); })())) > 0)) {
+            // line 14
+            echo "    <p class=\"alert alert-danger\" >";
+            echo twig_escape_filter($this->env, (isset($context["erreur"]) || array_key_exists("erreur", $context) ? $context["erreur"] : (function () { throw new RuntimeError('Variable "erreur" does not exist.', 14, $this->source); })()), "html", null, true);
+            echo "</p>
+    ";
+        }
+        // line 16
+        echo "
+    <div class=\"container   \">
+        <div class=\"align-middle\" style=\"margin-top: 3%\">
     <h1>Create new Theme</h1>
+
 
     <p id=\"idp\">
     <input name=\"id\" id=\"id\" type=\"hidden\" value =\"\">
     </p>
     <form action=\"/sondage/creationTheme\" id =\"form\" method=\"POST\">
         <label>
-            Nom du thème à créer : <input type=\"text\" name=\"theme\" required>
+            Nom du thème à créer : <input class=\"form-control\"  type=\"text\" name=\"theme\" required>
         </label>
-        <button type=\"submit\"  >Creer</button>
+        <button type=\"submit\" class=\"btn btn-outline-primary\" >Creer</button>
     </form>
-
+<br>
     <h1>Liste Theme</h1>
-        <table class=\"table\">
+            <br>
+            <table class=\"table table-striped\">
             <thead>
             <tr>
                 <th>Nom des themes</th>
@@ -118,19 +128,19 @@ class __TwigTemplate_e703e2efef6bc97e8c14f0b421bac0eb extends Template
             </thead>
             <tbody>
             ";
-        // line 35
+        // line 41
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable($context["theme"]);
         foreach ($context['_seq'] as $context["_key"] => $context["theme"]) {
-            // line 36
+            // line 42
             echo "            <tr>
                 <td>";
-            // line 37
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["theme"], "theme", [], "any", false, false, false, 37), "html", null, true);
+            // line 43
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["theme"], "theme", [], "any", false, false, false, 43), "html", null, true);
             echo "</td>
-                <td><a type=\"button\" href=\"";
-            // line 38
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_theme_delete", ["id" => twig_get_attribute($this->env, $this->source, $context["theme"], "id", [], "any", false, false, false, 38)]), "html", null, true);
+                <td><a class=\"btn btn-danger\" type=\"button\" href=\"";
+            // line 44
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_theme_delete", ["id" => twig_get_attribute($this->env, $this->source, $context["theme"], "id", [], "any", false, false, false, 44)]), "html", null, true);
             echo "\">Supprimer</a>
                 </td>
 
@@ -140,17 +150,19 @@ class __TwigTemplate_e703e2efef6bc97e8c14f0b421bac0eb extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['theme'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 43
+        // line 49
         echo "
             </tbody>
         </table>
     </form>
 
 
-    <a href=\"";
-        // line 49
+            <a class=\"btn btn-outline-dark\" href=\"";
+        // line 55
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_sondage_index");
-        echo "\">back to list</a>
+        echo "\">Retour</a>
+        </div>
+    </div>
 
 ";
         
@@ -173,7 +185,7 @@ class __TwigTemplate_e703e2efef6bc97e8c14f0b421bac0eb extends Template
 
     public function getDebugInfo()
     {
-        return array (  152 => 49,  144 => 43,  133 => 38,  129 => 37,  126 => 36,  122 => 35,  97 => 13,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  162 => 55,  154 => 49,  143 => 44,  139 => 43,  136 => 42,  132 => 41,  105 => 16,  99 => 14,  97 => 13,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -190,22 +202,28 @@ class __TwigTemplate_e703e2efef6bc97e8c14f0b421bac0eb extends Template
         }
 
     </script>
-    <p>{{ erreur }}</p>
+    {% if erreur|length > 0 %}
+    <p class=\"alert alert-danger\" >{{ erreur }}</p>
+    {% endif %}
 
+    <div class=\"container   \">
+        <div class=\"align-middle\" style=\"margin-top: 3%\">
     <h1>Create new Theme</h1>
+
 
     <p id=\"idp\">
     <input name=\"id\" id=\"id\" type=\"hidden\" value =\"\">
     </p>
     <form action=\"/sondage/creationTheme\" id =\"form\" method=\"POST\">
         <label>
-            Nom du thème à créer : <input type=\"text\" name=\"theme\" required>
+            Nom du thème à créer : <input class=\"form-control\"  type=\"text\" name=\"theme\" required>
         </label>
-        <button type=\"submit\"  >Creer</button>
+        <button type=\"submit\" class=\"btn btn-outline-primary\" >Creer</button>
     </form>
-
+<br>
     <h1>Liste Theme</h1>
-        <table class=\"table\">
+            <br>
+            <table class=\"table table-striped\">
             <thead>
             <tr>
                 <th>Nom des themes</th>
@@ -215,7 +233,7 @@ class __TwigTemplate_e703e2efef6bc97e8c14f0b421bac0eb extends Template
             {% for theme in theme %}
             <tr>
                 <td>{{ theme.theme }}</td>
-                <td><a type=\"button\" href=\"{{ path('app_theme_delete', {'id': theme.id}) }}\">Supprimer</a>
+                <td><a class=\"btn btn-danger\" type=\"button\" href=\"{{ path('app_theme_delete', {'id': theme.id}) }}\">Supprimer</a>
                 </td>
 
             </tr>
@@ -226,7 +244,9 @@ class __TwigTemplate_e703e2efef6bc97e8c14f0b421bac0eb extends Template
     </form>
 
 
-    <a href=\"{{ path('app_sondage_index') }}\">back to list</a>
+            <a class=\"btn btn-outline-dark\" href=\"{{ path('app_sondage_index') }}\">Retour</a>
+        </div>
+    </div>
 
 {% endblock  body%}", "sondage/create_theme.html.twig", "/var/www/html/creacosm/templates/sondage/create_theme.html.twig");
     }

@@ -180,189 +180,218 @@ class __TwigTemplate_4787accef830fe2ad547508306e4f83e extends Template
 
     </script>
 
+    <div class=\"container\">
+        <div class=\"align-middle\" style=\"margin-top: 3%\">
 
-    <h1>Edit Sondage</h1>
-    <form action=\"./edited\" id =\"form\" method=\"POST\">
-        <p id =\"cpt\">       <input name=\"nbquestion\" id=\"nbquestion\" type=\"hidden\" value =\"";
-        // line 103
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["sondage"]) || array_key_exists("sondage", $context) ? $context["sondage"] : (function () { throw new RuntimeError('Variable "sondage" does not exist.', 103, $this->source); })()), "questions", [], "any", false, false, false, 103), "count", [], "method", false, false, false, 103), "html", null, true);
+    <h1>Modifier Sondage</h1>
+
+    <form  action=\"./edited\" id =\"form\" method=\"POST\">
+        <p id =\"cpt\">       <input  name=\"nbquestion\" id=\"nbquestion\" type=\"hidden\" value =\"";
+        // line 106
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["sondage"]) || array_key_exists("sondage", $context) ? $context["sondage"] : (function () { throw new RuntimeError('Variable "sondage" does not exist.', 106, $this->source); })()), "questions", [], "any", false, false, false, 106), "count", [], "method", false, false, false, 106), "html", null, true);
         echo "\"></p>
         <p id =\"newq\">       <input name=\"newquestion\" id=\"newquestion\" type=\"hidden\" value =\"0\"></p>
 
-        <label> Nom du sondage : </label><input name=\"nom\" value=\"";
-        // line 106
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["sondage"]) || array_key_exists("sondage", $context) ? $context["sondage"] : (function () { throw new RuntimeError('Variable "sondage" does not exist.', 106, $this->source); })()), "nom", [], "any", false, false, false, 106), "html", null, true);
+        <label > Nom du sondage : </label><input class=\"form-control\" name=\"nom\" value=\"";
+        // line 109
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["sondage"]) || array_key_exists("sondage", $context) ? $context["sondage"] : (function () { throw new RuntimeError('Variable "sondage" does not exist.', 109, $this->source); })()), "nom", [], "any", false, false, false, 109), "html", null, true);
         echo "\"><br><br>
         <!-- <label> Createur du sondage :</label><br><br>-->
-        <label> Introduction: </label><br><textarea name=\"introduction\" rows=\"5\" cols=\"33\" style=\"resize:none;\" value=\"";
-        // line 108
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["sondage"]) || array_key_exists("sondage", $context) ? $context["sondage"] : (function () { throw new RuntimeError('Variable "sondage" does not exist.', 108, $this->source); })()), "introduction", [], "any", false, false, false, 108), "html", null, true);
+        <label> Introduction: </label><br><textarea class=\"form-control\" name=\"introduction\" rows=\"5\" cols=\"33\" style=\"resize:none;\" value=\"";
+        // line 111
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["sondage"]) || array_key_exists("sondage", $context) ? $context["sondage"] : (function () { throw new RuntimeError('Variable "sondage" does not exist.', 111, $this->source); })()), "introduction", [], "any", false, false, false, 111), "html", null, true);
         echo "\">";
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["sondage"]) || array_key_exists("sondage", $context) ? $context["sondage"] : (function () { throw new RuntimeError('Variable "sondage" does not exist.', 108, $this->source); })()), "introduction", [], "any", false, false, false, 108), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["sondage"]) || array_key_exists("sondage", $context) ? $context["sondage"] : (function () { throw new RuntimeError('Variable "sondage" does not exist.', 111, $this->source); })()), "introduction", [], "any", false, false, false, 111), "html", null, true);
         echo "</textarea><br><br>
         <label >Visibilité</label>
         <br>
         ";
-        // line 111
-        if (twig_get_attribute($this->env, $this->source, (isset($context["sondage"]) || array_key_exists("sondage", $context) ? $context["sondage"] : (function () { throw new RuntimeError('Variable "sondage" does not exist.', 111, $this->source); })()), "visibilite", [], "any", false, false, false, 111)) {
-            // line 112
+        // line 114
+        if (twig_get_attribute($this->env, $this->source, (isset($context["sondage"]) || array_key_exists("sondage", $context) ? $context["sondage"] : (function () { throw new RuntimeError('Variable "sondage" does not exist.', 114, $this->source); })()), "visibilite", [], "any", false, false, false, 114)) {
+            // line 115
             echo "            <label>public
-                <input type=\"radio\" name=\"visibilite\" value=\"public\" checked>
+                <input class=\"form-check-input\" type=\"radio\" name=\"visibilite\" value=\"public\" checked>
             </label>
             <label>privé
-                <input type=\"radio\" name=\"visibilite\" value=\"prive\" >
+                <input class=\"form-check-input\" type=\"radio\" name=\"visibilite\" value=\"prive\" >
             </label>
         ";
         } else {
-            // line 119
+            // line 122
             echo "            <label>public
-                <input type=\"radio\" name=\"visibilite\" value=\"public\" >
+                <input class=\"form-check-input\" type=\"radio\" name=\"visibilite\" value=\"public\" >
             </label>
             <label>privé
-                <input type=\"radio\" name=\"visibilite\" value=\"prive\" checked>
+                <input class=\"form-check-input\" type=\"radio\" name=\"visibilite\" value=\"prive\" checked>
             </label>
         ";
         }
-        // line 126
+        // line 129
         echo "        <br>
         ";
-        // line 127
+        // line 130
         $context["numquestion"] = 1;
-        // line 128
+        // line 131
         echo "        ";
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["sondage"]) || array_key_exists("sondage", $context) ? $context["sondage"] : (function () { throw new RuntimeError('Variable "sondage" does not exist.', 128, $this->source); })()), "questions", [], "any", false, false, false, 128));
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["sondage"]) || array_key_exists("sondage", $context) ? $context["sondage"] : (function () { throw new RuntimeError('Variable "sondage" does not exist.', 131, $this->source); })()), "questions", [], "any", false, false, false, 131));
         foreach ($context['_seq'] as $context["_key"] => $context["question"]) {
-            // line 129
+            // line 132
             echo "            <div id=\"question";
-            echo twig_escape_filter($this->env, (isset($context["numquestion"]) || array_key_exists("numquestion", $context) ? $context["numquestion"] : (function () { throw new RuntimeError('Variable "numquestion" does not exist.', 129, $this->source); })()), "html", null, true);
+            echo twig_escape_filter($this->env, (isset($context["numquestion"]) || array_key_exists("numquestion", $context) ? $context["numquestion"] : (function () { throw new RuntimeError('Variable "numquestion" does not exist.', 132, $this->source); })()), "html", null, true);
             echo "\">
-                <label>Nom:</label> <input name=\"question";
-            // line 130
-            echo twig_escape_filter($this->env, (isset($context["numquestion"]) || array_key_exists("numquestion", $context) ? $context["numquestion"] : (function () { throw new RuntimeError('Variable "numquestion" does not exist.', 130, $this->source); })()), "html", null, true);
+                <br>
+                <label>Nom:</label> <input  class=\"form-control\" name=\"question";
+            // line 134
+            echo twig_escape_filter($this->env, (isset($context["numquestion"]) || array_key_exists("numquestion", $context) ? $context["numquestion"] : (function () { throw new RuntimeError('Variable "numquestion" does not exist.', 134, $this->source); })()), "html", null, true);
             echo "\" value=\"";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["question"], "intitule", [], "any", false, false, false, 130), "html", null, true);
-            echo "\" ><br>
-                <label>Visuel :</label> <input name=\"image";
-            // line 131
-            echo twig_escape_filter($this->env, (isset($context["numquestion"]) || array_key_exists("numquestion", $context) ? $context["numquestion"] : (function () { throw new RuntimeError('Variable "numquestion" does not exist.', 131, $this->source); })()), "html", null, true);
-            echo "\" value=\"";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["question"], "visuel", [], "any", false, false, false, 131), "visuel", [], "any", false, false, false, 131), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["question"], "intitule", [], "any", false, false, false, 134), "html", null, true);
             echo "\" ><br>
 
-                <label>Type de la question : ";
-            // line 133
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["question"], "type", [], "any", false, false, false, 133), "type", [], "any", false, false, false, 133), "html", null, true);
+                <label>Visuel :</label>
+                ";
+            // line 137
+            if (twig_get_attribute($this->env, $this->source, $context["question"], "visuel", [], "any", false, false, false, 137)) {
+                // line 138
+                echo "                ";
+                if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["question"], "visuel", [], "any", false, false, false, 138), "visuel", [], "any", false, false, false, 138) != "")) {
+                    // line 139
+                    echo "                <input class=\"form-control\" name=\"image";
+                    echo twig_escape_filter($this->env, (isset($context["numquestion"]) || array_key_exists("numquestion", $context) ? $context["numquestion"] : (function () { throw new RuntimeError('Variable "numquestion" does not exist.', 139, $this->source); })()), "html", null, true);
+                    echo "\" value=\"";
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["question"], "visuel", [], "any", false, false, false, 139), "visuel", [], "any", false, false, false, 139), "html", null, true);
+                    echo "\" ><br>
+                    ";
+                }
+                // line 141
+                echo "                ";
+            } else {
+                // line 142
+                echo "                    <input class=\"form-control\" name=\"image";
+                echo twig_escape_filter($this->env, (isset($context["numquestion"]) || array_key_exists("numquestion", $context) ? $context["numquestion"] : (function () { throw new RuntimeError('Variable "numquestion" does not exist.', 142, $this->source); })()), "html", null, true);
+                echo "\" value=\"\" ><br>
+                    ";
+            }
+            // line 144
+            echo "
+                    <label>Type de la question : ";
+            // line 145
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["question"], "type", [], "any", false, false, false, 145), "type", [], "any", false, false, false, 145), "html", null, true);
             echo "</label><br>
                 ";
-            // line 134
-            if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["question"], "type", [], "any", false, false, false, 134), "type", [], "any", false, false, false, 134) == "multiple")) {
-                // line 135
+            // line 146
+            if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["question"], "type", [], "any", false, false, false, 146), "type", [], "any", false, false, false, 146) == "multiple")) {
+                // line 147
                 echo "                    ";
                 $context["i"] = 1;
-                // line 136
-                echo "                    ";
-                $context['_parent'] = $context;
-                $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["question"], "reponses", [], "any", false, false, false, 136));
-                foreach ($context['_seq'] as $context["_key"] => $context["reponse"]) {
-                    // line 137
-                    echo "                        <label>Reponse ";
-                    echo twig_escape_filter($this->env, (isset($context["i"]) || array_key_exists("i", $context) ? $context["i"] : (function () { throw new RuntimeError('Variable "i" does not exist.', 137, $this->source); })()), "html", null, true);
-                    echo " :</label><input  name=\"reponse";
-                    echo twig_escape_filter($this->env, (isset($context["numquestion"]) || array_key_exists("numquestion", $context) ? $context["numquestion"] : (function () { throw new RuntimeError('Variable "numquestion" does not exist.', 137, $this->source); })()), "html", null, true);
-                    echo twig_escape_filter($this->env, (isset($context["i"]) || array_key_exists("i", $context) ? $context["i"] : (function () { throw new RuntimeError('Variable "i" does not exist.', 137, $this->source); })()), "html", null, true);
-                    echo "\" value=\"";
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["reponse"], "reponse", [], "any", false, false, false, 137), "html", null, true);
-                    echo "\"><br>
-                        ";
-                    // line 138
-                    $context["i"] = ((isset($context["i"]) || array_key_exists("i", $context) ? $context["i"] : (function () { throw new RuntimeError('Variable "i" does not exist.', 138, $this->source); })()) + 1);
-                    // line 139
-                    echo "                    ";
-                }
-                $_parent = $context['_parent'];
-                unset($context['_seq'], $context['_iterated'], $context['_key'], $context['reponse'], $context['_parent'], $context['loop']);
-                $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 140
-                echo "
-                ";
-            }
-            // line 142
-            echo "                ";
-            if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["question"], "type", [], "any", false, false, false, 142), "type", [], "any", false, false, false, 142) == "unique")) {
-                // line 143
-                echo "                    ";
-                $context["i"] = 1;
-                // line 144
-                echo "                    ";
-                $context['_parent'] = $context;
-                $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["question"], "reponses", [], "any", false, false, false, 144));
-                foreach ($context['_seq'] as $context["_key"] => $context["reponse"]) {
-                    // line 145
-                    echo "                        <label>Reponse ";
-                    echo twig_escape_filter($this->env, (isset($context["i"]) || array_key_exists("i", $context) ? $context["i"] : (function () { throw new RuntimeError('Variable "i" does not exist.', 145, $this->source); })()), "html", null, true);
-                    echo " :</label><input  name=\"reponse";
-                    echo twig_escape_filter($this->env, (isset($context["numquestion"]) || array_key_exists("numquestion", $context) ? $context["numquestion"] : (function () { throw new RuntimeError('Variable "numquestion" does not exist.', 145, $this->source); })()), "html", null, true);
-                    echo twig_escape_filter($this->env, (isset($context["i"]) || array_key_exists("i", $context) ? $context["i"] : (function () { throw new RuntimeError('Variable "i" does not exist.', 145, $this->source); })()), "html", null, true);
-                    echo "\" value=\"";
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["reponse"], "reponse", [], "any", false, false, false, 145), "html", null, true);
-                    echo "\"><br>
-                        ";
-                    // line 146
-                    $context["i"] = ((isset($context["i"]) || array_key_exists("i", $context) ? $context["i"] : (function () { throw new RuntimeError('Variable "i" does not exist.', 146, $this->source); })()) + 1);
-                    // line 147
-                    echo "                    ";
-                }
-                $_parent = $context['_parent'];
-                unset($context['_seq'], $context['_iterated'], $context['_key'], $context['reponse'], $context['_parent'], $context['loop']);
-                $context = array_intersect_key($context, $_parent) + $_parent;
                 // line 148
+                echo "                    ";
+                $context['_parent'] = $context;
+                $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["question"], "reponses", [], "any", false, false, false, 148));
+                foreach ($context['_seq'] as $context["_key"] => $context["reponse"]) {
+                    // line 149
+                    echo "                        <br>
+                        <label>Reponse ";
+                    // line 150
+                    echo twig_escape_filter($this->env, (isset($context["i"]) || array_key_exists("i", $context) ? $context["i"] : (function () { throw new RuntimeError('Variable "i" does not exist.', 150, $this->source); })()), "html", null, true);
+                    echo " :</label><input class=\"form-control\" name=\"reponse";
+                    echo twig_escape_filter($this->env, (isset($context["numquestion"]) || array_key_exists("numquestion", $context) ? $context["numquestion"] : (function () { throw new RuntimeError('Variable "numquestion" does not exist.', 150, $this->source); })()), "html", null, true);
+                    echo twig_escape_filter($this->env, (isset($context["i"]) || array_key_exists("i", $context) ? $context["i"] : (function () { throw new RuntimeError('Variable "i" does not exist.', 150, $this->source); })()), "html", null, true);
+                    echo "\" value=\"";
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["reponse"], "reponse", [], "any", false, false, false, 150), "html", null, true);
+                    echo "\"><br>
+                        ";
+                    // line 151
+                    $context["i"] = ((isset($context["i"]) || array_key_exists("i", $context) ? $context["i"] : (function () { throw new RuntimeError('Variable "i" does not exist.', 151, $this->source); })()) + 1);
+                    // line 152
+                    echo "                    ";
+                }
+                $_parent = $context['_parent'];
+                unset($context['_seq'], $context['_iterated'], $context['_key'], $context['reponse'], $context['_parent'], $context['loop']);
+                $context = array_intersect_key($context, $_parent) + $_parent;
+                // line 153
                 echo "
                 ";
             }
-            // line 150
+            // line 155
+            echo "                ";
+            if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["question"], "type", [], "any", false, false, false, 155), "type", [], "any", false, false, false, 155) == "unique")) {
+                // line 156
+                echo "                    ";
+                $context["i"] = 1;
+                // line 157
+                echo "                    ";
+                $context['_parent'] = $context;
+                $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["question"], "reponses", [], "any", false, false, false, 157));
+                foreach ($context['_seq'] as $context["_key"] => $context["reponse"]) {
+                    // line 158
+                    echo "                        <label>Reponse ";
+                    echo twig_escape_filter($this->env, (isset($context["i"]) || array_key_exists("i", $context) ? $context["i"] : (function () { throw new RuntimeError('Variable "i" does not exist.', 158, $this->source); })()), "html", null, true);
+                    echo " :</label><input  class=\"form-control\" name=\"reponse";
+                    echo twig_escape_filter($this->env, (isset($context["numquestion"]) || array_key_exists("numquestion", $context) ? $context["numquestion"] : (function () { throw new RuntimeError('Variable "numquestion" does not exist.', 158, $this->source); })()), "html", null, true);
+                    echo twig_escape_filter($this->env, (isset($context["i"]) || array_key_exists("i", $context) ? $context["i"] : (function () { throw new RuntimeError('Variable "i" does not exist.', 158, $this->source); })()), "html", null, true);
+                    echo "\" value=\"";
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["reponse"], "reponse", [], "any", false, false, false, 158), "html", null, true);
+                    echo "\"><br>
+                        ";
+                    // line 159
+                    $context["i"] = ((isset($context["i"]) || array_key_exists("i", $context) ? $context["i"] : (function () { throw new RuntimeError('Variable "i" does not exist.', 159, $this->source); })()) + 1);
+                    // line 160
+                    echo "                    ";
+                }
+                $_parent = $context['_parent'];
+                unset($context['_seq'], $context['_iterated'], $context['_key'], $context['reponse'], $context['_parent'], $context['loop']);
+                $context = array_intersect_key($context, $_parent) + $_parent;
+                // line 161
+                echo "
+                ";
+            }
+            // line 163
             echo "                <p id=\"";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["question"], "id", [], "any", false, false, false, 150), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["question"], "id", [], "any", false, false, false, 163), "html", null, true);
             echo "\">
-                    <input name=\"";
-            // line 151
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["question"], "id", [], "any", false, false, false, 151), "html", null, true);
+                    <input  name=\"";
+            // line 164
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["question"], "id", [], "any", false, false, false, 164), "html", null, true);
             echo "\" value=\"true\" type=\"hidden\"></p>
-                <button type=\"button\"  value=\"Masquer\" onclick=\"masquer('question";
-            // line 152
-            echo twig_escape_filter($this->env, (isset($context["numquestion"]) || array_key_exists("numquestion", $context) ? $context["numquestion"] : (function () { throw new RuntimeError('Variable "numquestion" does not exist.', 152, $this->source); })()), "html", null, true);
+                <button type=\"button\" class=\"btn btn-outline-danger\" value=\"Masquer\" onclick=\"masquer('question";
+            // line 165
+            echo twig_escape_filter($this->env, (isset($context["numquestion"]) || array_key_exists("numquestion", $context) ? $context["numquestion"] : (function () { throw new RuntimeError('Variable "numquestion" does not exist.', 165, $this->source); })()), "html", null, true);
             echo "','";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["question"], "id", [], "any", false, false, false, 152), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["question"], "id", [], "any", false, false, false, 165), "html", null, true);
             echo "');\" > Supprimer la question </button><br>
             </div>
             ";
-            // line 154
-            $context["numquestion"] = ((isset($context["numquestion"]) || array_key_exists("numquestion", $context) ? $context["numquestion"] : (function () { throw new RuntimeError('Variable "numquestion" does not exist.', 154, $this->source); })()) + 1);
-            // line 155
+            // line 167
+            $context["numquestion"] = ((isset($context["numquestion"]) || array_key_exists("numquestion", $context) ? $context["numquestion"] : (function () { throw new RuntimeError('Variable "numquestion" does not exist.', 167, $this->source); })()) + 1);
+            // line 168
             echo "        ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['question'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 156
+        // line 169
         echo "
         <p id=\"demo1\"></p>
         <p id=\"removequest\"></p>
-        <button type=\"button\" onclick=\"ajoutQ()\" > + Ajouter une question </button><br><br>
+        <button class=\"btn btn-success\" type=\"button\" onclick=\"ajoutQ()\" > + Ajouter une question </button><br><br>
 
 
-        <button type=\"submit\">Valider modification</button>
+        <button class=\"btn btn-primary\" type=\"submit\">Valider modification</button>
     </form>
-
-    <a href=\"";
-        // line 165
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_sondage_index");
-        echo "\">back to list</a>
-
-    ";
-        // line 167
+            <br>
+            ";
+        // line 178
         echo twig_include($this->env, $context, "sondage/_delete_form.html.twig");
         echo "
+<br>
+            <a class=\"btn btn-outline-dark\" href=\"";
+        // line 180
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_sondage_index");
+        echo "\">Retour</a>
+            <br>
+        </div>
+    </div>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -384,7 +413,7 @@ class __TwigTemplate_4787accef830fe2ad547508306e4f83e extends Template
 
     public function getDebugInfo()
     {
-        return array (  364 => 167,  359 => 165,  348 => 156,  342 => 155,  340 => 154,  333 => 152,  329 => 151,  324 => 150,  320 => 148,  314 => 147,  312 => 146,  302 => 145,  297 => 144,  294 => 143,  291 => 142,  287 => 140,  281 => 139,  279 => 138,  269 => 137,  264 => 136,  261 => 135,  259 => 134,  255 => 133,  248 => 131,  242 => 130,  237 => 129,  232 => 128,  230 => 127,  227 => 126,  218 => 119,  209 => 112,  207 => 111,  199 => 108,  194 => 106,  188 => 103,  88 => 5,  78 => 4,  59 => 2,  36 => 1,);
+        return array (  390 => 180,  385 => 178,  374 => 169,  368 => 168,  366 => 167,  359 => 165,  355 => 164,  350 => 163,  346 => 161,  340 => 160,  338 => 159,  328 => 158,  323 => 157,  320 => 156,  317 => 155,  313 => 153,  307 => 152,  305 => 151,  296 => 150,  293 => 149,  288 => 148,  285 => 147,  283 => 146,  279 => 145,  276 => 144,  270 => 142,  267 => 141,  259 => 139,  256 => 138,  254 => 137,  246 => 134,  240 => 132,  235 => 131,  233 => 130,  230 => 129,  221 => 122,  212 => 115,  210 => 114,  202 => 111,  197 => 109,  191 => 106,  88 => 5,  78 => 4,  59 => 2,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -488,44 +517,57 @@ class __TwigTemplate_4787accef830fe2ad547508306e4f83e extends Template
 
     </script>
 
+    <div class=\"container\">
+        <div class=\"align-middle\" style=\"margin-top: 3%\">
 
-    <h1>Edit Sondage</h1>
-    <form action=\"./edited\" id =\"form\" method=\"POST\">
-        <p id =\"cpt\">       <input name=\"nbquestion\" id=\"nbquestion\" type=\"hidden\" value =\"{{ sondage.questions.count() }}\"></p>
+    <h1>Modifier Sondage</h1>
+
+    <form  action=\"./edited\" id =\"form\" method=\"POST\">
+        <p id =\"cpt\">       <input  name=\"nbquestion\" id=\"nbquestion\" type=\"hidden\" value =\"{{ sondage.questions.count() }}\"></p>
         <p id =\"newq\">       <input name=\"newquestion\" id=\"newquestion\" type=\"hidden\" value =\"0\"></p>
 
-        <label> Nom du sondage : </label><input name=\"nom\" value=\"{{ sondage.nom }}\"><br><br>
+        <label > Nom du sondage : </label><input class=\"form-control\" name=\"nom\" value=\"{{ sondage.nom }}\"><br><br>
         <!-- <label> Createur du sondage :</label><br><br>-->
-        <label> Introduction: </label><br><textarea name=\"introduction\" rows=\"5\" cols=\"33\" style=\"resize:none;\" value=\"{{ sondage.introduction }}\">{{ sondage.introduction }}</textarea><br><br>
+        <label> Introduction: </label><br><textarea class=\"form-control\" name=\"introduction\" rows=\"5\" cols=\"33\" style=\"resize:none;\" value=\"{{ sondage.introduction }}\">{{ sondage.introduction }}</textarea><br><br>
         <label >Visibilité</label>
         <br>
         {% if sondage.visibilite %}
             <label>public
-                <input type=\"radio\" name=\"visibilite\" value=\"public\" checked>
+                <input class=\"form-check-input\" type=\"radio\" name=\"visibilite\" value=\"public\" checked>
             </label>
             <label>privé
-                <input type=\"radio\" name=\"visibilite\" value=\"prive\" >
+                <input class=\"form-check-input\" type=\"radio\" name=\"visibilite\" value=\"prive\" >
             </label>
         {% else %}
             <label>public
-                <input type=\"radio\" name=\"visibilite\" value=\"public\" >
+                <input class=\"form-check-input\" type=\"radio\" name=\"visibilite\" value=\"public\" >
             </label>
             <label>privé
-                <input type=\"radio\" name=\"visibilite\" value=\"prive\" checked>
+                <input class=\"form-check-input\" type=\"radio\" name=\"visibilite\" value=\"prive\" checked>
             </label>
         {% endif %}
         <br>
         {% set numquestion = 1 %}
         {% for question in sondage.questions %}
             <div id=\"question{{ numquestion }}\">
-                <label>Nom:</label> <input name=\"question{{ numquestion }}\" value=\"{{ question.intitule }}\" ><br>
-                <label>Visuel :</label> <input name=\"image{{ numquestion }}\" value=\"{{ question.visuel.visuel }}\" ><br>
+                <br>
+                <label>Nom:</label> <input  class=\"form-control\" name=\"question{{ numquestion }}\" value=\"{{ question.intitule }}\" ><br>
 
-                <label>Type de la question : {{ question.type.type }}</label><br>
+                <label>Visuel :</label>
+                {% if question.visuel %}
+                {% if question.visuel.visuel != \"\" %}
+                <input class=\"form-control\" name=\"image{{ numquestion }}\" value=\"{{ question.visuel.visuel }}\" ><br>
+                    {% endif %}
+                {% else %}
+                    <input class=\"form-control\" name=\"image{{ numquestion }}\" value=\"\" ><br>
+                    {% endif %}
+
+                    <label>Type de la question : {{ question.type.type }}</label><br>
                 {% if question.type.type == \"multiple\" %}
                     {% set i = 1 %}
                     {% for reponse in question.reponses %}
-                        <label>Reponse {{ i }} :</label><input  name=\"reponse{{ numquestion }}{{ i }}\" value=\"{{ reponse.reponse }}\"><br>
+                        <br>
+                        <label>Reponse {{ i }} :</label><input class=\"form-control\" name=\"reponse{{ numquestion }}{{ i }}\" value=\"{{ reponse.reponse }}\"><br>
                         {% set i = i + 1 %}
                     {% endfor %}
 
@@ -533,29 +575,32 @@ class __TwigTemplate_4787accef830fe2ad547508306e4f83e extends Template
                 {% if question.type.type == \"unique\" %}
                     {% set i = 1 %}
                     {% for reponse in question.reponses %}
-                        <label>Reponse {{ i }} :</label><input  name=\"reponse{{ numquestion }}{{ i }}\" value=\"{{ reponse.reponse }}\"><br>
+                        <label>Reponse {{ i }} :</label><input  class=\"form-control\" name=\"reponse{{ numquestion }}{{ i }}\" value=\"{{ reponse.reponse }}\"><br>
                         {% set i = i + 1 %}
                     {% endfor %}
 
                 {% endif %}
                 <p id=\"{{ question.id }}\">
-                    <input name=\"{{ question.id }}\" value=\"true\" type=\"hidden\"></p>
-                <button type=\"button\"  value=\"Masquer\" onclick=\"masquer('question{{ numquestion }}','{{ question.id }}');\" > Supprimer la question </button><br>
+                    <input  name=\"{{ question.id }}\" value=\"true\" type=\"hidden\"></p>
+                <button type=\"button\" class=\"btn btn-outline-danger\" value=\"Masquer\" onclick=\"masquer('question{{ numquestion }}','{{ question.id }}');\" > Supprimer la question </button><br>
             </div>
             {% set numquestion = numquestion + 1 %}
         {% endfor %}
 
         <p id=\"demo1\"></p>
         <p id=\"removequest\"></p>
-        <button type=\"button\" onclick=\"ajoutQ()\" > + Ajouter une question </button><br><br>
+        <button class=\"btn btn-success\" type=\"button\" onclick=\"ajoutQ()\" > + Ajouter une question </button><br><br>
 
 
-        <button type=\"submit\">Valider modification</button>
+        <button class=\"btn btn-primary\" type=\"submit\">Valider modification</button>
     </form>
-
-    <a href=\"{{ path('app_sondage_index') }}\">back to list</a>
-
-    {{ include('sondage/_delete_form.html.twig') }}
+            <br>
+            {{ include('sondage/_delete_form.html.twig') }}
+<br>
+            <a class=\"btn btn-outline-dark\" href=\"{{ path('app_sondage_index') }}\">Retour</a>
+            <br>
+        </div>
+    </div>
 {% endblock %}", "sondage/edit.html.twig", "/var/www/html/creacosm/templates/sondage/edit.html.twig");
     }
 }
