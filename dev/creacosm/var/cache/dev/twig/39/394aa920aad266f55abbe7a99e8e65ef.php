@@ -86,8 +86,25 @@ class __TwigTemplate_bface68bf8a77f840da73c06704306b8 extends Template
 
         // line 6
         echo "
+    <div class=\"align-middle text-center\"  style=\"margin-top: 5%\">
+    <div className=\"box box1\">
+        <div className=\"container\">
+            <img src=\"";
+        // line 10
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/image.png"), "html", null, true);
+        echo "\" width=\"420\" height=\"350\" class=\"align-content-center\"alt=\"logo\"/>
 
-    <img src=\"image.png\">
+            <h1 className=\"centerText\">Répondez à vos sondages préférés</h1>
+            <p className=\"centerText\">
+                Bienvenue sur Creacosm, ici vous pouvez répondre à de nombreux sondages (si l'accès vous y est autorisé).<br>
+                De plus avec un compte administrateur vous pouvez créer des sondages avec un nombre illimité de question.<br>
+                Vous pourrez ensuite accéder au statistiques des sondages.<br>
+                Site créé par : Wassim Oulhadj, Tristan Paty, Itri Obani et Youssef El-Kalloubi.<br>
+            </p>
+
+    </div>
+    </div>
+    </div>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -109,7 +126,7 @@ class __TwigTemplate_bface68bf8a77f840da73c06704306b8 extends Template
 
     public function getDebugInfo()
     {
-        return array (  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  94 => 10,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -120,9 +137,22 @@ class __TwigTemplate_bface68bf8a77f840da73c06704306b8 extends Template
 
 {% block body %}
 
+    <div class=\"align-middle text-center\"  style=\"margin-top: 5%\">
+    <div className=\"box box1\">
+        <div className=\"container\">
+            <img src=\"{{ asset('images/image.png') }}\" width=\"420\" height=\"350\" class=\"align-content-center\"alt=\"logo\"/>
 
-    <img src=\"image.png\">
-{% endblock %}
-", "racine/index.html.twig", "/var/www/html/creacosm/templates/racine/index.html.twig");
+            <h1 className=\"centerText\">Répondez à vos sondages préférés</h1>
+            <p className=\"centerText\">
+                Bienvenue sur Creacosm, ici vous pouvez répondre à de nombreux sondages (si l'accès vous y est autorisé).<br>
+                De plus avec un compte administrateur vous pouvez créer des sondages avec un nombre illimité de question.<br>
+                Vous pourrez ensuite accéder au statistiques des sondages.<br>
+                Site créé par : Wassim Oulhadj, Tristan Paty, Itri Obani et Youssef El-Kalloubi.<br>
+            </p>
+
+    </div>
+    </div>
+    </div>
+{% endblock %}", "racine/index.html.twig", "/var/www/html/creacosm/templates/racine/index.html.twig");
     }
 }

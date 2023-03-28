@@ -38,7 +38,7 @@ security:
         - { path: ^/sondage/new, roles: [ ROLE_ADMIN ] }
         - { path: ^/sondage/\d+/edit, roles: [ ROLE_ADMIN ] }
         - { path: ^/sondage/createTheme, roles: [ ROLE_ADMIN ] }
-        - { path: ^/sondage/, roles: IS_AUTHENTICATED_FULLY }
+       # - { path: ^/sondage/, roles: IS_AUTHENTICATED_FULLY }
 
 when@test:
     security:

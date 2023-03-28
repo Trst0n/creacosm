@@ -246,27 +246,28 @@ class __TwigTemplate_52acc14ac5ba69438acfe1aa2358e759 extends Template
             } else {
                 // line 55
                 echo "                <div>
+                    <br>
                     <textarea class=\"form-control\"  name=\"ouverte";
-                // line 56
-                echo twig_escape_filter($this->env, (isset($context["i"]) || array_key_exists("i", $context) ? $context["i"] : (function () { throw new RuntimeError('Variable "i" does not exist.', 56, $this->source); })()), "html", null, true);
+                // line 57
+                echo twig_escape_filter($this->env, (isset($context["i"]) || array_key_exists("i", $context) ? $context["i"] : (function () { throw new RuntimeError('Variable "i" does not exist.', 57, $this->source); })()), "html", null, true);
                 echo "\" rows=\"5\" cols=\"33\" style=\"resize:none;\" autocomplete=\"off\"></textarea>
                 </div>
             ";
             }
-            // line 59
+            // line 60
             echo "
 
         </fieldset>
         ";
-            // line 62
-            $context["i"] = ((isset($context["i"]) || array_key_exists("i", $context) ? $context["i"] : (function () { throw new RuntimeError('Variable "i" does not exist.', 62, $this->source); })()) + 1);
             // line 63
+            $context["i"] = ((isset($context["i"]) || array_key_exists("i", $context) ? $context["i"] : (function () { throw new RuntimeError('Variable "i" does not exist.', 63, $this->source); })()) + 1);
+            // line 64
             echo "    ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['question'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 64
+        // line 65
         echo "
     <br>
     <br>
@@ -274,7 +275,7 @@ class __TwigTemplate_52acc14ac5ba69438acfe1aa2358e759 extends Template
     </form>
         <br>
         <a class=\"btn btn-outline-dark\" href=\"";
-        // line 70
+        // line 71
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_sondage_index");
         echo "\">Retour</a>
 
@@ -302,7 +303,7 @@ class __TwigTemplate_52acc14ac5ba69438acfe1aa2358e759 extends Template
 
     public function getDebugInfo()
     {
-        return array (  278 => 70,  270 => 64,  264 => 63,  262 => 62,  257 => 59,  251 => 56,  248 => 55,  245 => 54,  234 => 51,  226 => 50,  223 => 49,  218 => 48,  215 => 47,  204 => 44,  196 => 43,  193 => 42,  188 => 41,  185 => 40,  174 => 37,  166 => 36,  163 => 35,  158 => 34,  156 => 33,  152 => 31,  149 => 30,  143 => 28,  140 => 27,  138 => 26,  134 => 25,  129 => 23,  125 => 22,  118 => 18,  115 => 17,  110 => 16,  108 => 15,  104 => 14,  100 => 13,  94 => 10,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  279 => 71,  271 => 65,  265 => 64,  263 => 63,  258 => 60,  252 => 57,  248 => 55,  245 => 54,  234 => 51,  226 => 50,  223 => 49,  218 => 48,  215 => 47,  204 => 44,  196 => 43,  193 => 42,  188 => 41,  185 => 40,  174 => 37,  166 => 36,  163 => 35,  158 => 34,  156 => 33,  152 => 31,  149 => 30,  143 => 28,  140 => 27,  138 => 26,  134 => 25,  129 => 23,  125 => 22,  118 => 18,  115 => 17,  110 => 16,  108 => 15,  104 => 14,  100 => 13,  94 => 10,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -362,6 +363,7 @@ class __TwigTemplate_52acc14ac5ba69438acfe1aa2358e759 extends Template
                 {% endfor %}
             {% else %}
                 <div>
+                    <br>
                     <textarea class=\"form-control\"  name=\"ouverte{{ i }}\" rows=\"5\" cols=\"33\" style=\"resize:none;\" autocomplete=\"off\"></textarea>
                 </div>
             {% endif %}

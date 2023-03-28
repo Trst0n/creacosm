@@ -16,10 +16,10 @@
 
             int ++
             document.getElementById("cpt").innerHTML = "<input name=\"nbquestion\" id=\"nbquestion\" type=\"hidden\" value =" + int +">";
-            document.getElementById("demo"+int).innerHTML += "<label> Intitulé: <br> <input type=\"text\" name=\"intitule"+ int+"\"> <br><br> <label> Image: <br> <input type=\"text\" name=\"image"+ int+"\"></label> <br><br> <label for=\"type-select\">Choisissez un type:</label><br> <select name=\"type"+ int+"\" id=\"type-select\" autocomplete='off' onchange=\"choixtypebis(value,"+ int+")\" > <option value=\"\">--Choisissez une option--</option> <option value=\"multiple\">Question à choix multiple</option> <option value=\"unique\">Question à choix unique</option><option value=\"ouverte\">Question ouverte</option> <option value=\"oui_non\">Question oui/non</option></select> <br><br> <label> Choix: <br> <p id=\"typequestion" + int +"\"></p><p id=\"demo" + (int+1) + "\"><br> </label> <br><br>";
+            document.getElementById("demo"+int).innerHTML += "<label> Intitulé: </label><br> <input class=\"form-control\" type=\"text\" name=\"intitule"+ int+"\"> <br><br> <label> Image: </label><br> <input class=\"form-control\" type=\"text\" name=\"image"+ int+"\"> <br><br> <label for=\"type-select\">Choisissez un type:</label><br> <select class=\"form-select\" name=\"type"+ int+"\" id=\"type-select\" autocomplete='off' onchange=\"choixtypebis(value,"+ int+")\" > <option value=\"\">--Choisissez une option--</option> <option value=\"multiple\">Question à choix multiple</option> <option value=\"unique\">Question à choix unique</option><option value=\"ouverte\">Question ouverte</option> <option value=\"oui_non\">Question oui/non</option></select> <br><br> <label> Choix: <br> <p id=\"typequestion" + int +"\"></p><p id=\"demo" + (int+1) + "\"><br> </label> <br><br>";
 
             if (int > 1){
-                document.getElementById("removequest").innerHTML = "<button type=\"button\" onclick=\"removequestion(" + int + ")\"> - Supprimer une question </button>"
+                document.getElementById("removequest").innerHTML = "<button class=\"btn  btn-danger\" type=\"button\" onclick=\"removequestion(" + int + ")\"> - Supprimer une question </button>"
             }
 
         }
@@ -29,20 +29,20 @@
                 case "multiple":
                     type = "multiple"
                     nbquestion =1
-                    choix = "Réponse 1 :<input type=\"text\" name=\"reponse"+int+ "-"+nbquestion+"\"><br><p id =\"" + int + "-" + (nbquestion+1) +"\"><button type=\"button\" onclick=\"newreponse("+ int + "," + (nbquestion + 1)+ ")\"> + Ajouter une reponse </button></p><br>"
+                    choix = "Réponse 1 :<input class=\"form-control\" type=\"text\" name=\"reponse"+int+ "-"+nbquestion+"\"><br><p id =\"" + int + "-" + (nbquestion+1) +"\"><button class=\"btn  btn-success\" type=\"button\" onclick=\"newreponse("+ int + "," + (nbquestion + 1)+ ")\"> + Ajouter une reponse </button></p><br>"
                     break
                 case "unique":
                     type = "unique"
                     nbquestion =1
-                    choix = "Réponse 1 :<input type=\"text\" name=\"reponse"+int+ "-"+nbquestion+"\"><br><p id =\"" + int + "-" + (nbquestion+1) +"\"><button type=\"button\" onclick=\"newreponse("+ int + "," + (nbquestion + 1)+ ")\"> + Ajouter une reponse </button></p><br>"
+                    choix = "Réponse 1 :<input class=\"form-control\" type=\"text\" name=\"reponse"+int+ "-"+nbquestion+"\"><br><p id =\"" + int + "-" + (nbquestion+1) +"\"><button class=\"btn  btn-success\" type=\"button\" onclick=\"newreponse("+ int + "," + (nbquestion + 1)+ ")\"> + Ajouter une reponse </button></p><br>"
                     break
                 case "ouverte":
                     type = "ouverte"
-                    choix = "Question ouverte: Aucun affichage disponible"
+                    choix = "<label>Question ouverte: Aucun affichage disponible</label>"
                     break
                 case "oui_non":
                     type = "oui_non"
-                    choix = "<label>Il n'y a pas d'affichage pour ce choix. </label>"
+                    choix = "<label>Question oui/non: Aucun affichage disponible</label>"
                     break
                 default:
                     type = ""
@@ -56,14 +56,14 @@
             nbquestion ++
             console.log(nbquestion)
 
-            document.getElementById(nbquest + "-" + nbrep).innerHTML = "Réponse "+nbquestion+":<input type=\"text\" name=\"reponse"+ int + "-" +nbquestion+"\"><br><p id=\""+ nbquest + "-" + (nbrep+1) + "\"><button type=\"button\" onclick=\"newreponse("+ nbquest +"," + (nbrep+1) +")\"> + Ajouter une reponse </button><button type=\"button\" onclick=\"removereponse("+ nbquest +"," + (nbrep)+")\"> - Supprimer une reponse </button></p>"
+            document.getElementById(nbquest + "-" + nbrep).innerHTML = "Réponse "+nbquestion+":<input class=\"form-control\" type=\"text\" name=\"reponse"+ int + "-" +nbquestion+"\"><br><p id=\""+ nbquest + "-" + (nbrep+1) + "\"><button class=\"btn  btn-success\" type=\"button\" onclick=\"newreponse("+ nbquest +"," + (nbrep+1) +")\"> + Ajouter une reponse </button><button class=\"btn  btn-danger\" type=\"button\" onclick=\"removereponse("+ nbquest +"," + (nbrep)+")\"> - Supprimer une reponse </button></p>"
         }
         function removereponse(quest,rep){
             nbquestion --
             if (nbquestion === 1){
-                document.getElementById(quest + "-" + rep).innerHTML="<button type=\"button\" onclick=\"newreponse("+ quest +"," + (rep) +")\"> + Ajouter une reponse </button>"
+                document.getElementById(quest + "-" + rep).innerHTML="<button class=\"btn  btn-success\" type=\"button\" onclick=\"newreponse("+ quest +"," + (rep) +")\"> + Ajouter une reponse </button>"
             }else{
-                document.getElementById(quest + "-" + rep).innerHTML="<button type=\"button\" onclick=\"newreponse("+ quest +"," + (rep) +")\"> + Ajouter une reponse </button><button type=\"button\" onclick=\"removereponse("+ quest +"," + (rep-1)+ ")\"> - Supprimer une reponse </button>"
+                document.getElementById(quest + "-" + rep).innerHTML="<button class=\"btn  btn-success\" type=\"button\" onclick=\"newreponse("+ quest +"," + (rep) +")\"> + Ajouter une reponse </button><button class=\"btn  btn-danger\" type=\"button\" onclick=\"removereponse("+ quest +"," + (rep-1)+ ")\"> - Supprimer une reponse </button>"
 
             }
         }
@@ -73,19 +73,20 @@
             document.getElementById("demo"+ id).innerHTML = "<input name=\"nbquestion\" id=\"nbquestion\" type=\"hidden\" value =" + int +">";
 
             if (int !== 1) {
-                document.getElementById("removequest").innerHTML = "<button type=\"button\" onclick=\"removequestion(" + int + ")\"> - Supprimer une question </button>"
+                document.getElementById("removequest").innerHTML = "<button class=\"btn  btn-danger\" type=\"button\" onclick=\"removequestion(" + int + ")\"> - Supprimer une question </button>"
             }
             else{
                 document.getElementById("removequest").innerHTML = ""
             }
         }
     </script>
-
-    <h1>Create new Sondage</h1>
+    <div class="container   ">
+        <div class="align-middle" style="margin-top: 5%">
+    <h1>Creer un nouveau Sondage</h1>
     <form action="./create" id ="form" method="POST" >
         <p id ="cpt">       <input name="nbquestion" id="nbquestion" type="hidden" value ="1">
         </p>
-        <label >Visibilité</label>
+        <h5 >Visibilité</h5>
         <br>
         <label>public
             <input type="radio" name="visibilite" value="public" checked>
@@ -94,21 +95,21 @@
             <input type="radio" name="visibilite" value="prive" required>
         </label>
         <br><br>
-        <label> Nom:
+        <label> Nom:        </label>
             <br>
-            <input type="text" autocomplete="off" name="nom" required>
-        </label>
+            <input class="form-control" type="text" autocomplete="off" name="nom" required>
+
         <br>
         <br>
-        <label> Présentation:
+        <label> Présentation:        </label>
             <br>
-            <textarea style="resize: none;" type="text" autocomplete="off" name="introduction" style="height:140px" required></textarea>
-        </label>
+            <textarea class="form-control" style="resize: none;" type="text" autocomplete="off" name="introduction" style="height:140px" required></textarea>
+
         <br>
         <br>
 
         <label>Choisissez un thème parmis les suivants :</label>
-        <select name="theme" id="type-select" autocomplete="off" >
+        <select class="form-select" name="theme" id="type-select" autocomplete="off" >
             {% for theme in theme %}
                 <option name="{{ theme.theme }}" value="{{ theme.theme }}">{{ theme.theme }}</option>
             {% endfor %}
@@ -120,11 +121,14 @@
         <br>
         <p id="demo2"></p>
         <p id="removequest"></p>
-        <button type="button" onclick="myFunction()" > + Ajouter une question </button><br><br>
+        <button class="btn  btn-outline-primary" type="button" onclick="myFunction()" > + Ajouter une question </button><br><br>
 
-        <button type="submit"> Créer </button>
+        <button class="btn  btn-primary" type="submit"> Créer </button>
+        <br>
     </form>
 
 
-    <a href="{{ path('app_sondage_index') }}">back to list</a>
+    <a class="btn  btn-outline-secondary" href="{{ path('app_sondage_index') }}">Retour</a>
+        </div>
+    </div>
 {% endblock %}

@@ -114,7 +114,7 @@
     <parameter key="kernel.trusted_hosts" type="collection"/>
     <parameter key="kernel.default_locale">en</parameter>
     <parameter key="kernel.enabled_locales" type="collection"/>
-    <parameter key="kernel.error_controller">error_controller</parameter>
+    <parameter key="kernel.error_controller">App\Controller\RacineController::show404</parameter>
     <parameter key="debug.file_link_format">%env(default::SYMFONY_IDE)%</parameter>
     <parameter key="asset.request_context.base_path">null</parameter>
     <parameter key="asset.request_context.secure">null</parameter>
@@ -499,7 +499,7 @@
     </service>
     <service id="error_controller" class="Symfony\Component\HttpKernel\Controller\ErrorController" public="true">
       <argument type="service" id="http_kernel"/>
-      <argument>error_controller</argument>
+      <argument>App\Controller\RacineController::show404</argument>
       <argument type="service" id="error_handler.error_renderer.serializer"/>
     </service>
     <service id="exception_listener" class="Symfony\Component\HttpKernel\EventListener\ErrorListener">
@@ -507,7 +507,7 @@
       <tag name="monolog.logger" channel="request"/>
       <tag name="container.hot_path"/>
       <tag name="container.hot_path"/>
-      <argument>error_controller</argument>
+      <argument>App\Controller\RacineController::show404</argument>
       <argument type="service" id="monolog.logger.request" on-invalid="null"/>
       <argument>true</argument>
       <argument type="collection"/>
@@ -5513,13 +5513,6 @@
         </argument>
         <argument>null</argument>
       </call>
-      <call method="add">
-        <argument type="service" id=".security.request_matcher.C5s6NgA"/>
-        <argument type="collection">
-          <argument>IS_AUTHENTICATED_FULLY</argument>
-        </argument>
-        <argument>null</argument>
-      </call>
     </service>
     <service id="security.context_listener" class="Symfony\Component\Security\Http\Firewall\ContextListener">
       <tag name="monolog.logger" channel="security"/>
@@ -6055,14 +6048,6 @@
     <service id=".security.request_matcher.ZNRkOin" class="Symfony\Component\HttpFoundation\ChainRequestMatcher">
       <argument type="collection">
         <argument type="service" id=".security.request_matcher.h4Wwbiw"/>
-      </argument>
-    </service>
-    <service id=".security.request_matcher.AWYC5ed" class="Symfony\Component\HttpFoundation\RequestMatcher\PathRequestMatcher">
-      <argument>^/sondage/</argument>
-    </service>
-    <service id=".security.request_matcher.C5s6NgA" class="Symfony\Component\HttpFoundation\ChainRequestMatcher">
-      <argument type="collection">
-        <argument type="service" id=".security.request_matcher.AWYC5ed"/>
       </argument>
     </service>
     <service id="security.command.user_password_hash" class="Symfony\Component\PasswordHasher\Command\UserPasswordHashCommand">

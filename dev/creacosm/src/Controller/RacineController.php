@@ -11,6 +11,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class RacineController extends AbstractController
 {
+
+    #[Route('/', name: 'app_landing', methods: ['GET'])]
+    public function racine(): Response
+    {
+        return $this->redirectToRoute("app_accueil");
+    }
+
     #[Route('/racine', name: 'app_racine')]
     public function index(): Response
     {
@@ -66,5 +73,8 @@ class RacineController extends AbstractController
     {
         return $this->render('bundles/TwigBundle/Exception/error404.html.twig');
     }
+
+
+
 
 }

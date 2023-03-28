@@ -372,7 +372,7 @@ class SondageController extends AbstractController
             while (isset($_POST["question" . $j])) {
                 $intitulequestion = $_POST["question" . $j];
                 $sondage->getQuestions()->get($j - 1)->setIntitule($intitulequestion);
-                if($_POST["image".$j]) {
+                if(isset($_POST["image".$j    ])) {
                     $sondage->getQuestions()->get($j - 1)->getVisuel()->setVisuel($_POST["image" . $j]);
                 }
                 $i = 1;

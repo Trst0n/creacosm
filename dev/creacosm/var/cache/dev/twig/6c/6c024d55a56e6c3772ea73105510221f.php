@@ -40,64 +40,70 @@ class __TwigTemplate_4587076ba9db009e1b1214b8bc119f53 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "layer/navbar.html.twig"));
 
         // line 1
-        echo "<nav class=\"navbar navbar-dark  navbar-expand-lg navbar-light\" style=\"background-color: #0a53be\">
+        echo "<nav class=\"navbar navbar-dark  navbar-expand-lg navbar-light \" style=\"background-color: #0a53be;\">
+
     <div class=\"container-fluid collapse navbar-collapse\">
+
         <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarSupportedContent\"
                 aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
             <span class=\"navbar-toggler-icon navbar-light\"></span>
         </button>
         <div class=\"container-fluid collapse navbar-collapse\" id=\"navbarSupportedContent\">
-            <ul class=\"navbar-nav  me-auto mb-2 mb-lg-0\">
-                <li class=\"nav-item\">
-                    <a class=\"nav-link\" href=\"";
+            <a class=\"navbar-brand\" href=\"";
         // line 10
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_accueil");
-        echo "\">Accueil</a>
-                </li>
-                ";
-        // line 12
-        if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 12, $this->source); })()), "user", [], "any", false, false, false, 12)) {
-            // line 13
-            echo "                    <li class=\"nav-item\">
+        echo "\">
+                <img src=\"";
+        // line 11
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/logo.png"), "html", null, true);
+        echo "\" width=\"75\" height=\"48\" class=\"d-inline-block align-content-center\" alt=\"\"/>
+                Creacosm
+            </a>
+            <ul class=\"navbar-nav  me-auto mb-2 mb-lg-0\">
+                <li class=\"nav-item\">
                         <a class=\"nav-link\"  href=\"";
-            // line 14
-            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_sondage_index");
-            echo "\">Sondages</a>
+        // line 16
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_sondage_index");
+        echo "\">Sondages</a>
                     </li>
-                    <li class=\"nav-item\">
+                ";
+        // line 18
+        if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 18, $this->source); })()), "user", [], "any", false, false, false, 18)) {
+            // line 19
+            echo "                    <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"";
-            // line 17
+            // line 20
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_moncompte");
             echo "\">Mon compte</a>
                     </li>
                     ";
-            // line 19
-            if (twig_in_filter("ROLE_ADMIN", twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 19, $this->source); })()), "user", [], "any", false, false, false, 19), "roles", [], "any", false, false, false, 19))) {
-                // line 20
+            // line 22
+            if (twig_in_filter("ROLE_ADMIN", twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 22, $this->source); })()), "user", [], "any", false, false, false, 22), "roles", [], "any", false, false, false, 22))) {
+                // line 23
                 echo "
                         <li class=\"nav-item\">
                             <a class=\"nav-link\" href=\"";
-                // line 22
+                // line 25
                 echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_theme");
                 echo "\">Theme</a>
                         </li>
                     ";
             }
-            // line 25
+            // line 28
             echo "                ";
         }
-        // line 26
+        // line 29
         echo "
             </ul>
             <div class=\"d-flex\">
                 <ul class=\"navbar-nav  me-auto mb-2 mb-lg-0\">
                     ";
-        // line 30
-        if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 30, $this->source); })()), "user", [], "any", false, false, false, 30)) {
-            // line 31
+        // line 33
+        if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 33, $this->source); })()), "user", [], "any", false, false, false, 33)) {
+            // line 34
             echo "                    <li class=\"nav-item\">
                         <button onclick=\"location.href='";
-            // line 32
+            // line 35
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
             echo "'\" class=\"nav-link btn btn-danger\">
                             Déconnexion
@@ -105,12 +111,12 @@ class __TwigTemplate_4587076ba9db009e1b1214b8bc119f53 extends Template
                     </li>
                     ";
         } else {
-            // line 37
+            // line 40
             echo "
 
                     <li class=\"nav-item\">
                         <button onclick=\"location.href='";
-            // line 40
+            // line 43
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
             echo "'\"
                                 style=\"margin-right: 10px; padding-left: 20px;padding-right: 20px\"
@@ -121,7 +127,7 @@ class __TwigTemplate_4587076ba9db009e1b1214b8bc119f53 extends Template
                     </li>
                     <li class=\"nav-item\">
                         <button onclick=\"location.href='";
-            // line 48
+            // line 51
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
             echo "'\" class=\"nav-link btn btn-success\">
                             Inscription
@@ -132,7 +138,7 @@ class __TwigTemplate_4587076ba9db009e1b1214b8bc119f53 extends Template
                 </ul>
                 ";
         }
-        // line 56
+        // line 59
         echo "            </div>
         </div>
     </div>
@@ -157,26 +163,29 @@ class __TwigTemplate_4587076ba9db009e1b1214b8bc119f53 extends Template
 
     public function getDebugInfo()
     {
-        return array (  136 => 56,  125 => 48,  114 => 40,  109 => 37,  101 => 32,  98 => 31,  96 => 30,  90 => 26,  87 => 25,  81 => 22,  77 => 20,  75 => 19,  70 => 17,  64 => 14,  61 => 13,  59 => 12,  54 => 10,  43 => 1,);
+        return array (  142 => 59,  131 => 51,  120 => 43,  115 => 40,  107 => 35,  104 => 34,  102 => 33,  96 => 29,  93 => 28,  87 => 25,  83 => 23,  81 => 22,  76 => 20,  73 => 19,  71 => 18,  66 => 16,  58 => 11,  54 => 10,  43 => 1,);
     }
 
     public function getSourceContext()
     {
-        return new Source("<nav class=\"navbar navbar-dark  navbar-expand-lg navbar-light\" style=\"background-color: #0a53be\">
+        return new Source("<nav class=\"navbar navbar-dark  navbar-expand-lg navbar-light \" style=\"background-color: #0a53be;\">
+
     <div class=\"container-fluid collapse navbar-collapse\">
+
         <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarSupportedContent\"
                 aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
             <span class=\"navbar-toggler-icon navbar-light\"></span>
         </button>
         <div class=\"container-fluid collapse navbar-collapse\" id=\"navbarSupportedContent\">
+            <a class=\"navbar-brand\" href=\"{{ path('app_accueil') }}\">
+                <img src=\"{{ asset('images/logo.png') }}\" width=\"75\" height=\"48\" class=\"d-inline-block align-content-center\" alt=\"\"/>
+                Creacosm
+            </a>
             <ul class=\"navbar-nav  me-auto mb-2 mb-lg-0\">
                 <li class=\"nav-item\">
-                    <a class=\"nav-link\" href=\"{{ path('app_accueil') }}\">Accueil</a>
-                </li>
-                {% if app.user %}
-                    <li class=\"nav-item\">
                         <a class=\"nav-link\"  href=\"{{ path('app_sondage_index') }}\">Sondages</a>
                     </li>
+                {% if app.user %}
                     <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"{{ path('app_moncompte') }}\">Mon compte</a>
                     </li>

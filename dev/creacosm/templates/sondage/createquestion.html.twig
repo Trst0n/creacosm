@@ -7,19 +7,19 @@
             switch (val){
                 case "multiple" :
                     type = "multiple"
-                    choix = " Réponse 1 :<input type=\"text\" name=\"reponse1-1\"><br><p id =\"1-2\"><button type=\"button\" onclick=\"newreponse2(1,2)\"> + Ajouter une reponse </button></p><br>"
+                    choix = " Réponse 1 :<input class=\"form-control\" type=\"text\" name=\"reponse1-1\"><br><p id =\"1-2\"><button class=\"btn  btn-success\" type=\"button\" onclick=\"newreponse2(1,2)\"> + Ajouter une reponse </button></p><br>"
                     break
                 case "unique" :
                     type = "unique"
-                    choix = " Réponse 1 :<input type=\"text\" name=\"reponse1-1\"><br><p id =\"1-2\"><button type=\"button\" onclick=\"newreponse2(1,2)\"> + Ajouter une reponse </button></p><br>"
+                    choix = " Réponse 1 :<input class=\"form-control\" type=\"text\" name=\"reponse1-1\"><br><p id =\"1-2\"><button class=\"btn  btn-success\" type=\"button\" onclick=\"newreponse2(1,2)\"> + Ajouter une reponse </button></p><br>"
                     break
                 case "ouverte":
                     type = "ouverte"
-                    choix = "Question ouverte: Aucun affichage disponible"
+                    choix = "<label>Question ouverte: Aucun affichage disponible</label> "
                     break
                 case "oui_non":
                     type = "oui_non"
-                    choix = "<label>Il n'y a pas d'affichage pour ce choix.</label>"
+                    choix = "<label>Question oui/non: Aucun affichage disponible</label>"
                     break
                 default:
                     type = ""
@@ -31,24 +31,23 @@
 
         function newreponse2(nbquest, nbrep) {
             nbquestion++
-            document.getElementById(nbquest + "-" + nbrep).innerHTML = "Réponse " + nbquestion + ":<input type=\"text\" name=\"reponse1-" + nbquestion + "\"><br><p id=\"" + nbquest + "-" + (nbrep + 1) + "\"><button type=\"button\" onclick=\"newreponse(" + nbquest + "," + (nbrep + 1) + ")\"> + Ajouter une reponse </button><button type=\"button\" onclick=\"removereponse(" + nbquest + "," + (nbrep) + ")\"> - Supprimer une reponse </button></p>"
+            document.getElementById(nbquest + "-" + nbrep).innerHTML = "Réponse " + nbquestion + ":<input class=\"form-control\" type=\"text\" name=\"reponse1-" + nbquestion + "\"><br><p id=\"" + nbquest + "-" + (nbrep + 1) + "\"><button class=\"btn  btn-success\" type=\"button\" onclick=\"newreponse(" + nbquest + "," + (nbrep + 1) + ")\"> + Ajouter une reponse </button><button class=\"btn  btn-danger\" type=\"button\" onclick=\"removereponse(" + nbquest + "," + (nbrep) + ")\"> - Supprimer une reponse </button></p>"
         }
 
     </script>
 
 
     <p style="font-style: italic ; font-size: 18px">Create new Question</p>
-    <label> Intitulé:
-        <br>
-        <input type="text" name="intitule1" autocomplete="off">
-    </label>
+    <label> Intitulé:     </label>
+    <br>
+        <input class="form-control" type="text" name="intitule1" autocomplete="off">
     <br><br>
-    <label> Image: <br> <input type="text" name="image1"></label>
+    <label> Image: </label> <br> <input class="form-control" type="text" name="image1">
     <br><br>
 
     <label for="type-select">Choisissez un type:</label><br>
 
-    <select name="type1" id="type-select" autocomplete="off" onchange="choixtype(value)">
+    <select class="form-select" name="type1" id="type-select" autocomplete="off" onchange="choixtype(value)">
         <option value="">--Choisissez une option--</option>
         <option value="multiple">Question à choix multiple</option>
         <option value="unique">Question à choix unique</option>

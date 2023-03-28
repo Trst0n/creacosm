@@ -160,34 +160,60 @@ class __TwigTemplate_07ae4d87d27c1d60eae82b705068f051 extends Template
             ((twig_get_attribute($this->env, $this->source, $context["sondage"], "datecreation", [], "any", false, false, false, 42)) ? (print (twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["sondage"], "datecreation", [], "any", false, false, false, 42), "Y-m-d"), "html", null, true))) : (print ("")));
             echo "</td>
                 <td>
-                    <a class=\"btn btn-outline-info\" href=\"";
+                    ";
             // line 44
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_sondage_show", ["id" => twig_get_attribute($this->env, $this->source, $context["sondage"], "id", [], "any", false, false, false, 44)]), "html", null, true);
-            echo "\">Voir</a>
-                    <a class=\"btn btn-outline-secondary\" href=\"";
-            // line 45
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_sondage_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["sondage"], "id", [], "any", false, false, false, 45)]), "html", null, true);
-            echo "\">Modifier</a>
+            if (twig_get_attribute($this->env, $this->source, $context["sondage"], "visibilite", [], "any", false, false, false, 44)) {
+                // line 45
+                echo "                        <a class=\"btn btn-outline-info\" href=\"";
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_sondage_show", ["id" => twig_get_attribute($this->env, $this->source, $context["sondage"], "id", [], "any", false, false, false, 45)]), "html", null, true);
+                echo "\">Voir</a>
                     ";
-            // line 46
-            if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 46, $this->source); })()), "user", [], "any", false, false, false, 46)) {
+            } else {
                 // line 47
-                echo "                    ";
-                if (twig_in_filter($context["sondage"], twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 47, $this->source); })()), "user", [], "any", false, false, false, 47), "sondages", [], "any", false, false, false, 47))) {
+                echo "                        ";
+                if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 47, $this->source); })()), "user", [], "any", false, false, false, 47)) {
                     // line 48
-                    echo "                        <label > Sondage déjà repondu </label>
-                    ";
+                    echo "                            <a class=\"btn btn-outline-info\" href=\"";
+                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_sondage_show", ["id" => twig_get_attribute($this->env, $this->source, $context["sondage"], "id", [], "any", false, false, false, 48)]), "html", null, true);
+                    echo "\">Voir</a>
+                        ";
                 } else {
                     // line 50
-                    echo "                        <a class=\"btn btn-outline-success\" href=\"";
-                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_repondre", ["id" => twig_get_attribute($this->env, $this->source, $context["sondage"], "id", [], "any", false, false, false, 50)]), "html", null, true);
-                    echo "\" >Répondre</a>
-                    ";
+                    echo "                            <button class=\"btn btn-outline-info\" disabled >Voir</button>
+
+                        ";
                 }
-                // line 52
+                // line 53
                 echo "                    ";
             }
-            // line 53
+            // line 54
+            echo "                    <a class=\"btn btn-outline-secondary\" href=\"";
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_sondage_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["sondage"], "id", [], "any", false, false, false, 54)]), "html", null, true);
+            echo "\">Modifier</a>
+                    ";
+            // line 55
+            if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 55, $this->source); })()), "user", [], "any", false, false, false, 55)) {
+                // line 56
+                echo "                        ";
+                if (twig_in_filter($context["sondage"], twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 56, $this->source); })()), "user", [], "any", false, false, false, 56), "sondages", [], "any", false, false, false, 56))) {
+                    // line 57
+                    echo "                            <label > Sondage déjà repondu </label>
+                        ";
+                } else {
+                    // line 59
+                    echo "                            <a class=\"btn btn-outline-success\" href=\"";
+                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_repondre", ["id" => twig_get_attribute($this->env, $this->source, $context["sondage"], "id", [], "any", false, false, false, 59)]), "html", null, true);
+                    echo "\" >Répondre</a>
+                        ";
+                }
+                // line 61
+                echo "                    ";
+            } else {
+                // line 62
+                echo "                        <button class=\"btn btn-outline-success\" disabled >Répondre</button>
+                    ";
+            }
+            // line 64
             echo "
 
                 </td>
@@ -196,7 +222,7 @@ class __TwigTemplate_07ae4d87d27c1d60eae82b705068f051 extends Template
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 58
+            // line 69
             echo "            <tr>
                 <td colspan=\"6\">no records found</td>
             </tr>
@@ -205,20 +231,28 @@ class __TwigTemplate_07ae4d87d27c1d60eae82b705068f051 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['sondage'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 62
+        // line 73
         echo "        </tbody>
     </table>
             ";
-        // line 64
-        if (twig_in_filter("ROLE_ADMIN", twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 64, $this->source); })()), "user", [], "any", false, false, false, 64), "roles", [], "any", false, false, false, 64))) {
-            // line 65
-            echo "    <a class=\"btn btn-success btn-lg btn-block\" href=\"";
-            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_sondage_new");
-            echo "\">Creer un nouveau Sondage</a>
+        // line 75
+        if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 75, $this->source); })()), "user", [], "any", false, false, false, 75)) {
+            // line 76
+            echo "
+            ";
+            // line 77
+            if (twig_in_filter("ROLE_ADMIN", twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 77, $this->source); })()), "user", [], "any", false, false, false, 77), "roles", [], "any", false, false, false, 77))) {
+                // line 78
+                echo "    <a class=\"btn btn-success btn-lg btn-block\" href=\"";
+                echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_sondage_new");
+                echo "\">Creer un nouveau Sondage</a>
 
             ";
+            }
+            // line 81
+            echo "            ";
         }
-        // line 68
+        // line 82
         echo "        </div>
     </div>
 ";
@@ -242,7 +276,7 @@ class __TwigTemplate_07ae4d87d27c1d60eae82b705068f051 extends Template
 
     public function getDebugInfo()
     {
-        return array (  222 => 68,  215 => 65,  213 => 64,  209 => 62,  200 => 58,  191 => 53,  188 => 52,  182 => 50,  178 => 48,  175 => 47,  173 => 46,  169 => 45,  165 => 44,  160 => 42,  156 => 41,  152 => 40,  148 => 39,  144 => 38,  141 => 37,  136 => 36,  128 => 30,  115 => 28,  111 => 27,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  256 => 82,  253 => 81,  246 => 78,  244 => 77,  241 => 76,  239 => 75,  235 => 73,  226 => 69,  217 => 64,  213 => 62,  210 => 61,  204 => 59,  200 => 57,  197 => 56,  195 => 55,  190 => 54,  187 => 53,  182 => 50,  176 => 48,  173 => 47,  167 => 45,  165 => 44,  160 => 42,  156 => 41,  152 => 40,  148 => 39,  144 => 38,  141 => 37,  136 => 36,  128 => 30,  115 => 28,  111 => 27,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -290,14 +324,25 @@ class __TwigTemplate_07ae4d87d27c1d60eae82b705068f051 extends Template
                 <td> {{ sondage.theme.theme }}</td>
                 <td>{{ sondage.datecreation ? sondage.datecreation|date('Y-m-d') : '' }}</td>
                 <td>
-                    <a class=\"btn btn-outline-info\" href=\"{{ path('app_sondage_show', {'id': sondage.id}) }}\">Voir</a>
+                    {% if sondage.visibilite %}
+                        <a class=\"btn btn-outline-info\" href=\"{{ path('app_sondage_show', {'id': sondage.id}) }}\">Voir</a>
+                    {% else %}
+                        {% if app.user %}
+                            <a class=\"btn btn-outline-info\" href=\"{{ path('app_sondage_show', {'id': sondage.id}) }}\">Voir</a>
+                        {% else %}
+                            <button class=\"btn btn-outline-info\" disabled >Voir</button>
+
+                        {% endif %}
+                    {% endif  %}
                     <a class=\"btn btn-outline-secondary\" href=\"{{ path('app_sondage_edit', {'id': sondage.id}) }}\">Modifier</a>
                     {% if app.user %}
-                    {% if sondage in app.user.sondages %}
-                        <label > Sondage déjà repondu </label>
+                        {% if sondage in app.user.sondages %}
+                            <label > Sondage déjà repondu </label>
+                        {% else %}
+                            <a class=\"btn btn-outline-success\" href=\"{{ path('app_repondre', {'id': sondage.id}) }}\" >Répondre</a>
+                        {%  endif %}
                     {% else %}
-                        <a class=\"btn btn-outline-success\" href=\"{{ path('app_repondre', {'id': sondage.id}) }}\" >Répondre</a>
-                    {%  endif %}
+                        <button class=\"btn btn-outline-success\" disabled >Répondre</button>
                     {%  endif %}
 
 
@@ -310,9 +355,12 @@ class __TwigTemplate_07ae4d87d27c1d60eae82b705068f051 extends Template
         {% endfor %}
         </tbody>
     </table>
+            {% if app.user %}
+
             {% if \"ROLE_ADMIN\" in app.user.roles %}
     <a class=\"btn btn-success btn-lg btn-block\" href=\"{{ path('app_sondage_new') }}\">Creer un nouveau Sondage</a>
 
+            {% endif %}
             {% endif %}
         </div>
     </div>

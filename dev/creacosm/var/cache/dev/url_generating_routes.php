@@ -16,6 +16,7 @@ return [
     '_profiler_router' => [['token'], ['_controller' => 'web_profiler.controller.router::panelAction'], [], [['text', '/router'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], [], []],
     '_profiler_exception' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::body'], [], [['text', '/exception'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], [], []],
     '_profiler_exception_css' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::stylesheet'], [], [['text', '/exception.css'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], [], []],
+    'app_landing' => [[], ['_controller' => 'App\\Controller\\RacineController::racine'], [], [['text', '/']], [], [], []],
     'app_racine' => [[], ['_controller' => 'App\\Controller\\RacineController::index'], [], [['text', '/racine']], [], [], []],
     'app_accueil' => [[], ['_controller' => 'App\\Controller\\RacineController::accueil'], [], [['text', '/accueil']], [], [], []],
     'app_moncompte' => [[], ['_controller' => 'App\\Controller\\RacineController::account'], [], [['text', '/moncompte']], [], [], []],

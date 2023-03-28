@@ -105,7 +105,7 @@ class __TwigTemplate_e703e2efef6bc97e8c14f0b421bac0eb extends Template
         echo "
     <div class=\"container   \">
         <div class=\"align-middle\" style=\"margin-top: 3%\">
-    <h1>Create new Theme</h1>
+    <h1>Créer un nouveau theme</h1>
 
 
     <p id=\"idp\">
@@ -208,7 +208,7 @@ class __TwigTemplate_e703e2efef6bc97e8c14f0b421bac0eb extends Template
 
     <div class=\"container   \">
         <div class=\"align-middle\" style=\"margin-top: 3%\">
-    <h1>Create new Theme</h1>
+    <h1>Créer un nouveau theme</h1>
 
 
     <p id=\"idp\">
